@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Minicon Template Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		body {
+			font-size: 13px;
+		}
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+		.codebox {
+			background: #f5f6f7 none repeat scroll 0 0;
+			color: #000099;
+			font: italic 12px "Open Sans",sans-serif;
+			margin: 4px 2px;
+			padding: 2px 6px;
+			border: 1px solid #dde6e8;
+		}
+		em {
+			color: #666;
+			font-size: 12px;
+		}
+		li {
+			margin: 10px 0px;
+		}
+		pre{
+		  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+		  margin-bottom: 10px;
+		  overflow: auto;
+		  width: auto;
+		  padding: 5px;
+		  background-color: #eff2f5;
+		  width: 650px!ie7;
+		  padding-bottom: 20px!ie7;
+		  max-height: 600px;
+		  border: 1px solid #dde6e8;
+		}
+		.blue {
+			color: #0000ff;
+		}
+		.green {
+			color: #006600;
+		}
+		.black {
+			color: #990099;
+		}
+		.black {
+			color: #000;
+		}
+		.grey {
+			color: #999;
+		}
+		.red {
+			color: #bc003a;
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Minicon Minimal Template Documentation&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Minicon Minimal HTML Template&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 04/11/2016<br>
+					By: Iconic Graphics<br>
+					Email: <a href="mailto:info@iconicgraphics.com">info@iconicgraphics.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing our HTML Template. If you have any questions that are beyond the scope of this help file, please feel free 
+                to email via my user page contact form <a href="https://themeforest.net/user/iconic-graphics">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+        
+        <h3><strong>About</strong></h3>
+		<p>Minicon is a minimal, modern, creative and unique multi-purpose HTML template. It’s designed for agency, studio, portfolio and creative websites. Based on 
+        Bootstrap framework easy to use and customize.</p>
+		
+        
+        <hr>
+        
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+	        <li><a href="#pages">All HTML Pages</a></li>
+            <li><a href="#changeTemplate">How To Change The Template</a></li>
+			<li><a href="#cssFiles">CSS Files</a></li>
+			<li><a href="#javascript">JavaScript Files</a></li>
+            <li><a href="#php">PHP Files</a></li>
+            <li><a href="#PSD">Photoshop Files</a></li>
+			<li><a href="#credits">Sources and Credits</a></li>
+		</ol>
+		
+		<hr>
+        
+        <h3 id="pages"><strong>A) All HTML Pages</strong> - <a href="#toc">top</a></h3>
+        
+        <ul>
+            <li><strong>index.html</strong> ( Home Page )</li>
+            <li><strong>about-us.html</strong> ( About Us Page )</li>
+            <li><strong>service.html</strong> ( Service Page )</li>
+            <li><strong>blog.html</strong> ( Blog Page )</li>
+            <li><strong>blog-detail.html</strong> ( Blog Detail Page )</li>
+            <li><strong>portfolio.html</strong> ( Portfolio Page )</li>
+            <li><strong>portfolio-detail.html</strong> ( Portfolio Detail Page )</li>
+            <li><strong>contact.html</strong> ( Contact Page )</li>
+		</ul>
+
+		
+        <hr>
+        
+        
+        <h3 id="changeTemplate"><strong>B) How To Change The Template</strong> - <a href="#toc">top</a></h3>
+        
+        <h4><strong>How to change the logo</strong></h4>
+        <p>Open the Minicon HTML folfer, go to the <strong>Assets > img > </strong>and find the image <strong>logo.png</strong> and replace with your logo image. Your logo will be replace throughout the site. In the template the size of the logo image is <strong>281px x 90px</strong>. And you can also change the logo for mobile version too. Mobile version image name is <strong>logo-mobile.png</strong> and replace with your mobile version logo. Below you can see the code structure of the Logo HTML too.</p>
+        
+<pre class="codebox">
+    <code>
+    &lt;h1>
+        <span class="green">&lt;a</span> href=<span class="blue">"index.html"</span>>
+            <span class="red">&lt;img</span> class=<span class="blue">"img-responsive"</span> src=<span class="blue">"assets/img/logo.png"</span> alt=<span class="blue">"logo"</span><span class="red">/></span>
+            <span class="red">&lt;img</span> class=<span class="blue">"logo-responsive"</span> src=<span class="blue">"assets/img/logo-mobile.png"</span> alt=<span class="blue">"logo-responsive"</span><span class="red">/></span>
+        <span class="green">&lt;/a></span>
+    &lt;/h1>
+    </code>
+</pre>
+        
+        <br><br><br>
+        
+		<h4><strong>How to change the Menu</strong></h4>
+        
+		<p>HTML5 defines a <span class="codebox">&lt;nav></span> element that contains the primary navigation of a website on every page. How the navigation looks appears within the <span class="codebox">&lt;header></span> tag is showing below. You can easily find the nav tag in the html code and change the menu links according to your desisre and as well href attributes to a corresponding pages</p>
+
+        
+<pre class="codebox">
+    <code>
+    &lt;nav id=<span class="blue">"main-nav"</span>>
+        &lt;ul>
+            &lt;li>
+                <span class="green">&lt;a</span> href=<span class="blue">"index.html"</span>>&lt;span>&lt;sup><span class="black">01.</span>&lt;/sup> <span class="black">Home</span>&lt;/span><span class="green">&lt;/a></span>
+            &lt;/li>
+            &lt;li>
+                <span class="green">&lt;a</span> href=<span class="blue">"about-us.html"</span>>&lt;span>&lt;sup><span class="black">02.</span>&lt;/sup> <span class="black">Abou</span>t&lt;/span><span class="green">&lt;/a></span>
+            &lt;/li>
+            &lt;li>
+                <span class="green">&lt;a</span> href=<span class="blue">"service.html"</span>>&lt;span>&lt;sup><span class="black">03.</span>&lt;/sup> <span class="black">Services</span>&lt;/span><span class="green">&lt;/a></span>
+            &lt;/li>
+            &lt;li>
+                <span class="green">&lt;a</span> href=<span class="blue">"blog.html"</span>>&lt;span>&lt;sup><span class="black">04.</span>&lt;/sup> <span class="black">Blog</span>&lt;/span><span class="green">&lt;/a></span>
+            &lt;/li>
+            &lt;li>
+                <span class="green">&lt;a</span> href=<span class="blue">"portfolio.html"</span>>&lt;span>&lt;sup><span class="black">05.</span>&lt;/sup> <span class="black">Portfolio</span>&lt;/span><span class="green">&lt;/a></span>
+            &lt;/li>
+            &lt;li>
+                <span class="green">&lt;a</span> href=<span class="blue">"contact.html"</span>>&lt;span>&lt;sup><span class="black">06.</span>&lt;/sup> <span class="black">Contact</span>&lt;/span><span class="green">&lt;/a></span>
+            &lt;/li>
+        &lt;/ul>
+        <span class="green">&lt;a</span> href=<span class="blue">"#0"</span> class=<span class="blue">"cd-close-menu"</span>><span class="black">Close</span>&lt;span>&lt;/span><span class="green">&lt;/a></span>
+    &lt;/nav>
+    </code>
+</pre>
+    
+            <br><br><br>
+
+            
+            
+		<h4><strong>How to change the template main colors</strong></h4>
+		<p>Go to <strong>Assets > css > style.css </strong>and open the <strong>style.css</strong> file. If you want to change the main <strong>heading black colors</strong> go to the line numbers 68, 75, 78, 1735, 1776, 2245 and change this color: #3e3e3e; to color: #YOURCOLOR;</p>
+            
+		<p>If you want to change the <strong class="golden">Golden heading colors</strong> go to the line numbers 72, 81, 560, 1796, 2250 and change this color: #c8b370; to color: #YOURCOLOR;</p>
+            
+		<p>If you want to change the <strong>Bullet points text colors</strong> go to the line numbers 84, 1212, 1308, 3193 and change this color: #3e3e3e; to color: #YOURCOLOR;</p>
+            
+		<p>If you want to change the <strong>Paragraph text color</strong> go to the line number 65 and change this color: #707070; to color: #YOURCOLOR;. It will change all the paragraph text color throughout the site.</p>
+            
+		<p>If you want to change the <strong>Button Background color</strong> go to the line number 3320 and change this color: #ebe0b2; to color: #YOURCOLOR;</p>
+            
+		<p>If you would like to edit a specific section of the template, simply go to HTML folder <strong>Assets > CSS > style.css</strong> and then open the file <strong>style.css</strong>, There will be a [Table of content CSS] at top of the file which shows the formation of the CSS. Copy the appropriate label from the table and the find the CSS and modify.</p>
+            
+            
+		<br><br><br>
+        
+		<h4><strong>How to change the Portfolio Item Images</strong></h4>
+        
+		<p>Go to <strong>Assets > img > placeholder </strong>and find the specific placeholder image and replace with your images. Your image size should be <strong>480px x 480px</strong> for portfolio items. Also you can search Portfolio images with names which will be are "portfolio-img-1.jpg", "portfolio-img-2.jpg", "portfolio-img-3.jpg" etc. The HTML structure has been shown below for the One portfolio item</p>
+        
+<pre class="codebox">
+    <code>
+    <span class="grey">&lt;!--Item 1--></span>
+    <span class="green">&lt;a</span> href=<span class="blue">"portfolio.html"</span>> 
+        &lt;div class=<span class="blue">"grid"</span>>
+            &lt;figure class=<span class="blue">"element-item effect-portfolio Branding"</span>>
+                <span class="red">&lt;img</span> class=<span class="blue">"img-responsive"</span> src=<span class="blue">"assets/img/placeholder/portfolio-img-1.jpg"</span> alt=<span class="blue">"portfolio-img-1"</span><span class="red">/></span>
+                &lt;figcaption>
+                    &lt;h4><span class="black">Branding</span>&lt;/h4>
+                &lt;/figcaption>
+            &lt;/figure>
+        &lt;/div>
+    <span class="green">&lt;/a></span>
+    </code>
+</pre>
+        
+		<br><br><br>
+        
+        
+        <h4><strong>How to change the other template images</strong></h4>
+        <p>Go to <strong>Assets > img > placeholder </strong>and find the specific placeholder image along with the sizes and replace with your images. Your images will be replace :-)</p>
+        
+
+		<hr>
+        
+
+		<h3 id="cssFiles"><strong>C) CSS Files</strong> - <a href="#toc">top</a></h3>
+
+		<p>The template contains 3 CSS files stored in a folder: <strong>assets\css\</strong> </p>
+		
+        <ol>
+        	<li><strong>style.css</strong> ( Master stylesheet include all template styles )</li>
+			<li><strong>animate.min.css</strong> ( CSS Library animations )</li>
+			<li><strong>bootstrap.min.css</strong> ( Style settings for the bootstrap )</li>
+		</ol>
+        
+        <p>The following files in your <span class="codebox">&lt;head&gt;</span> section of the each pages are CSS files. Please ensure that all of them have the correct path.</p>
+        
+<pre class="codebox">
+    <code>
+     <span class="grey">&lt;!-- ALL CSS --></span>
+     &lt;link href=<span class="blue">"assets/css/bootstrap.min.css"</span> rel=<span class="blue">"stylesheet"</span> type=<span class="blue">"text/css"</span>>
+     &lt;link href=<span class="blue">"assets/css/animate.min.css"</span> rel=<span class="blue">"stylesheet"</span> type=<span class="blue">"text/css"</span>>
+     &lt;link href=<span class="blue">"assets/css/style.css"</span> rel=<span class="blue">"stylesheet"</span> type=<span class="blue">"text/css"</span>>
+    </code>
+</pre>
+        
+		<br><br><br>
+        
+		
+		<h3 id="javascript"><strong>D) JavaScript Files</strong> - <a href="#toc">top</a></h3>
+		
+		<p>The template contains 12 js files stored in a folder: <strong>\assets\js\</strong></p>
+        
+        <ol>
+        	<li><strong>jquery-3.1.0.min.js</strong> ( jQuery is a fast, small, and feature-rich )</li>
+			<li><strong>bootstrap.min.js</strong> ( Bootstrap included scripts )</li>
+			<li><strong>contact.js</strong> ( The script includes a custom code for Contact form and Project Form )</li>
+            <li><strong>custom-map.js</strong> ( The library includes a small scripts for the Google Map Styling )</li>
+            <li><strong>custom-scripts.js</strong> ( The library includes a small scripts for the Counter Numbers, Page Loader and Isotope Portfolio items )</li>
+            <li><strong>jquery.counterup.js</strong> ( By Deafult for Counter Numbers )</li>
+            <li><strong>isotope.pkgd.min.js</strong> ( By defult for Portfolio Items )</li>
+            <li><strong>jquery.inview.min.js</strong> ( Inview is a jQuery plugin used to add or remove CSS classes to Html elements when they enter or leave )</li>
+            <li><strong>jquery.waypoints.min.js</strong> ( Waypoints is the easiest way to trigger a function when you scroll to an element )</li>
+            <li><strong>menu.js</strong> ( The library includes a custom small scripts for the top right Menu )</li>
+            <li><strong>modernizr.js</strong> ( Modernizr tells you what HTML, CSS and JavaScript features the user’s browser has to offer )</li>
+            <li><strong>wow.min.js</strong> ( Reveal CSS animation as you scroll down a page. By default, you can use it to trigger animate.css animations )</li>
+		</ol>
+        
+        <p>Javascript files can be found in the footer of the theme before the closing tag <span class="codebox">&lt;body&gt;</span>.</p>
+		
+        
+<pre class="codebox red">
+    <code>
+    <span class="grey">&lt;!-- jQuery (necessary for Bootstrap's JavaScript plugin) --></span>
+    &lt;script src=<span class="blue">"assets/js/jquery-3.1.0.min.js"</span>>&lt;/script>
+    <span class="grey">&lt;!-- Include BOOTSTRAP plugin  --></span>
+    &lt;script src=<span class="blue">"assets/js/bootstrap.min.js"</span>>&lt;/script>
+    <span class="grey">&lt;!-- Include plugins --></span>
+    &lt;script src=<span class="blue">"assets/js/modernizr.js"</span>>&lt;/script>
+    &lt;script src=<span class="blue">"assets/js/isotope.pkgd.min.js"</span>>&lt;/script>
+    &lt;script src=<span class="blue">"assets/js/jquery.inview.min.js"</span>>&lt;/script>
+    &lt;script src=<span class="blue">"assets/js/jquery.waypoints.min.js"</span>>&lt;/script>
+    &lt;script src=<span class="blue">"assets/js/jquery.counterup.js"</span>>&lt;/script>
+    &lt;script src=<span class="blue">"assets/js/wow.min.js"</span>>&lt;/script>
+    <span class="grey">&lt;!-- Include custom scripts --></span>
+    &lt;script src=<span class="blue">"assets/js/menu.js"</span>>&lt;/script>
+    &lt;script src=<span class="blue">"assets/js/custom-scripts.js"</span>>&lt;/script>
+    &lt;script src=<span class="blue">"assets/js/contact.js"</span>>&lt;/script>
+    &lt;script>
+        <span class="blue">new</span> <span class="black">WOW</span><span class="blue">().</span><span class="black">init</span><span class="blue">()</span>;
+    &lt;/script>
+    <span class="grey">&lt;!-- Include Google map Scripts --> </span>
+    &lt;script src=<span class="blue">"assets/js/custom-map.js"</span>&lt;/script>
+    &lt;script src=<span class="blue">"https://maps.googleapis.com/maps/api/js?key=AIzaSyDKU44O0b8Wai51ZfXhkolnNe5Br18RBMI&callback=initMap"</span>>&lt;/script>
+    </code>
+</pre>
+
+		<br><br><br>
+        
+        <hr>
+		
+		<h3 id="php"><strong>E) PHP Files</strong> - <a href="#toc">top</a></h3>
+        
+        <p>There are two PHP files that comes with Minicon that sends the information from the contact form to an email. The only editing you need to do in these files is edit it so it sends to the correct email.</p>
+        
+        <ul>
+            <li><strong>sendEmail.php</strong> ( Contact Form Send File )</li>
+            <li><strong>sendProjectdetailEmail.php</strong> ( Project Inquiry Form Send File )</li>
+        </ul>
+        
+        <p>Open <strong>sendEmail.php</strong> and find <strong>$site_owners_email = 'example@email.com'</strong>; and change example@email.com to your email. Then, save the file and your contact form will be functional. Keep in mind that for the PHP to work, the site must be uploaded to a webserver with PHP capabilities, you cannot run it locally on your computer, if you don't have PHP capabilities please contact your hosting support.</p>
+        
+        <p>And you need to repeat this above steps for this file <strong>sendProjectdetailEmail.php</strong> too to make the Project Inquiry form functional.</p>
+        
+        
+		<hr>
+        
+        <h3 id="PSD"><strong>F) Photoshop Files</strong> - <a href="#toc">top</a></h3>
+        
+		<p>Nine (9) Photoshop files has been included in the <strong>PSD</strong> folder with the package. The design was created with the latest Adobe Photoshop CC software. Below are several pointers on how to edit and use the file.></p>
+        
+		<ul>
+            <li><strong>01_Home.psd</strong> ( Home Page )</li>
+            <li><strong>02_About_Us.psd</strong> ( About Page )</li>
+            <li><strong>03_Services.psd</strong> ( Services Page )</li>
+            <li><strong>04_Portfolio.psd</strong> ( Portfolio Page )</li>
+            <li><strong>05_Portfolio_Detail.psd</strong> ( Portfolio Detail Page )</li>
+            <li><strong>06_Contact.psd</strong> ( Contact Us Page )</li>
+            <li><strong>07_Blog.psd</strong> ( Blog Page )</li>
+            <li><strong>08_Blog_Detail.psd</strong> ( Blog Single Page )</li>
+            <li><strong>09_Start_Project_Popup.psd</strong> ( Popup Pgae )</li>
+        </ul>
+        
+        
+		<hr>
+        
+		<h3 id="credits"><strong>G) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+		
+		
+        <h4><strong>Google Fonts</strong></h4>
+        
+        <ul>
+        	<li><a href="https://www.google.com/fonts/specimen/Montserrat" target="_blank">Montserrat</a></li>
+        	<li><a href="https://www.google.com/fonts/specimen/Abril+Fatface" target="_blank">Abril</a></li>
+		</ul>
+        
+        <h4><strong>Images</strong></h4>
+        
+		<p>All images are just used for preview purpose only and NOT included in the download package.</p>
+        
+        <ul>
+			<li><a href="http://picjumbo.com/" target="_blank">Picjumbo</a></li>
+			<li><a href="http://unsplash.com/" target="_blank">Unsplash</a></li>
+        </ul>
+		
+		<hr>
+		
+		<p>Once again, thank you so much for purchasing this theme. As I said at the beginning, I'd be glad to help you if you have any questions relating to this theme. 
+        No guarantees, but I'll do my best to assist. If you have a more general question relating to the themes on ThemeForest, you might consider visiting the forums 
+        and asking your question in the "Item Discussion" section.</p> 
+		
+		<p class="append-bottom alt large"><strong>Iconic Graphics</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
