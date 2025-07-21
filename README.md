@@ -1,2 +1,0 @@
-# paramountconsultantsltd
-Paramount Consultants Website
