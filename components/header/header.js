@@ -100,7 +100,11 @@ export default function Header({ header_links = mock.header_links }) {
       >
         <div className={cn("container", styles.container)}>
           <Link href="/" className={styles.logo}>
-            {icons.Leaves}
+            <img 
+              src="/images/paramount-logo.svg" 
+              alt="Paramount Consultants" 
+              className={styles.logo_image}
+            />
           </Link>
 
           <nav

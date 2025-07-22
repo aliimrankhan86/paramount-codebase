@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
 
 export const metadata = {
-  title: "Nova",
-  description: "A modern UI theme for ecommerce sites.",
+  title: "Paramount Consultants",
+  description: "Strategic Solutions for Modern Business",
 };
 
 export default function RootLayout({ children }) {

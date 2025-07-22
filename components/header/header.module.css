@@ -55,6 +55,49 @@
   fill: var(--black);
 }
 
+.logo_image {
+  height: 120px;
+  width: auto;
+  max-width: 480px;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+
+.logo_image:hover {
+  opacity: 0.8;
+}
+
+/* Ensure logo works well across all user agents */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* High DPI display support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo_image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+  .logo_image {
+    height: 100px;
+    max-width: 100px;
+  }
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-appearance: none) {
+  .logo_image {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
 .btns {
   display: flex;
   align-items: center;
@@ -168,6 +211,12 @@
   .menu_button,
   .logo {
     z-index: 10;
+  }
+
+  /* Mobile logo adjustments */
+  .logo_image {
+    height: 100px;
+    max-width: 100px;
   }
 
   .menu_button {
