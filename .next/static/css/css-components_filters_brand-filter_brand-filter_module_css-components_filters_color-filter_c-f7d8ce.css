@@ -1,0 +1,207 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/filters/brand-filter/brand-filter.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+.brand-filter_container__HE_da {
+  border-top: 0.5px solid var(--slate-200);
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.brand-filter_options__1vsN3 {
+  padding: 0 0 24px 0;
+  display: grid;
+  grid-gap: 12px;
+  gap: 12px;
+  animation: brand-filter_fadeIn__rJyxA cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+}
+
+.brand-filter_option__Eghgz {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-filter_head__ItF3z {
+  color: var(--black);
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand-filter_head__ItF3z svg {
+  stroke: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.brand-filter_open__Xpyny svg {
+  transform: rotate(180deg);
+}
+
+@keyframes brand-filter_fadeIn__rJyxA {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/filters/toggle-filter/toggle-filter.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+.toggle-filter_container__s_Rh8 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.toggle-filter_toggle__QCkKR {
+  width: 50px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-filter_thumb__KM2VT {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-filter_toggle__QCkKR.toggle-filter_toggled__Y8m_z {
+  background-color: #4caf50;
+}
+
+.toggle-filter_toggle__QCkKR.toggle-filter_toggled__Y8m_z .toggle-filter_thumb__KM2VT {
+  transform: translateX(26px);
+}
+
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/filters/color-filter/color-filter.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+.color-filter_container__K6BbK {
+  border-top: 0.5px solid var(--slate-200);
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.color-filter_head__i42uj {
+  color: var(--black);
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.color-filter_head__i42uj svg {
+  stroke: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.color-filter_open___5zvT svg {
+  transform: rotate(180deg);
+}
+
+.color-filter_colors__GhGR4 {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 24px;
+}
+
+.color-filter_color__RvyF2 {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.color-filter_button__k6RT6 {
+  padding: 4px;
+  border-radius: 50%;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  border: 1.5px solid transparent;
+}
+
+.color-filter_selected__nr1Gb {
+  border-color: var(--black);
+}
+
+.color-filter_button__k6RT6:not(.color-filter_selected__nr1Gb):hover {
+  transform: scale(1.1);
+}
+
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/filters/price-filter/price-filter.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+.price-filter_container__SYo_p {
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.price-filter_head__rzDuH {
+  color: var(--black);
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.price-filter_head__rzDuH svg {
+  stroke: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.price-filter_open__VQcDj svg {
+  transform: rotate(180deg);
+}
+
+.price-filter_content__fPQZ0 {
+  padding: 0 0 24px 0;
+}
+
+.price-filter_range__WBqEE {
+  width: 100%;
+}
+
+.price-filter_values__8m1jm {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.price-filter_value___m5ht {
+  position: relative;
+}
+
+.price-filter_unit__7j2BJ {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.price-filter_min__KNeid,
+.price-filter_max__jaCw0 {
+  color: var(--slate-500);
+}
+
+.price-filter_input__smnE6 {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 96px;
+  text-align: right;
+  background-color: var(--slate-100);
+}
+

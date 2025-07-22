@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.block {
+  text-align: center;
+}
+
+.title,
+.text {
+  color: var(--white);
+}
+
+.text {
+  text-transform: uppercase;
+}
+
+.columns {
+  color: var(--warning-500);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 72px;
+    line-height: auto;
+    letter-spacing: -2%;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.64px;
+  }
+}

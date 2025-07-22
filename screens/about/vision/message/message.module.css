@@ -1,0 +1,41 @@
+.container {
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.container svg {
+  fill: var(--black);
+  width: 56px;
+  height: 56px;
+}
+
+.author {
+  margin-top: 12px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .message {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+  }
+
+  .container svg {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 430px) {
+  .message {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+  }
+}

@@ -1,0 +1,33 @@
+.container {
+  padding: 24px 0;
+  border-bottom: 0.5px solid var(--slate-800);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  cursor: pointer;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.heading svg {
+  stroke: var(--white);
+  flex-shrink: 0;
+}
+
+.question {
+  color: var(--white);
+}
+
+.answer {
+  color: var(--slate-500);
+}
+
+.active svg {
+  transform: rotate(45deg);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}

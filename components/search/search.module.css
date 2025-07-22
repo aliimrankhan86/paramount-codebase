@@ -1,0 +1,161 @@
+.container {
+  position: relative;
+  width: 45vw;
+  min-width: 45vw;
+  height: 100vh;
+  background-color: var(--white);
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px;
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.search_bar {
+  padding: 48px 48px 0;
+}
+
+.filtered_products,
+.initial {
+  flex: 1;
+  padding: 48px;
+}
+
+.initial {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.products {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+.divider {
+  margin-top: 12px;
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--slate-200);
+}
+
+.links {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link {
+  color: var(--slate-500);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.link:hover {
+  color: var(--black);
+}
+
+.button {
+  position: sticky;
+  bottom: 48px;
+  left: 48px;
+  right: 48px;
+  width: calc(100% - 96px);
+}
+
+.text {
+  font-weight: 500;
+}
+
+.no_results {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.no_results svg {
+  width: 44px;
+  height: 44px;
+  stroke: var(--black);
+}
+
+.no_results_title {
+  margin-top: 24px;
+}
+
+.no_results_text {
+  margin-top: 4px;
+  color: var(--slate-500);
+}
+
+@keyframes slideIn {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media (max-width: 430px) {
+  .container {
+    margin-top: auto;
+    width: 100vw;
+    height: 90vh;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .head {
+    padding: 24px;
+  }
+
+  .search_bar {
+    padding: 24px 24px 0;
+  }
+
+  .filtered_products,
+  .initial {
+    padding: 24px;
+  }
+
+  .initial {
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+  }
+
+  .button {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    width: calc(100% - 48px);
+  }
+}

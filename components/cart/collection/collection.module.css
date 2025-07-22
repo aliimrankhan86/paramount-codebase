@@ -1,0 +1,37 @@
+.collection {
+  padding: 24px;
+  background-color: var(--slate-100);
+  border: 0.5px solid var(--slate-200);
+  border-radius: 12px;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.collection__group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collection__text {
+  color: var(--slate-500);
+}
+
+.collection svg {
+  stroke: var(--slate-500);
+}
+
+.collection:hover {
+  background-color: var(--slate-200);
+}
+
+.collection:hover .collection__text {
+  color: var(--black);
+}
+
+.collection:hover svg {
+  stroke: var(--black);
+}

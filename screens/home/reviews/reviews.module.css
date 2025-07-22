@@ -1,0 +1,28 @@
+.section {
+  position: relative;
+  min-height: 70vh;
+  background-image: url("/images/headphones-background.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px;
+}
+
+@media (max-width: 430px) {
+  .overlay {
+    padding: 24px;
+  }
+}

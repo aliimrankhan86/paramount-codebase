@@ -1,0 +1,29 @@
+.explore_menu {
+  position: absolute;
+  top: calc(100% + 44px);
+  width: 280px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 48px;
+  box-shadow: 0px 40px 32px -8px rgba(15, 15, 15, 0.12);
+  border-top: 0.5px solid var(--slate-200);
+  background-color: var(--white);
+  transition: all 0.3s;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link {
+  color: var(--slate-500);
+  transition: all 0.3s;
+}
+
+.link:hover {
+  color: var(--black);
+}

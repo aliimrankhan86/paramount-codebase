@@ -1,0 +1,65 @@
+.container {
+  position: relative;
+  flex: 1;
+  height: 410px;
+  background-image: url("/images/modern-speaker.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 24px;
+}
+
+.content svg {
+  stroke: var(--white);
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  margin-top: 24px;
+}
+
+.title,
+.subtitle {
+  color: var(--white);
+}
+
+.subtitle {
+  margin-top: 12px;
+}
+
+.button {
+  margin-top: 24px;
+  background: none;
+  color: var(--white);
+}
+
+.button:hover {
+  border: 1.5px solid var(--white);
+}
+
+@media (max-width: 430px) {
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+  }
+}

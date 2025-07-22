@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 410px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.heading {
+  position: absolute;
+  bottom: 0;
+  padding: 32px;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  color: var(--white);
+}
+
+.button {
+  width: 44px;
+  height: 44px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button svg {
+  stroke: var(--black);
+}

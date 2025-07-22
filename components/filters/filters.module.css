@@ -1,0 +1,94 @@
+.container {
+  position: relative;
+  width: 45vw;
+  min-width: 45vw;
+  height: 100vh;
+  background-color: var(--white);
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px;
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.content {
+  padding: 48px;
+}
+
+.dropdown {
+  margin-bottom: 24px;
+}
+
+.divider {
+  width: 100%;
+  height: 0.5px;
+  background-color: var(--slate-200);
+}
+
+.button {
+  margin-top: auto;
+  position: sticky;
+  bottom: 48px;
+  left: 48px;
+  right: 48px;
+  width: calc(100% - 96px);
+}
+
+@keyframes slideIn {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media (max-width: 430px) {
+  .container {
+    margin-top: auto;
+    width: 100vw;
+    height: 90vh;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .head {
+    padding: 24px;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+  }
+
+  .button {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    width: calc(100% - 48px);
+  }
+}

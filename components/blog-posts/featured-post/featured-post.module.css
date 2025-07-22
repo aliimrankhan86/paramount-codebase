@@ -1,0 +1,114 @@
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.image {
+  border-radius: 16px;
+  object-fit: cover;
+  height: 350px;
+  width: 100%;
+}
+
+.tag {
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 90px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.divider {
+  width: 0.5px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.date,
+.comments {
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date,
+.comments svg {
+  stroke: var(--white);
+}
+
+.title,
+.description {
+  color: var(--white);
+}
+
+.description {
+  margin-top: 12px;
+}
+
+.button {
+  position: relative;
+  color: var(--white);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background-color: var(--white);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  transform: scaleX(1);
+  transform-origin: 100% 0%;
+}
+
+.button:hover::before {
+  transform: scaleX(0);
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 430px) {
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+  }
+}

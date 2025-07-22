@@ -1,0 +1,21 @@
+.products {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.product {
+  flex: 0 0 calc((100% - 48px) / 3);
+}
+
+@media (max-width: 768px) {
+  .product {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+}
+
+@media (max-width: 430px) {
+  .product {
+    flex: 0 0 calc(100%);
+  }
+}

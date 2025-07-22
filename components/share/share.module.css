@@ -1,0 +1,28 @@
+.share {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .title,
+  .socials {
+    display: none;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: underline;
+    color: var(--black);
+  }
+
+  .button svg {
+    stroke: var(--black);
+  }
+}

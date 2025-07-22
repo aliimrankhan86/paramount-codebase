@@ -1,0 +1,33 @@
+.empty {
+  padding: 48px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--slate-500);
+}
+
+.text {
+  color: var(--black);
+}
+
+.collections {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 430px) {
+  .empty {
+    padding: 48px 24px;
+  }
+}

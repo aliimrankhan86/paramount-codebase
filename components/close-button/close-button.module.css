@@ -1,0 +1,8 @@
+.close svg {
+  stroke: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.close:hover svg {
+  transform: rotate(90deg);
+}

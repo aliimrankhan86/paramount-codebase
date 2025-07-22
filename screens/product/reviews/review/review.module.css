@@ -1,0 +1,57 @@
+.container {
+  background-color: var(--white);
+  padding: 48px;
+  border-radius: 16px;
+  border: 0.5px solid var(--slate-200);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ratings {
+  display: flex;
+  gap: 2px;
+}
+
+.date {
+  margin-top: 4px;
+  color: var(--slate-500);
+}
+
+.ratings svg {
+  fill: var(--warning-500);
+  width: 18px;
+  height: 18px;
+}
+
+.content {
+  color: var(--slate-500);
+}
+
+.button {
+  align-self: flex-end;
+  color: var(--slate-500);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.button:hover {
+  color: var(--black);
+}
+
+@media (max-width: 430px) {
+  .container {
+    padding: 24px;
+  }
+
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

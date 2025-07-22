@@ -1,0 +1,46 @@
+.section {
+  background-color: var(--slate-50);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.text {
+  color: var(--slate-500);
+}
+
+.marquee {
+  margin-top: 64px;
+  position: relative;
+  width: 100vw;
+}
+
+.marquee svg {
+  fill: var(--slate-300);
+  margin-right: 100px;
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .marquee {
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 430px) {
+  .title {
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: -0.54px;
+  }
+}

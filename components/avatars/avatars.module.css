@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  margin-top: 24px;
+  display: flex;
+}
+
+.avatar {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-width: 2.5px;
+  border-style: solid;
+}
+
+.avatar:nth-child(2) {
+  margin-left: -12px;
+}
+
+.avatar:nth-child(3) {
+  margin-left: -12px;
+}
+
+.avatar:last-child::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  background-color: var(--success-500);
+  border-radius: 50%;
+  border-width: 2.5px;
+  border-style: solid;
+}
