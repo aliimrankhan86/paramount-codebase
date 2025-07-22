@@ -10,25 +10,13 @@ import CollectionsMenu from "./collections-menu";
 import ExploreMenu from "./explore-menu";
 import mock from "@/constants/mock";
 import Socials from "../socials/socials";
-import Modal from "../modal";
-import Search from "../search";
-import Cart from "../cart";
-import useCart from "@/store/useCart";
+
 
 export default function Header({ header_links = mock.header_links }) {
   const [activeMenu, setActiveMenu] = React.useState(null);
   const [visibleNav, setVisibleNav] = React.useState(false);
   const [fixedHeader, setFixedHeader] = React.useState(false);
-  const [searchModalVisible, setSearchModalVisible] = React.useState(false);
-  const [cartModalVisible, setCartModalVisible] = React.useState(false);
-  const { cartItems, isAdded, resetIsAdded } = useCart();
 
-  React.useEffect(() => {
-    if (isAdded) {
-      setCartModalVisible(true);
-      resetIsAdded();
-    }
-  }, [isAdded]);
 
   React.useEffect(() => {
     window.addEventListener("scroll", handleHeader);
@@ -101,18 +89,7 @@ export default function Header({ header_links = mock.header_links }) {
     setActiveMenu(null);
   };
 
-  const handleCloseSearch = () => {
-    setSearchModalVisible(false);
-  };
 
-  const handleCloseCart = () => {
-    setCartModalVisible(false);
-  };
-
-  const totalItems = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
 
   return (
     <>
@@ -163,27 +140,6 @@ export default function Header({ header_links = mock.header_links }) {
           </nav>
 
           <div className={styles.btns}>
-            <button
-              className={styles.search}
-              onClick={() => setSearchModalVisible(true)}
-            >
-              {icons.Search}
-            </button>
-            <Link href="/login" className={styles.user}>
-              {icons.User}
-            </Link>
-            <button
-              className={styles.cart}
-              onClick={() => setCartModalVisible(true)}
-            >
-              {icons.Cart}
-              {totalItems > 0 && (
-                <span className={cn("label-x-small", styles.cart_indicator)}>
-                  {totalItems}
-                </span>
-              )}
-            </button>
-
             <div className={styles.menu_button}>
               <button
                 className={cn(styles.burger, {
@@ -196,25 +152,7 @@ export default function Header({ header_links = mock.header_links }) {
         </div>
       </header>
 
-      {searchModalVisible && (
-        <Modal
-          visible={searchModalVisible}
-          onClose={handleCloseSearch}
-          className={styles.modal}
-        >
-          <Search onClose={handleCloseSearch} />
-        </Modal>
-      )}
 
-      {cartModalVisible && (
-        <Modal
-          visible={cartModalVisible}
-          onClose={handleCloseCart}
-          className={styles.modal}
-        >
-          <Cart onClose={handleCloseCart} />
-        </Modal>
-      )}
     </>
   );
 }
