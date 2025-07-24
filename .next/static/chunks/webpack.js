@@ -192,7 +192,7 @@
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "66b63930f23a7478"; }
+/******/ 		__webpack_require__.h = function() { return "fad6556be9f4ad51"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -830,12 +830,8 @@
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = __webpack_require__.hmrS_jsonp = __webpack_require__.hmrS_jsonp || {
 /******/ 			"webpack": 0,
-/******/ 			"css-node_modules_react-international-phone_dist_index_css-components_blog-posts_blog-post_blo-4adeb8": 0,
-/******/ 			"css-components_ui_checkbox_checkbox_module_css-components_ui_dropdown_dropdown_module_css-com-5b912d": 0,
-/******/ 			"css-components_close-button_close-button_module_css": 0,
-/******/ 			"css-styles_blocks_button_css-styles_blocks_container_css-styles_blocks_index_css-styles_block-100feb": 0,
-/******/ 			"css-components_float-button_float-button_module_css": 0,
-/******/ 			"css-components_filters_brand-filter_brand-filter_module_css-components_filters_color-filter_c-f7d8ce": 0
+/******/ 			"css-node_modules_react-international-phone_dist_index_css-components_category_category_module-5d3126": 0,
+/******/ 			"css-styles_blocks_button_css-styles_blocks_container_css-styles_blocks_index_css-styles_block-100feb": 0
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.j = function(chunkId, promises) {
@@ -847,7 +843,7 @@
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if(/^(app(\/(((_not\-found|about|shop\/\[slug\])\/|)page|layout)|\-pages\-internals)|main(|\-app)|pages\/_(app|error)|\/_error|react\-refresh)$/.test(chunkId)) {
+/******/ 						if(/^(app(\/(about(|\-us)\/page|(|_not\-found\/)page|layout)|\-pages\-internals)|main\-app)$/.test(chunkId)) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise(function(resolve, reject) { installedChunkData = installedChunks[chunkId] = [resolve, reject]; });
 /******/ 							promises.push(installedChunkData[2] = promise);

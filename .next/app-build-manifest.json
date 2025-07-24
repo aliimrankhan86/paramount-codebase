@@ -3,9 +3,7 @@
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/css-node_modules_react-international-phone_dist_index_css-components_blog-posts_blog-post_blo-4adeb8.css",
-      "static/css/css-components_ui_checkbox_checkbox_module_css-components_ui_dropdown_dropdown_module_css-com-5b912d.css",
-      "static/css/css-components_close-button_close-button_module_css.css",
+      "static/css/css-node_modules_react-international-phone_dist_index_css-components_category_category_module-5d3126.css",
       "static/chunks/app/page.js"
     ],
     "/layout": [
@@ -14,23 +12,15 @@
       "static/css/css-styles_blocks_button_css-styles_blocks_container_css-styles_blocks_index_css-styles_block-100feb.css",
       "static/chunks/app/layout.js"
     ],
+    "/about-us/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/about-us/page.js"
+    ],
     "/about/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/css-node_modules_react-international-phone_dist_index_css-components_blog-posts_blog-post_blo-4adeb8.css",
-      "static/css/css-components_ui_checkbox_checkbox_module_css-components_ui_dropdown_dropdown_module_css-com-5b912d.css",
-      "static/css/css-components_close-button_close-button_module_css.css",
       "static/chunks/app/about/page.js"
-    ],
-    "/shop/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/css-components_float-button_float-button_module_css.css",
-      "static/css/css-node_modules_react-international-phone_dist_index_css-components_blog-posts_blog-post_blo-4adeb8.css",
-      "static/css/css-components_close-button_close-button_module_css.css",
-      "static/css/css-components_ui_checkbox_checkbox_module_css-components_ui_dropdown_dropdown_module_css-com-5b912d.css",
-      "static/css/css-components_filters_brand-filter_brand-filter_module_css-components_filters_color-filter_c-f7d8ce.css",
-      "static/chunks/app/shop/[slug]/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

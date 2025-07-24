@@ -1,23 +1,35 @@
 .section {
   background-color: var(--black);
+  font-family: var(--font-family, 'Inter', Arial, sans-serif);
+  font-size: 1rem;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-top: 20px;
 }
+
 
 .container {
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  min-height: 50vh;
+}
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 10px;
 }
 
 .col {
-  padding: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 10px 0;
+  display: block;
+  text-align: center;
+
 }
 
 .col:first-child {
-  border-right: 0.5px solid var(--slate-800);
+  /* border-right removed for block layout */
 }
 
 .title {
@@ -27,6 +39,11 @@
 
 .copyright {
   color: var(--white);
+}
+
+.copyrightLarge {
+  font-size: 1.25rem;
+  padding: 15px 0;
 }
 
 .author {
@@ -100,7 +117,7 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
   gap: 48px;
 }
 

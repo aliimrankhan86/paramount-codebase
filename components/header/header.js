@@ -5,18 +5,33 @@ import cn from "classnames";
 import styles from "./header.module.css";
 import icons from "@/constants/icons";
 import Link from "next/link";
+
+// Smooth scroll handler for anchor links with custom offset for fixed header
+function handleSmoothScroll(e, href) {
+  if (href.startsWith("#")) {
+    const el = document.getElementById(href.replace("#", ""));
+    if (el) {
+      e.preventDefault();
+      // Get header height (fixed or not)
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 0;
+      const y =
+        el.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16; // 16px extra gap
+      window.scrollTo({ top: y, behavior: "smooth" });
+      window.history.pushState(null, "", href);
+    }
+  }
+}
 import ShopMenu from "./shop-menu";
 import CollectionsMenu from "./collections-menu";
 import ExploreMenu from "./explore-menu";
 import mock from "@/constants/mock";
 import Socials from "../socials/socials";
 
-
 export default function Header({ header_links = mock.header_links }) {
   const [activeMenu, setActiveMenu] = React.useState(null);
   const [visibleNav, setVisibleNav] = React.useState(false);
   const [fixedHeader, setFixedHeader] = React.useState(false);
-
 
   React.useEffect(() => {
     window.addEventListener("scroll", handleHeader);
@@ -89,8 +104,6 @@ export default function Header({ header_links = mock.header_links }) {
     setActiveMenu(null);
   };
 
-
-
   return (
     <>
       <header
@@ -100,9 +113,9 @@ export default function Header({ header_links = mock.header_links }) {
       >
         <div className={cn("container", styles.container)}>
           <Link href="/" className={styles.logo}>
-            <img 
-              src="/images/paramount-logo.svg" 
-              alt="Paramount Consultants" 
+            <img
+              src="/images/paramount-logo.svg"
+              alt="Paramount Consultants"
               className={styles.logo_image}
             />
           </Link>
@@ -123,6 +136,7 @@ export default function Header({ header_links = mock.header_links }) {
                     className={cn("label-medium", styles.link, {
                       [styles.active]: activeMenu === link.type,
                     })}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
                   >
                     {link.label}
                   </Link>
@@ -155,8 +169,6 @@ export default function Header({ header_links = mock.header_links }) {
           </div>
         </div>
       </header>
-
-
     </>
   );
 }

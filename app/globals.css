@@ -117,4 +117,5 @@ a {
 
 .section {
   padding: 20px 0 !important;
+  scroll-margin-top: 160px;
 }

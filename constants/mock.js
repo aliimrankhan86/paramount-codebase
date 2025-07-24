@@ -243,8 +243,8 @@ const products = [
     tag: "Hot",
     tagBackground: "var(--danger-600)",
     ratings: 5.0,
-    brand: "Nova",
-    title: "Eco Tunes",
+    brand: "Paramount Consultants",
+    title: "Strategic Solutions for Modern Business",
     description:
       "Compact, stylish, and engineered for the future, Eco Tunes are more than just headphones; they're a statement. Hear the future, save the planet.",
     color: "var(--success-300)",

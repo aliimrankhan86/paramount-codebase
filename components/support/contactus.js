@@ -122,7 +122,7 @@ export default function Support({ support = mock.support }) {
             id="subject"
             name="subject"
             placeholder=""
-            style={{ height: 200, resize: 'none' }}
+            style={{ height: 200, resize: "none" }}
             value={form.subject}
             onChange={handleChange}
             required
@@ -136,11 +136,21 @@ export default function Support({ support = mock.support }) {
       {showDialog && (
         <div className={styles.dialogOverlay}>
           <div className={styles.dialogBox}>
-            <button className={styles.dialogClose} onClick={() => setShowDialog(false)} aria-label="Close">&times;</button>
+            <button
+              className={styles.dialogClose}
+              onClick={() => setShowDialog(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
             <div className={styles.dialogMessage}>
-              Thanks for providing your contact details, We will be in touch soon.
+              Thanks for providing your contact details, We will be in touch
+              soon.
             </div>
-            <button className={styles.dialogAction} onClick={() => setShowDialog(false)}>
+            <button
+              className={styles.dialogAction}
+              onClick={() => setShowDialog(false)}
+            >
               Close
             </button>
           </div>
@@ -151,14 +161,17 @@ export default function Support({ support = mock.support }) {
 
   return (
     <>
-    
-      <div id="contactusform" className={cn("section", styles.section)}>
+      <div id="contact" className={cn("section", styles.section)}>
         <div className={cn("container")}>
-        <h2 className="heading-2" style={{ textAlign: 'center', marginBottom: 24 }}>Contact Us</h2>
+          <h2
+            className="heading-2"
+            style={{ textAlign: "center", marginBottom: 24 }}
+          >
+            Contact Us
+          </h2>
           {contactForm}
         </div>
       </div>
-      
     </>
   );
 }
