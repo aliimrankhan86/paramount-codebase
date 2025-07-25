@@ -5,23 +5,6 @@ import cn from "classnames";
 import styles from "./header.module.css";
 import icons from "@/constants/icons";
 import Link from "next/link";
-
-// Smooth scroll handler for anchor links with custom offset for fixed header
-function handleSmoothScroll(e, href) {
-  if (href.startsWith("#")) {
-    const el = document.getElementById(href.replace("#", ""));
-    if (el) {
-      e.preventDefault();
-      // Get header height (fixed or not)
-      const header = document.querySelector("header");
-      const headerHeight = header ? header.offsetHeight : 0;
-      const y =
-        el.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16; // 16px extra gap
-      window.scrollTo({ top: y, behavior: "smooth" });
-      window.history.pushState(null, "", href);
-    }
-  }
-}
 import ShopMenu from "./shop-menu";
 import CollectionsMenu from "./collections-menu";
 import ExploreMenu from "./explore-menu";
@@ -136,7 +119,6 @@ export default function Header({ header_links = mock.header_links }) {
                     className={cn("label-medium", styles.link, {
                       [styles.active]: activeMenu === link.type,
                     })}
-                    onClick={(e) => handleSmoothScroll(e, link.href)}
                   >
                     {link.label}
                   </Link>
