@@ -1,0 +1,50 @@
+.container {
+  border-top: 0.5px solid var(--slate-200);
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.head {
+  color: var(--black);
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.head svg {
+  stroke: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.open svg {
+  transform: rotate(180deg);
+}
+
+.colors {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 24px;
+}
+
+.color {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.button {
+  padding: 4px;
+  border-radius: 50%;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  border: 1.5px solid transparent;
+}
+
+.selected {
+  border-color: var(--black);
+}
+
+.button:not(.selected):hover {
+  transform: scale(1.1);
+}

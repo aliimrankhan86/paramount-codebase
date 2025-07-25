@@ -1,0 +1,60 @@
+.container {
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.head {
+  color: var(--black);
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.head svg {
+  stroke: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.open svg {
+  transform: rotate(180deg);
+}
+
+.content {
+  padding: 0 0 24px 0;
+}
+
+.range {
+  width: 100%;
+}
+
+.values {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.value {
+  position: relative;
+}
+
+.unit {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.min,
+.max {
+  color: var(--slate-500);
+}
+
+.input {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 96px;
+  text-align: right;
+  background-color: var(--slate-100);
+}

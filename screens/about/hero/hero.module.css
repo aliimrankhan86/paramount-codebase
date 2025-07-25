@@ -1,0 +1,63 @@
+.section {
+  position: relative;
+  min-height: 70vh;
+  background-image: url("/images/modern-headphones.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 80px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.title,
+.subtitle {
+  color: var(--white);
+}
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 72px;
+    line-height: auto;
+    letter-spacing: -2%;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 48px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.64px;
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    min-height: 55vh;
+  }
+
+  .overlay {
+    padding: 48px 24px;
+  }
+}

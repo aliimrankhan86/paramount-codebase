@@ -1,0 +1,180 @@
+.container {
+  position: relative;
+  width: 45vw;
+  height: 100vh;
+  background-color: var(--white);
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-left: auto;
+  animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48px;
+  border-bottom: 0.5px solid var(--slate-200);
+}
+
+.items {
+  padding: 48px;
+}
+
+.cart_items {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.progress__title {
+  color: var(--slate-500);
+  margin-bottom: 8px;
+}
+
+.progress__title span {
+  color: var(--black);
+  font-weight: 500;
+}
+
+.divider {
+  height: 0.5px;
+  background-color: var(--slate-200);
+}
+
+.gift_wrapper {
+  margin-top: 48px;
+  padding: 16px;
+  background-color: var(--white);
+  border-radius: 12px;
+  border: 0.5px solid var(--slate-200);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gift_heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkout {
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--slate-50);
+  border-top: 0.5px solid var(--slate-200);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+}
+
+.buttons button {
+  color: var(--slate-500);
+  font-weight: 500;
+  display: inline-flex;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.button_divider {
+  width: 0.5px;
+  height: 24px;
+  background-color: var(--slate-200);
+}
+
+.buttons button svg {
+  stroke: var(--slate-500);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.buttons button:hover {
+  color: var(--black);
+}
+
+.buttons button:hover svg {
+  stroke: var(--black);
+}
+
+.overlay {
+  position: fixed;
+  width: 45vw;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+  }
+}
+
+@media (max-width: 430px) {
+  .head {
+    padding: 24px;
+  }
+
+  .items {
+    padding: 24px;
+  }
+
+  .cart_items {
+    margin-top: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+  }
+
+  .container {
+    margin-top: auto;
+    width: 100vw;
+    height: 90vh;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .overlay {
+    width: 100vw;
+    border-radius: 0;
+  }
+}

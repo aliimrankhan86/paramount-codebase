@@ -1,0 +1,31 @@
+.title span {
+  font-weight: 500;
+}
+
+.colors {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  padding: 4px;
+  border-radius: 50%;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  border: 1.5px solid transparent;
+}
+
+.color {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.selected {
+  border-color: var(--black);
+}
+
+.button:not(.selected):hover {
+  transform: scale(1.1);
+}

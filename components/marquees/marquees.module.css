@@ -1,0 +1,31 @@
+.yellow {
+  position: relative;
+  width: 100vw;
+  background-color: var(--warning-500);
+  transform: skewY(-2deg);
+  z-index: 2;
+}
+
+.yellow svg {
+  fill: var(--white);
+  margin-right: 100px;
+}
+
+.gray {
+  position: relative;
+  width: 100vw;
+  background-color: var(--slate-50);
+  transform: skewY(4deg);
+  z-index: 1;
+}
+
+.gray svg {
+  fill: var(--slate-300);
+  margin-right: 100px;
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  height: 120px;
+}

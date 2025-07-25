@@ -1,0 +1,19 @@
+.container,
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  gap: 8px;
+}
+
+.stars {
+  gap: 2px;
+}
+
+.container svg {
+  fill: var(--warning-500);
+  width: 18px;
+  height: 18px;
+}

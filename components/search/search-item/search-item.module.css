@@ -1,0 +1,49 @@
+.product {
+  background-color: var(--white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  border: 0.5px solid var(--slate-200);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.brand {
+  color: var(--slate-500);
+}
+
+.link {
+  color: var(--black);
+  position: relative;
+  font-weight: 600;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.link:hover::before {
+  transform: scaleX(1);
+}

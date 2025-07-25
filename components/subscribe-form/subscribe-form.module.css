@@ -1,0 +1,34 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button {
+  width: 56px;
+  height: 56px;
+  background-color: var(--black);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.button svg {
+  stroke: var(--white);
+}
+
+.text {
+  margin-top: 12px;
+  color: var(--slate-500);
+}
+
+@media (max-width: 768px) {
+  .form {
+    width: 100%;
+  }
+}

@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.title {
+  margin-top: 12px;
+}
+
+.subtitle {
+  color: var(--slate-500);
+}
+
+.wrapper {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  gap: 48px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 430px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .products {
+    width: 100%;
+  }
+}

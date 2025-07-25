@@ -1,0 +1,32 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--black);
+}
+
+.button svg {
+  stroke: var(--black);
+}
+
+.title {
+  position: relative;
+  font-weight: 500;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background-color: var(--black);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  transform: scaleX(1);
+  transform-origin: 100% 0%;
+}
+
+.button:hover .title::before {
+  transform: scaleX(0);
+}

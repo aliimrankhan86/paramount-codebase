@@ -1,0 +1,119 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 410px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  border: 0.5px solid var(--slate-200);
+  overflow: hidden;
+  color: var(--black);
+}
+
+.container:hover .button {
+  opacity: 1;
+  visibility: visible;
+}
+
+.container:hover .overlay {
+  background: rgba(251, 251, 253, 0.6);
+}
+
+.container:hover .tag,
+.container:hover .ratings {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  -webkit-backdrop-filter: saturate(180%) blur(4px);
+  backdrop-filter: saturate(180%) blur(4px);
+  background: rgba(251, 251, 253, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--white);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.button svg {
+  stroke: var(--black);
+}
+
+.button:hover {
+  background: var(--white);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.tag {
+  padding: 10px 16px;
+  border-radius: 90px;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+  font-weight: 500;
+}
+
+.ratings {
+  padding: 10px 16px;
+  border-radius: 90px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0.5px solid var(--slate-200);
+  -webkit-backdrop-filter: saturate(180%) blur(4px);
+  backdrop-filter: saturate(180%) blur(4px);
+  background: rgba(251, 251, 253, 0.8);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.ratings svg {
+  fill: var(--warning-500);
+  width: 18px;
+  height: 18px;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.color {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
