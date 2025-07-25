@@ -11,21 +11,6 @@
       "static/chunks/main-app.js",
       "static/css/css-styles_blocks_button_css-styles_blocks_container_css-styles_blocks_index_css-styles_block-100feb.css",
       "static/chunks/app/layout.js"
-    ],
-    "/about-us/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about-us/page.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
-    ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
