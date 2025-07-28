@@ -1,227 +1,262 @@
-// Add this as the very first line
-"use client";
+// // Add this as the very first line
+// "use client";
 
-import React, { useState } from "react";
-import cn from "classnames";
-import styles from "./contact-form.module.css";
-import { Dropdown, TextArea, TextField } from "@/components/ui";
-import Socials from "@/components/socials/socials";
-import mock from "@/constants/mock";
+// import React, { useState } from "react";
+// import cn from "classnames";
+// import styles from "./contact-form.module.css";
+// import Socials from "@/components/socials/socials";
 
-export default function ContactForm({ options = mock.options }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    option: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+// export default function ContactForm() {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     phone: "",
+//     option: "",
+//     message: "",
+//   });
+//   const [isSubmitting, setIsSubmitting] = useState(false);
+//   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+//   // 🔁 Confirm component renders
+//   console.log("🔄 ContactForm: Component rendered");
 
-  const handleDropdownChange = (selectedOption) => {
-    setFormData((prev) => ({ ...prev, option: selectedOption?.value || "" }));
-  };
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     console.log(`📝 Input changed: ${name} = ${value}`);
+//     setFormData((prev) => ({ ...prev, [name]: value }));
+//   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     console.log("📩 handleSubmit triggered!");
+//     console.log("📄 Form Data:", formData);
 
-    console.log("📩 Form submitted — handleSubmit triggered"); // 🔍 Debug trigger
+//     // 🔍 Basic validation
+//     if (!formData.name.trim()) {
+//       alert("Please enter your name.");
+//       return;
+//     }
+//     if (!formData.email.includes("@")) {
+//       alert("Please enter a valid email.");
+//       return;
+//     }
+//     if (!formData.message.trim()) {
+//       alert("Please write a message.");
+//       return;
+//     }
 
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+//     setIsSubmitting(true);
+//     setSubmitStatus(null);
 
-    // Log form data before validation
-    console.log("📝 Form data to submit:", formData);
+//     try {
+//       const response = await fetch(
+//         "https://hook.eu2.make.com/9trj16zagsvq8ie873yyqytx2c04kjrl",
+//         {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify(formData),
+//         }
+//       );
 
-    // Frontend validation
-    if (!formData.name || !formData.email || !formData.message) {
-      console.warn("❌ Validation failed:", {
-        name: !formData.name,
-        email: !formData.email,
-        message: !formData.message,
-      });
-      setSubmitStatus("error");
-      setIsSubmitting(false);
-      return;
-    }
+//       console.log("📨 Response Status:", response.status);
 
-    try {
-      console.log("📤 Sending fetch request to Make.com..."); // 🚀 Before fetch
+//       const responseBody = await response.text();
+//       console.log("📦 Response Body:", responseBody);
 
-      const response = await fetch(
-        "https://hook.eu2.make.com/9trj16zagsvq8ie873yyqytx2c04kjrl", // ✅ Fixed: No trailing spaces!
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+//       if (response.ok) {
+//         console.log("✅ Success: Message sent!");
+//         setSubmitStatus("success");
+//         setFormData({
+//           name: "",
+//           email: "",
+//           phone: "",
+//           option: "",
+//           message: "",
+//         });
+//       } else {
+//         console.error("❌ Webhook error:", responseBody);
+//         setSubmitStatus("error");
+//       }
+//     } catch (error) {
+//       console.error("🚨 Fetch failed:", error);
+//       setSubmitStatus("error");
+//     } finally {
+//       setIsSubmitting(false);
+//     }
+//   };
 
-      console.log("📨 Response received:", {
-        ok: response.ok,
-        status: response.status,
-        statusText: response.statusText,
-      });
+//   return (
+//     <div className={cn("section")}>
+//       <div className={cn("container", styles.container)}>
+//         {/* Left Column: Form */}
+//         <div className={styles.col}>
+//           <form onSubmit={handleSubmit} className={styles.form}>
+//             <div className={styles.wrapper}>
+//               <input
+//                 type="text"
+//                 name="name"
+//                 placeholder="Name"
+//                 value={formData.name}
+//                 onChange={handleInputChange}
+//                 required
+//                 className={styles.textfield}
+//                 style={{
+//                   border: "1px solid #ccc",
+//                   padding: "12px",
+//                   width: "100%",
+//                 }}
+//               />
+//               <input
+//                 type="email"
+//                 name="email"
+//                 placeholder="Email"
+//                 value={formData.email}
+//                 onChange={handleInputChange}
+//                 required
+//                 className={styles.textfield}
+//                 style={{
+//                   border: "1px solid #ccc",
+//                   padding: "12px",
+//                   width: "100%",
+//                 }}
+//               />
+//             </div>
 
-      const responseBody = await response.text();
-      console.log("📦 Response body:", responseBody);
+//             <div className={styles.wrapper}>
+//               <input
+//                 type="tel"
+//                 name="phone"
+//                 placeholder="Phone number"
+//                 value={formData.phone}
+//                 onChange={handleInputChange}
+//                 className={styles.textfield}
+//                 style={{
+//                   border: "1px solid #ccc",
+//                   padding: "12px",
+//                   width: "100%",
+//                 }}
+//               />
+//               <select
+//                 name="option"
+//                 value={formData.option}
+//                 onChange={handleInputChange}
+//                 className={styles.dropdown}
+//                 style={{
+//                   border: "1px solid #ccc",
+//                   padding: "12px",
+//                   width: "100%",
+//                 }}
+//               >
+//                 <option value="">Select an option</option>
+//                 <option value="aem">Adobe Experience Manager</option>
+//                 <option value="agile">Agile Project Delivery</option>
+//                 <option value="development">Full-Stack Development</option>
+//                 <option value="marketing">Digital Marketing</option>
+//               </select>
+//             </div>
 
-      if (response.ok) {
-        console.log("✅ Message sent successfully!");
-        setSubmitStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          option: "",
-          message: "",
-        });
-      } else {
-        console.error("❌ Failed to submit:", responseBody);
-        setSubmitStatus("error");
-      }
-    } catch (error) {
-      console.error("🚨 Fetch error (network/failure):", error); // 🌐 Network or CORS
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+//             <textarea
+//               name="message"
+//               placeholder="Your message"
+//               value={formData.message}
+//               onChange={handleInputChange}
+//               required
+//               className={styles.textarea}
+//               rows="5"
+//               style={{
+//                 border: "1px solid #ccc",
+//                 padding: "12px",
+//                 width: "100%",
+//                 resize: "vertical",
+//               }}
+//             />
 
-  return (
-    <div className={cn("section")}>
-      <div className={cn("container", styles.container)}>
-        <div className={styles.col}>
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.wrapper}>
-              <TextField
-                name="name"
-                placeholder="Name"
-                className={styles.textfield}
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-              <TextField
-                name="email"
-                placeholder="Email"
-                className={styles.textfield}
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                type="email"
-              />
-            </div>
+//             <button
+//               type="submit"
+//               className={cn("button", styles.button)}
+//               disabled={isSubmitting}
+//             >
+//               {isSubmitting ? "Sending..." : "Submit"}
+//             </button>
 
-            <div className={styles.wrapper}>
-              <TextField
-                name="phone"
-                placeholder="Phone number"
-                className={styles.textfield}
-                value={formData.phone}
-                onChange={handleInputChange}
-              />
-              <Dropdown
-                placeholder="Select an option"
-                className={styles.dropdown}
-                options={options}
-                onChange={handleDropdownChange}
-                value={
-                  options.find((opt) => opt.value === formData.option) || null
-                }
-              />
-            </div>
+//             {submitStatus === "success" && (
+//               <p
+//                 className={cn("paragraph-medium", styles.protected)}
+//                 style={{ color: "green", fontWeight: "bold" }}
+//               >
+//                 Message sent successfully!
+//               </p>
+//             )}
+//             {submitStatus === "error" && (
+//               <p
+//                 className={cn("paragraph-medium", styles.protected)}
+//                 style={{ color: "red" }}
+//               >
+//                 Error sending message. Please try again.
+//               </p>
+//             )}
+//           </form>
 
-            <TextArea
-              name="message"
-              placeholder="Your message"
-              className={styles.textarea}
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            />
+//           <div className={cn("paragraph-medium", styles.protected)}>
+//             This site is protected by reCAPTCHA and the Google
+//             <a
+//               href="https://policies.google.com/privacy"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className={styles.link}
+//             >
+//               Privacy Policy
+//             </a>
+//              and
+//             <a
+//               href="https://policies.google.com/terms"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className={styles.link}
+//             >
+//               Terms of Service
+//             </a>
+//              apply.
+//           </div>
+//         </div>
 
-            <button
-              type="submit"
-              className={cn("button", styles.button)}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Submit"}
-            </button>
+//         {/* Right Column: Contact Info */}
+//         <div className={styles.side_content}>
+//           <div className={styles.block}>
+//             <div className={cn("paragraph-medium", styles.text)}>Address</div>
+//             <a className={cn("label-medium", styles.link)}>
+//               shop@yourstore.com
+//             </a>
+//           </div>
 
-            {submitStatus === "success" && (
-              <p className={cn("paragraph-medium", styles.protected)}>
-                Message sent successfully!
-              </p>
-            )}
-            {submitStatus === "error" && (
-              <p
-                className={cn("paragraph-medium", styles.protected)}
-                style={{ color: "red" }}
-              >
-                Error sending message. Please try again.
-              </p>
-            )}
-          </form>
+//           <div className={styles.block}>
+//             <div className={cn("paragraph-medium", styles.text)}>Email</div>
+//             <a className={cn("label-medium", styles.link)}>
+//               contact@yourstore.com
+//             </a>
+//             <a className={cn("label-medium", styles.link)}>
+//               sales@yourstore.com
+//             </a>
+//           </div>
 
-          <div className={cn("paragraph-medium", styles.protected)}>
-            This site is protected by reCAPTCHA and the Google 
-            <a
-              className={styles.link}
-              href="https://policies.google.com/privacy"
-            >
-              Privacy Policy
-            </a>
-             and 
-            <a className={styles.link} href="https://policies.google.com/terms">
-              Terms of Service
-            </a>
-             apply.
-          </div>
-        </div>
+//           <div className={styles.block}>
+//             <div className={cn("paragraph-medium", styles.text)}>Phone</div>
+//             <a className={cn("label-medium", styles.link)}>
+//               +33 (0) 31-305-210
+//             </a>
+//             <a className={cn("label-medium", styles.link)}>
+//               mon - fri: 09:00 - 17:00
+//             </a>
+//           </div>
 
-        <div className={styles.side_content}>
-          <div className={styles.block}>
-            <div className={cn("paragraph-medium", styles.text)}>Address</div>
-            <a className={cn("label-medium", styles.link)}>
-              shop@yourstore.com
-            </a>
-          </div>
-
-          <div className={styles.block}>
-            <div className={cn("paragraph-medium", styles.text)}>Email</div>
-            <a className={cn("label-medium", styles.link)}>
-              contact@yourstore.com
-            </a>
-            <a className={cn("label-medium", styles.link)}>
-              sales@yourstore.com
-            </a>
-          </div>
-
-          <div className={styles.block}>
-            <div className={cn("paragraph-medium", styles.text)}>Phone</div>
-            <a className={cn("label-medium", styles.link)}>
-              +33 (0) 31-305-210
-            </a>
-            <a className={cn("label-medium", styles.link)}>
-              mon - fri: 09:00 - 17:00
-            </a>
-          </div>
-
-          <div className={styles.block}>
-            <div className={cn("paragraph-medium", styles.text)}>Follow us</div>
-            <Socials />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+//           <div className={styles.block}>
+//             <div className={cn("paragraph-medium", styles.text)}>Follow us</div>
+//             <Socials />
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
