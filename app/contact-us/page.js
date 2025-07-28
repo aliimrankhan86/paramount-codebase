@@ -1,5 +1,5 @@
-import ContactUsPage from "@/screens/contact-us";
+// import ContactUsPage from "@/screens/contact-us";
 
-export default function ContactUs() {
-  return <ContactUsPage />;
-}
+// export default function ContactUs() {
+//   return <ContactUsPage />;
+// }
