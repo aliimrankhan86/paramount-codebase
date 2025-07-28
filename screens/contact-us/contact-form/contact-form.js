@@ -13,7 +13,7 @@ export default function ContactForm({ options = mock.options }) {
     name: "",
     email: "",
     phone: "",
-    option: "", // value only
+    option: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,19 +30,32 @@ export default function ContactForm({ options = mock.options }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("📩 Form submitted — handleSubmit triggered"); // 🔍 Debug trigger
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    // Optional: Frontend validation
+    // Log form data before validation
+    console.log("📝 Form data to submit:", formData);
+
+    // Frontend validation
     if (!formData.name || !formData.email || !formData.message) {
+      console.warn("❌ Validation failed:", {
+        name: !formData.name,
+        email: !formData.email,
+        message: !formData.message,
+      });
       setSubmitStatus("error");
       setIsSubmitting(false);
       return;
     }
 
     try {
+      console.log("📤 Sending fetch request to Make.com..."); // 🚀 Before fetch
+
       const response = await fetch(
-        "https://hook.eu2.make.com/9trj16zagsvq8ie873yyqytx2c04kjrl", // ✅ No spaces!
+        "https://hook.eu2.make.com/9trj16zagsvq8ie873yyqytx2c04kjrl", // ✅ Fixed: No trailing spaces!
         {
           method: "POST",
           headers: {
@@ -52,9 +65,18 @@ export default function ContactForm({ options = mock.options }) {
         }
       );
 
+      console.log("📨 Response received:", {
+        ok: response.ok,
+        status: response.status,
+        statusText: response.statusText,
+      });
+
+      const responseBody = await response.text();
+      console.log("📦 Response body:", responseBody);
+
       if (response.ok) {
+        console.log("✅ Message sent successfully!");
         setSubmitStatus("success");
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -63,11 +85,11 @@ export default function ContactForm({ options = mock.options }) {
           message: "",
         });
       } else {
-        console.error("Make.com error:", await response.text()); // Log response
+        console.error("❌ Failed to submit:", responseBody);
         setSubmitStatus("error");
       }
     } catch (error) {
-      console.error("Fetch error:", error); // Help debug network issues
+      console.error("🚨 Fetch error (network/failure):", error); // 🌐 Network or CORS
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
