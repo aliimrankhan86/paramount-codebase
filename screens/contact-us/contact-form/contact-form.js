@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import styles from "./contact-form.module.css";
 import { Dropdown, TextArea, TextField } from "@/components/ui";
@@ -6,31 +6,134 @@ import Socials from "@/components/socials/socials";
 import mock from "@/constants/mock";
 
 export default function ContactForm({ options = mock.options }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    option: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleDropdownChange = (selectedOption) => {
+    setFormData((prev) => ({ ...prev, option: selectedOption.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Replace with your make.com webhook URL
+      const response = await fetch("https://hook.eu2.make.com/4l5jolaf766j3wtx3fcl5lxkfiprmyn7", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          option: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className={cn("section")}>
       <div className={cn("container", styles.container)}>
         <div className={styles.col}>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.wrapper}>
-              <TextField placeholder="Name" className={styles.textfield} />
-              <TextField placeholder="Email" className={styles.textfield} />
+              <TextField
+                name="name"
+                placeholder="Name"
+                className={styles.textfield}
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+              <TextField
+                name="email"
+                placeholder="Email"
+                className={styles.textfield}
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                type="email"
+              />
             </div>
 
             <div className={styles.wrapper}>
               <TextField
+                name="phone"
                 placeholder="Phone number"
                 className={styles.textfield}
+                value={formData.phone}
+                onChange={handleInputChange}
               />
               <Dropdown
                 placeholder="Select an option"
                 className={styles.dropdown}
                 options={options}
+                onChange={handleDropdownChange}
+                value={
+                  options.find((opt) => opt.value === formData.option) || null
+                }
               />
             </div>
 
-            <TextArea placeholder="Your message" className={styles.textarea} />
+            <TextArea
+              name="message"
+              placeholder="Your message"
+              className={styles.textarea}
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+            />
 
-            <button className={cn("button", styles.button)}>Submit</button>
+            <button
+              type="submit"
+              className={cn("button", styles.button)}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending..." : "Submit"}
+            </button>
+
+            {submitStatus === "success" && (
+              <p className={cn("paragraph-medium", styles.protected)}>
+                Message sent successfully!
+              </p>
+            )}
+            {submitStatus === "error" && (
+              <p
+                className={cn("paragraph-medium", styles.protected)}
+                style={{ color: "red" }}
+              >
+                Error sending message. Please try again.
+              </p>
+            )}
           </form>
 
           <div className={cn("paragraph-medium", styles.protected)}>
