@@ -32,7 +32,7 @@ export default function ContactForm({ options = mock.options }) {
 
     try {
       // Replace with your make.com webhook URL
-      const response = await fetch("YOUR_MAKE_COM_WEBHOOK_URL_HERE", {
+      const response = await fetch("https://hook.eu2.make.com/4l5jolaf766j3wtx3fcl5lxkfiprmyn7", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
