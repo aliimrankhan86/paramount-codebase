@@ -1,11 +1,11 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import cn from "classnames";
-import styles from "./support.module.css";
+import styles from "./support.module.css"; // or whatever your css module is named
 import mock from "@/constants/mock";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
+// import Socials from "@/components/socials/socials"; // adjust path if needed
 
 export default function Support({ support = mock.support }) {
   const [form, setForm] = useState({
