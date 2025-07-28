@@ -13,7 +13,7 @@ export default function ContactForm({ options = mock.options }) {
     name: "",
     email: "",
     phone: "",
-    option: "",
+    option: "", // value only
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,7 +25,7 @@ export default function ContactForm({ options = mock.options }) {
   };
 
   const handleDropdownChange = (selectedOption) => {
-    setFormData((prev) => ({ ...prev, option: selectedOption.value }));
+    setFormData((prev) => ({ ...prev, option: selectedOption?.value || "" }));
   };
 
   const handleSubmit = async (e) => {
@@ -33,10 +33,16 @@ export default function ContactForm({ options = mock.options }) {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Optional: Frontend validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // Replace with your make.com webhook URL
       const response = await fetch(
-        "https://hook.eu2.make.com/4l5jolaf766j3wtx3fcl5lxkfiprmyn7",
+        "https://hook.eu2.make.com/9trj16zagsvq8ie873yyqytx2c04kjrl", // ✅ No spaces!
         {
           method: "POST",
           headers: {
@@ -57,9 +63,11 @@ export default function ContactForm({ options = mock.options }) {
           message: "",
         });
       } else {
+        console.error("Make.com error:", await response.text()); // Log response
         setSubmitStatus("error");
       }
     } catch (error) {
+      console.error("Fetch error:", error); // Help debug network issues
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -144,12 +152,20 @@ export default function ContactForm({ options = mock.options }) {
 
           <div className={cn("paragraph-medium", styles.protected)}>
             This site is protected by reCAPTCHA and the Google 
-            <a className={styles.link}>Privacy Policy</a>
+            <a
+              className={styles.link}
+              href="https://policies.google.com/privacy"
+            >
+              Privacy Policy
+            </a>
              and 
-            <a className={styles.link}>Terms of Service</a>
+            <a className={styles.link} href="https://policies.google.com/terms">
+              Terms of Service
+            </a>
              apply.
           </div>
         </div>
+
         <div className={styles.side_content}>
           <div className={styles.block}>
             <div className={cn("paragraph-medium", styles.text)}>Address</div>
