@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function NeedHelp() {
   return (
-    <Link href="/contact-us" className={styles.button}>
+    <Link href="/contactus" className={styles.button}>
       {icons.QuestionMarkCircle}
 
       <div className={cn("label-medium", styles.title)}>Need help?</div>
