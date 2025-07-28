@@ -1,3 +1,6 @@
+// Add this as the very first line
+"use client";
+
 import React, { useState } from "react";
 import cn from "classnames";
 import styles from "./contact-form.module.css";
@@ -32,13 +35,16 @@ export default function ContactForm({ options = mock.options }) {
 
     try {
       // Replace with your make.com webhook URL
-      const response = await fetch("https://hook.eu2.make.com/4l5jolaf766j3wtx3fcl5lxkfiprmyn7", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://hook.eu2.make.com/4l5jolaf766j3wtx3fcl5lxkfiprmyn7",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         setSubmitStatus("success");
