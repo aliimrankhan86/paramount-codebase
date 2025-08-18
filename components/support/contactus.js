@@ -59,7 +59,7 @@ export default function Support({ support = mock.support }) {
 
     try {
       const response = await fetch(
-        "https://hook.eu2.make.com/4l5jolaf766j3wtx3fcl5lxkfiprmyn7",
+        "https://avamedio.app.n8n.cloud/webhook-test/0db20153-8fa2-4301-b336-f88104cebd8d",
         {
           method: "POST",
           headers: {
