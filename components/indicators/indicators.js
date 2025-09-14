@@ -15,7 +15,7 @@ export default function Indicators({ indicators, active, setActive, color }) {
             background: active === index ? color : "transparent",
             borderColor: active === index ? color : "var(--slate-300)",
           }}
-          onClick={() => setActive([index, index > active ? 1 : -1])}
+          onClick={() => setActive(index)}
         />
       ))}
     </div>
