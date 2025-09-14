@@ -65,6 +65,26 @@ export default function HomePage() {
               className="heading-2"
               style={{ textAlign: "center", marginTop: 40 }}
             >
+              Agentic AI Services
+            </h3>
+            <div
+              className="paragraph-medium"
+              style={{
+                textAlign: "center",
+                maxWidth: 700,
+                margin: "16px auto",
+              }}
+            >
+              Transform operations with autonomous, intelligent AI agents that
+              plan, reason and act. Our specialists design, implement and
+              optimise Agentic AI solutions that automate complex workflows,
+              enhance decision making and deliver adaptive, human-like digital
+              experiences at enterprise scale.
+            </div>
+            <h3
+              className="heading-2"
+              style={{ textAlign: "center", marginTop: 40 }}
+            >
               Adobe Experience Manager (AEM) Solutions
             </h3>
             <div

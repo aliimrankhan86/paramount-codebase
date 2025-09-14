@@ -13,8 +13,8 @@ export default function Category({
   slug,
   index,
 }) {
-  // Only show the image for the first, second, and third category
-  if (index === 0 || index === 1 || index === 2) {
+  // Only show the image for the first four categories
+  if (index === 0 || index === 1 || index === 2 || index === 3) {
     return (
       <div
         className={cn(styles.container, className)}

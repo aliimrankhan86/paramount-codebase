@@ -91,7 +91,7 @@
 
 @media (min-width: 1025px) {
   .category {
-    flex: 0 0 calc((100% - 48px) / 3);
+    flex: 0 0 calc((100% - 72px) / 4); /* Adjusted for 4 items with 24px gap */
     aspect-ratio: 1 / 1.3;
   }
 }

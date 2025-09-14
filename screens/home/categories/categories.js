@@ -13,7 +13,7 @@ export default function Services({ collections = mock.collections }) {
       <h2 className="heading-2 services-heading">Services</h2>
       <div className={cn("container", styles.container)}>
         <div className={styles.categories}>
-          {collections.slice(0, 3).map((category, index) => (
+          {collections.slice(0, 4).map((category, index) => (
             <Category
               {...category}
               key={category.id}

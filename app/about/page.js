@@ -25,6 +25,15 @@ export default function About() {
         expert solutions built for scale and success.
       </p>
       <h3 style={{ textAlign: "center", marginTop: 40 }}>
+        Agentic AI Services
+      </h3>
+      <p style={{ textAlign: "center", margin: "16px auto" }}>
+        Harness autonomous, intelligent AI agents to transform the way you work.
+        Our specialists design, implement, and optimise Agentic AI solutions
+        that streamline complex processes, enhance decision making, and create
+        adaptive, human-like digital experiences that scale with your business.
+      </p>
+      <h3 style={{ textAlign: "center", marginTop: 40 }}>
         Adobe Experience Manager (AEM) Solutions
       </h3>
       <p style={{ textAlign: "center", margin: "16px auto" }}>
