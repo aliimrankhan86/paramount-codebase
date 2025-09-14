@@ -11,17 +11,6 @@ import mock from "@/constants/mock";
 export default function Hero({ slides = mock.slides }) {
   const [[active, direction], setActive] = React.useState([0, 0]);
 
-  // Autoplay: advance slide every 5 seconds
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((current) => {
-        const nextIndex = wrap(0, slides.length, current[0] + 1);
-        return [nextIndex, 1];
-      });
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [slides.length]);
-
   const variants = {
     enter: () => ({
       opacity: 0,
@@ -59,6 +48,11 @@ export default function Hero({ slides = mock.slides }) {
 
   const nextSlide = () => changeSlide(1);
   const prevSlide = () => changeSlide(-1);
+
+  React.useEffect(() => {
+    const interval = setInterval(nextSlide, 10000);
+    return () => clearInterval(interval);
+  }, [active]);
 
   return (
     <section id="home" className={cn("section", styles.section)}>

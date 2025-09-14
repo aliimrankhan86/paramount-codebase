@@ -126,7 +126,7 @@ const collections = [
   },
   {
     id: 4,
-    image: "/images/charging-stations-x2.webp",
+    image: "/images/ai.jpg",
     backgroundImage: "/images/station-setup.webp",
     title: "Charging stations",
     quantiy: 3,
@@ -1087,29 +1087,29 @@ const slides = [
   {
     id: 0,
     image: "/images/sliders/slider-1.webp",
-    title: "Digital Transformation Starts Here",
-    subtitle: `Empower your business with modern, scalable, and user-centric digital solutions.
-At Paramount Consultants, we blend strategy, design, and technology to accelerate your digital future.`,
+    title: "AI-Driven Innovation & Digital Transformation",
+    subtitle: `Ignite growth with scalable, user-centric digital solutions that keep you ahead of change.
+At Paramount Consultants, we unite strategy, design and cutting edge technology to turn bold ideas into measurable results accelerating your journey to a truly digital future.`,
   },
   {
     id: 1,
     image: "/images/sliders/slider-2.webp",
-    title: "Seamless AEM Experiences",
-    subtitle: `Unlock the full power of Adobe Experience Manager.
-From integration to personalization, our AEM specialists help you deliver memorable customer journeys.`,
+    title: "Transformative AEM & CMS Integration Power",
+    subtitle: `Unlock the full potential of Adobe Experience Manager.
+From seamless enterprise integrations to dynamic personalisation, Paramount Consultants builds connected, scalable platforms that captivate customers and accelerate measurable growth.`,
   },
   {
     id: 2,
     image: "/images/sliders/slider-3.webp",
-    title: "Agile Delivery, Real Results",
-    subtitle: `Fast, flexible, and focused on outcomes.
-Our Agile project managers keep your goals at the centre, ensuring transparency, velocity, and client success.`,
+    title: "Elite Agile Delivery for Strategic Advantage",
+    subtitle: `Achieve rapid, reliable transformation with measurable outcomes.
+Paramount Consultants seasoned Agile leaders combine precision planning, adaptive execution, and transparent governance to deliver complex programmes at pace maximising value and de-risking every stage of delivery.`,
   },
   {
     id: 3,
     image: "/images/sliders/slider-4.webp",
-    title: "Build, Launch, Grow",
-    subtitle: `From full-stack development to data-driven digital marketing, we help you build smart platforms and amplify your brand across every channel.`,
+    title: "Build. Launch. Lead.",
+    subtitle: `From full stack development to data driven growth strategy, Paramount Consultants turns ambitious ideas into powerful digital platforms. We create solutions that capture audiences, accelerate traction and position your brand at the forefront of every channel.`,
   },
 ];
 
