@@ -39,7 +39,10 @@ export default function Slide({
       >
         <div className={styles.overlay}>
           <div className={styles.content}>
-            <div className={styles.textWrapper} style={{ alignSelf: 'flex-start' }}>
+            <div
+              className={styles.textWrapper}
+              style={{ alignSelf: "flex-start" }}
+            >
               <div className={cn("hero", styles.title)}>
                 {slides[active].title}
               </div>
@@ -57,6 +60,7 @@ export default function Slide({
                 active={active}
                 setActive={setActive}
                 color={"var(--white)"}
+                isHero={true}
               />
               <button className={styles.arrow} onClick={nextSlide}>
                 {icons.ArrowRight}
