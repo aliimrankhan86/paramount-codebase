@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 40px;
-  max-width: 480px;
+  max-width: 640px;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--ink-150);
 }
@@ -41,8 +41,9 @@
 
 .links {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px 28px;
 }
 
 .link {
@@ -80,5 +81,10 @@
     flex-direction: column;
     gap: 24px;
     max-width: none;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 8px;
   }
 }

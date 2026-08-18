@@ -50,3 +50,11 @@ template; everything below replaces it with a 4-page Apple-inspired consultancy 
 - Footer was oversized: brand block and nav column were spaced across the full 1280px
   container width, and vertical padding was excessive. Capped the row width so the
   columns sit close together and cut padding throughout for a leaner footer.
+
+## 2026-08-18 — Eseye's real logo, footer nav row
+
+- Swapped `eseye.svg` for the official dark-variant logo pulled directly from
+  eseye.com (`logo_dark.svg`), replacing the earlier recoloured white-fill asset.
+  Renders centred and legible in both the grayscale default and colour-on-hover states.
+- Footer nav links (`Home`, `Services`, `Clients`, `Contact`) now sit in a single row on
+  desktop instead of stacking vertically; still stack on mobile.
