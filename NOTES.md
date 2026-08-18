@@ -39,3 +39,14 @@ template; everything below replaces it with a 4-page Apple-inspired consultancy 
 - `client-marquee` component and CSS reworked from a small square initials tile to a
   wider logo card (grayscale by default, full colour on hover) sized to fit varied logo
   aspect ratios consistently, on both the homepage and `/clients` page.
+
+## 2026-08-18 — Noviform logo, Eseye fix, leaner footer
+
+- Added a Noviform logo (supplied directly), so all 15 clients now show a real mark;
+  Noviform was the only one still on the typographic fallback.
+- Fixed `eseye.svg`: the wordmark paths were `fill="white"`, invisible on the marquee's
+  white cards. Recoloured to the brand's own dark purple so the wordmark is now visible
+  in both the grayscale default and colour-on-hover states.
+- Footer was oversized: brand block and nav column were spaced across the full 1280px
+  container width, and vertical padding was excessive. Capped the row width so the
+  columns sit close together and cut padding throughout for a leaner footer.

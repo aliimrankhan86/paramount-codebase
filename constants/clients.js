@@ -1,16 +1,16 @@
 /**
  * Real engagements only. The first five are supplied directly; the rest are
  * drawn from Ali Imran Khan's actual delivery history. Logos are official
- * marks sourced from each organisation's own site or Wikimedia Commons
- * (see public/clients/); where no reliable logo could be sourced, the
- * marquee falls back to a typographic tile instead of guessing.
+ * marks sourced from each organisation's own site, Wikimedia Commons, or
+ * supplied directly (see public/clients/); where no reliable logo could be
+ * sourced, the marquee falls back to a typographic tile instead of guessing.
  */
 const clients = [
   { name: "Mind Meta AI", logo: "/clients/mind-meta-ai.svg" },
   { name: "Voicecake", logo: "/clients/voicecake.svg" },
   { name: "University of East London", logo: "/clients/university-of-east-london.svg" },
   { name: "Eseye", logo: "/clients/eseye.svg" },
-  { name: "Noviform" },
+  { name: "Noviform", logo: "/clients/noviform.webp" },
   { name: "XPO Logistics", logo: "/clients/xpo-logistics.svg" },
   { name: "Unilever", logo: "/clients/unilever.svg" },
   { name: "HSBC", logo: "/clients/hsbc.svg" },

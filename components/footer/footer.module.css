@@ -1,7 +1,7 @@
 .footer {
   background: var(--ink-100);
   border-top: 1px solid var(--ink-150);
-  padding: 64px 0 32px;
+  padding: 40px 0 24px;
 }
 
 .container {
@@ -13,35 +13,36 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 48px;
-  padding-bottom: 48px;
+  gap: 40px;
+  max-width: 480px;
+  padding-bottom: 28px;
   border-bottom: 1px solid var(--ink-150);
 }
 
 .brand {
-  max-width: 320px;
+  max-width: 280px;
 }
 
 .tagline {
-  margin-top: 12px;
+  margin-top: 8px;
   color: var(--ink-500);
 }
 
 .sitemap {
-  min-width: 160px;
+  min-width: 120px;
 }
 
 .sitemapTitle {
   color: var(--ink-500);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .links {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .link {
@@ -56,9 +57,9 @@
 .legal {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 32px 0;
-  max-width: 720px;
+  gap: 6px;
+  padding: 20px 0;
+  max-width: 640px;
 }
 
 .legalText {
@@ -66,7 +67,7 @@
 }
 
 .bottom {
-  padding-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid var(--ink-150);
 }
 
@@ -77,6 +78,7 @@
 @media (max-width: 600px) {
   .top {
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
+    max-width: none;
   }
 }
