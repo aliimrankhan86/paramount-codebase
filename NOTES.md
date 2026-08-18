@@ -58,3 +58,10 @@ template; everything below replaces it with a 4-page Apple-inspired consultancy 
   Renders centred and legible in both the grayscale default and colour-on-hover states.
 - Footer nav links (`Home`, `Services`, `Clients`, `Contact`) now sit in a single row on
   desktop instead of stacking vertically; still stack on mobile.
+
+## 2026-08-18 — Client tile hover: shadow instead of blue border
+
+- Client marquee tiles had a blue border + tinted shadow on hover that looked uneven
+  across different logo shapes (border visibly clipped on some tiles). Replaced with a
+  neutral, all-round soft shadow lift (no border-color change), so every tile hovers
+  consistently regardless of logo aspect ratio.
