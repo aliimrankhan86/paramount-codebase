@@ -27,8 +27,18 @@ export default function ClientMarquee({ className, size = "default" }) {
           <ul className={styles.strip} aria-hidden={copy === 1} key={copy}>
             {clients.map((client) => (
               <li key={`${copy}-${client.name}`} className={styles.item}>
-                <span className={styles.tile} aria-hidden="true">
-                  {getInitials(client.name)}
+                <span className={styles.tile}>
+                  {client.logo ? (
+                    <img
+                      src={client.logo}
+                      alt={`${client.name} logo`}
+                      className={styles.logo}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <span aria-hidden="true">{getInitials(client.name)}</span>
+                  )}
                 </span>
                 <span className={styles.name}>{client.name}</span>
               </li>

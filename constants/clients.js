@@ -1,25 +1,26 @@
 /**
  * Real engagements only. The first five are supplied directly; the rest are
- * drawn from Ali Imran Khan's actual delivery history. Nothing here is
- * invented, no logos are scraped, names are shown as clean typography by
- * design rather than sourced brand marks.
+ * drawn from Ali Imran Khan's actual delivery history. Logos are official
+ * marks sourced from each organisation's own site or Wikimedia Commons
+ * (see public/clients/); where no reliable logo could be sourced, the
+ * marquee falls back to a typographic tile instead of guessing.
  */
 const clients = [
-  { name: "Mind Meta AI" },
-  { name: "Voicecake" },
-  { name: "University of East London" },
-  { name: "Eseye" },
+  { name: "Mind Meta AI", logo: "/clients/mind-meta-ai.svg" },
+  { name: "Voicecake", logo: "/clients/voicecake.svg" },
+  { name: "University of East London", logo: "/clients/university-of-east-london.svg" },
+  { name: "Eseye", logo: "/clients/eseye.svg" },
   { name: "Noviform" },
-  { name: "XPO Logistics" },
-  { name: "Unilever" },
-  { name: "HSBC" },
-  { name: "Nationwide Building Society" },
-  { name: "Micro Focus (OpenText)" },
-  { name: "System1 Group" },
-  { name: "B&CE, The People's Pension" },
-  { name: "Virgin Media" },
-  { name: "Tesco" },
-  { name: "John Lewis Finance" },
+  { name: "XPO Logistics", logo: "/clients/xpo-logistics.svg" },
+  { name: "Unilever", logo: "/clients/unilever.svg" },
+  { name: "HSBC", logo: "/clients/hsbc.svg" },
+  { name: "Nationwide Building Society", logo: "/clients/nationwide-building-society.svg" },
+  { name: "Micro Focus (OpenText)", logo: "/clients/micro-focus.svg" },
+  { name: "System1 Group", logo: "/clients/system1-group.svg" },
+  { name: "B&CE, The People's Pension", logo: "/clients/the-peoples-pension.svg" },
+  { name: "Virgin Media", logo: "/clients/virgin-media.svg" },
+  { name: "Tesco", logo: "/clients/tesco.svg" },
+  { name: "John Lewis Finance", logo: "/clients/john-lewis-finance.svg" },
 ];
 
 export default clients;

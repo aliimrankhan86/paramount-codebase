@@ -29,3 +29,13 @@ template; everything below replaces it with a 4-page Apple-inspired consultancy 
   across nearly every heading) and vary sentence rhythm across the homepage copy.
 - Removed orphaned duplicate files left over from earlier edits (`app/faqs/page 2.js`,
   `screens/about/index 2.js`, `screens/faqs/index 2.js` and their directories).
+
+## 2026-08-18 — Real client logos
+
+- Replaced the client strip's typographic initials with real logo marks for 14 of the
+  15 listed organisations, sourced from official sites or Wikimedia Commons and saved
+  under `public/clients/`. Noviform has no verifiable public presence, so it still falls
+  back to the typographic tile rather than a guessed logo.
+- `client-marquee` component and CSS reworked from a small square initials tile to a
+  wider logo card (grayscale by default, full colour on hover) sized to fit varied logo
+  aspect ratios consistently, on both the homepage and `/clients` page.
