@@ -7,38 +7,44 @@ body {
   width: 100%;
   background-color: var(--white);
   font-size: 16px;
-  color: var(--n1);
-  min-width: 375px;
+  font-family: var(--font-inter);
+  color: var(--ink-950);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  padding-top: var(--header-height);
+}
+
 button {
   background: none;
+  font-family: inherit;
 }
 
 a {
   text-decoration: none;
 }
 
-img {
+img,
+svg {
   display: block;
   max-width: 100%;
 }
 
-.embla {
-  overflow: hidden;
-}
-.embla__container {
-  display: flex;
-}
-.embla__slide {
-  flex: 0 0 100%;
-  min-width: 0;
+:focus-visible {
+  outline: 2px solid var(--accent-600);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-@media (max-width: 430px) {
-  html {
-    background-color: var(--n8);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

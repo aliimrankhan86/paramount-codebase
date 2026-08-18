@@ -1,172 +1,146 @@
 .header {
-  position: relative;
-  height: 112px;
-  background-color: var(--white);
-  display: flex;
-  z-index: 1000;
-}
-
-.fixed_header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: all 0.3s;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease-out);
+}
+
+/*
+ * The blur lives on a ::before instead of directly on .header. backdrop-filter
+ * on .header would make it the containing block for its position:fixed
+ * descendants (the mobile nav overlay below), so bottom:0 on the overlay
+ * would resolve against the 72px header box instead of the viewport.
+ */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(251, 251, 253, 0.72);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-  background: rgba(251, 251, 253, 0.8);
+}
+
+.header.scrolled {
+  border-bottom-color: var(--ink-150);
+}
+
+.skipLink {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  background: var(--ink-950);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: var(--border-radius);
+  z-index: 2000;
+  transition: top 0.2s var(--ease-out);
+}
+
+.skipLink:focus {
+  top: 12px;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .nav {
-  position: absolute;
-  right: 50%;
-  transform: translateX(50%);
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 .links {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 
 .link {
   position: relative;
-  color: var(--slate-500);
-  font-weight: 500;
+  color: var(--ink-600);
   transition: color 0.2s;
 }
 
-.link:hover {
-  color: var(--black);
+.link:hover,
+.currentLink {
+  color: var(--ink-950);
 }
 
-.link .active {
-  color: var(--black);
+.cta {
+  white-space: nowrap;
 }
 
-.logo svg {
-  fill: var(--black);
-}
-
-.logo_image {
-  height: 120px;
-  width: auto;
-  max-width: 480px;
-  object-fit: contain;
-  transition: opacity 0.2s ease;
-}
-
-.logo_image:hover {
-  opacity: 0.8;
-}
-
-/* Ensure logo works well across all user agents */
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* High DPI display support */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .logo_image {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-  }
-}
-
-/* Additional mobile optimizations */
-@media (max-width: 480px) {
-  .logo_image {
-    height: 100px;
-    max-width: 100px;
-  }
-}
-
-/* Safari-specific optimizations */
-@supports (-webkit-appearance: none) {
-  .logo_image {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-}
-
-.btns {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.search,
-.user,
-.cart svg {
-  stroke: var(--black);
-}
-
-.menu_button {
+.burger {
   display: none;
-}
-
-.footer {
-  display: none;
-}
-
-.modal {
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.cart {
   position: relative;
-}
-
-.cart_indicator {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background-color: var(--danger-500);
-  color: var(--white);
-  display: flex;
-  justify-content: center;
+  width: 44px;
+  height: 44px;
   align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (max-width: 768px) {
-  .user {
-    display: none;
-  }
+.burger span {
+  position: absolute;
+  left: 12px;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink-950);
+  border-radius: 2px;
+  transition: transform 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
+}
 
-  .fixed_header {
-    height: 88px;
+.burger span:first-child {
+  transform: translateY(-4px);
+}
+
+.burger span:last-child {
+  transform: translateY(4px);
+}
+
+.burger.active span:first-child {
+  transform: translateY(0) rotate(45deg);
+}
+
+.burger.active span:last-child {
+  transform: translateY(0) rotate(-45deg);
+}
+
+@media (max-width: 860px) {
+  .burger {
+    display: flex;
   }
 
   .nav {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: var(--header-height);
     left: 0;
     right: 0;
-    transform: translateY(100%);
-    background-color: var(--white);
-    height: 100vh;
-    min-height: auto;
-    display: flex;
+    bottom: 0;
     flex-direction: column;
+    align-items: stretch;
     justify-content: space-between;
-    z-index: 9;
+    gap: 0;
+    background: var(--white);
+    padding: 8px 0 32px;
     visibility: hidden;
     opacity: 0;
-    padding: 112px 0 0;
-    transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+    transform: translateY(-8px);
+    transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out), visibility 0.25s;
   }
 
   .nav.active {
@@ -175,12 +149,7 @@
     transform: translateY(0);
   }
 
-  .banner.active {
-    display: none;
-  }
-
   .links {
-    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -190,82 +159,13 @@
   .link {
     display: flex;
     align-items: center;
-    height: 64px;
-    font-size: 24px;
-    font-weight: 600;
+    height: 60px;
+    font-size: 22px;
+    border-bottom: 1px solid var(--ink-100);
   }
 
-  .footer {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--slate-100);
-    border-top: 0.5px solid var(--slate-200);
-    padding: 16px 24px;
-  }
-
-  .menu_button,
-  .logo {
-    z-index: 10;
-  }
-
-  /* Mobile logo adjustments */
-  .logo_image {
-    height: 100px;
-    max-width: 100px;
-  }
-
-  .menu_button {
-    display: block;
-    width: 44px;
-    height: 44px;
-    display: flex;
+  .cta {
+    margin: 24px 24px 0;
     justify-content: center;
-    align-items: center;
-    background-color: var(--black);
-    border-radius: 12px;
-  }
-
-  .burger {
-    display: block;
-    position: relative;
-    width: 32px;
-    height: 32px;
-    background: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
-  }
-
-  .burger.active:before {
-    transform: translateY(0) rotate(-45deg);
-  }
-
-  .burger.active:after {
-    transform: translateY(0) rotate(45deg);
-  }
-
-  .burger:before,
-  .burger:after {
-    content: "";
-    position: absolute;
-    top: 16px;
-    left: 6px;
-    width: 20px;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: transform 0.2s;
-  }
-
-  .burger:before {
-    transform: translateY(-4px);
-  }
-
-  .burger:after {
-    transform: translateY(3px);
   }
 }

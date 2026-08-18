@@ -3,41 +3,20 @@
 import React from "react";
 import cn from "classnames";
 import styles from "./hero.module.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { wrap } from "@popmotion/popcorn";
 import Slide from "./slide";
-import mock from "@/constants/mock";
+import slides from "@/constants/hero";
 
-export default function Hero({ slides = mock.slides }) {
+export default function Hero() {
   const [[active, direction], setActive] = React.useState([0, 0]);
+  const reduceMotion = useReducedMotion();
 
   const variants = {
-    enter: () => ({
-      opacity: 0,
-    }),
-    active: {
-      zIndex: 0,
-      opacity: 1,
-      transition: { opacity: { duration: 0.3 } },
-    },
-    exit: () => ({
-      zIndex: 1,
-      opacity: 0,
-      transition: { opacity: { duration: 0.3 } },
-    }),
+    enter: { opacity: 0 },
+    active: { zIndex: 0, opacity: 1, transition: { opacity: { duration: 0.5 } } },
+    exit: { zIndex: 1, opacity: 0, transition: { opacity: { duration: 0.3 } } },
   };
-
-  const transition = {
-    x: { type: "spring", stiffness: 300, damping: 30 },
-    opacity: { duration: 0.2 },
-  };
-
-  // Lower swipe threshold for better mobile/tablet/desktop consistency
-  const swipeConfidenceThreshold = 5000;
-  const swipePower = React.useCallback(
-    (offset, velocity) => Math.abs(offset) * velocity,
-    []
-  );
 
   const changeSlide = React.useCallback((increment) => {
     setActive((current) => {
@@ -50,37 +29,56 @@ export default function Hero({ slides = mock.slides }) {
   const prevSlide = () => changeSlide(-1);
 
   React.useEffect(() => {
-    const interval = setInterval(nextSlide, 10000);
+    if (reduceMotion) return;
+    const interval = setInterval(nextSlide, 8000);
     return () => clearInterval(interval);
-  }, [active]);
+  }, [active, reduceMotion]);
 
   return (
-    <section id="home" className={cn("section", styles.section)}>
-      <div className={cn("container")}>
-        <motion.div className={styles.slides}>
-          <AnimatePresence initial={false} custom={direction} mode="wait">
+    <section className={cn("section", styles.section)} aria-roledescription="carousel" aria-label="Highlights">
+      <div className={cn("container", styles.container)}>
+        <div className={styles.slides}>
+          <AnimatePresence initial={false} custom={direction}>
             <Slide
-              key={`${active}-${direction}`}
+              key={active}
+              slide={slides[active]}
               custom={direction}
-              slides={slides}
-              active={active}
               variants={variants}
-              transition={transition}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
-                if (swipe < -swipeConfidenceThreshold) {
-                  nextSlide();
-                } else if (swipe > swipeConfidenceThreshold) {
-                  prevSlide();
-                }
-              }}
-              setActive={setActive}
-              prevSlide={prevSlide}
-              nextSlide={nextSlide}
+              transition={{ opacity: { duration: 0.4 } }}
             />
           </AnimatePresence>
-        </motion.div>
+        </div>
+
+        <div className={styles.controls}>
+          <button className={styles.arrow} onClick={prevSlide} aria-label="Previous highlight">
+            <ArrowIcon flipped />
+          </button>
+          <div className={styles.dots} role="tablist" aria-label="Choose highlight">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.id}
+                role="tab"
+                aria-selected={active === index}
+                aria-label={`Highlight ${index + 1}: ${slide.title}`}
+                className={cn(styles.dot, { [styles.activeDot]: active === index })}
+                onClick={() => setActive([index, index > active ? 1 : -1])}
+              />
+            ))}
+          </div>
+          <button className={styles.arrow} onClick={nextSlide} aria-label="Next highlight">
+            <ArrowIcon />
+          </button>
+        </div>
       </div>
     </section>
+  );
+}
+
+function ArrowIcon({ flipped }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={flipped ? { transform: "rotate(180deg)" } : undefined}>
+      <path d="M4.75 12H19.25" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M13.75 6.75L19.25 12L13.75 17.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

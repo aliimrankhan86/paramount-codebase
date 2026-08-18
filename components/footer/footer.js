@@ -1,39 +1,57 @@
 import React from "react";
 import cn from "classnames";
+import Link from "next/link";
 import styles from "./footer.module.css";
+import Logo from "@/components/logo";
+import nav from "@/constants/nav";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
   return (
-    <footer className={styles.section}>
-      <div className={cn(styles.container, styles.stacked)}>
-        <div className={styles.col}>
-          <div className={cn("subheading-x-large", styles.title)}>
-            Disclaimer
+    <footer className={styles.footer}>
+      <div className={cn("container", styles.container)}>
+        <div className={styles.top}>
+          <div className={styles.brand}>
+            <Logo />
+            <p className={cn("paragraph-small", styles.tagline)}>
+              Digital transformation, delivered with precision.
+            </p>
           </div>
-          <div className={cn("paragraph-medium", styles.text)}>
-            The information provided on this website is for general guidance
-            only. It does not constitute professional advice. For tailored
-            solutions, please contact us directly.
-          </div>
+
+          <nav className={styles.sitemap} aria-label="Footer">
+            <div className={cn("label-small", styles.sitemapTitle)}>Company</div>
+            <ul className={styles.links}>
+              {nav.footer.company.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className={cn("paragraph-small", styles.link)}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-        <div className={styles.col}>
-          <div className={cn("subheading-x-large", styles.title)}>
-            Legal & Policies
-          </div>
-          <div className={cn("paragraph-medium", styles.text)}>
-            All services are delivered in accordance with applicable regulatory
-            and professional standards. We are committed to maintaining
-            confidentiality, integrity, and data protection in every engagement.
-          </div>
+
+        <div className={styles.legal}>
+          <p className={cn("paragraph-x-small", styles.legalText)}>
+            The information on this website is provided for general guidance only and does not
+            constitute professional advice. For tailored recommendations, please get in touch
+            directly.
+          </p>
+          <p className={cn("paragraph-x-small", styles.legalText)}>
+            All engagements are delivered in line with applicable regulatory and professional
+            standards. We treat client confidentiality and data protection as the baseline for
+            every engagement, from the first call.
+          </p>
         </div>
-        <div className={styles.col}>
-          <div className={cn(styles.copyright, styles.copyrightLarge)}>
-            © {year} The Paramount Consultants. All rights reserved.
-          </div>
+
+        <div className={styles.bottom}>
+          <p className={cn("paragraph-x-small", styles.copyright)}>
+            &copy; {year} Paramount Consultants. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
 }
-// ...existing code...

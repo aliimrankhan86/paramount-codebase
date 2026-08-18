@@ -1,0 +1,12 @@
+.formWrap {
+  background: var(--ink-50);
+  border: 1px solid var(--ink-150);
+  border-radius: var(--border-radius-lg);
+  padding: 40px;
+}
+
+@media (max-width: 560px) {
+  .formWrap {
+    padding: 24px;
+  }
+}

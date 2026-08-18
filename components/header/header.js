@@ -2,155 +2,90 @@
 
 import React from "react";
 import cn from "classnames";
-import styles from "./header.module.css";
-import icons from "@/constants/icons";
 import Link from "next/link";
-import ShopMenu from "./shop-menu";
-import CollectionsMenu from "./collections-menu";
-import ExploreMenu from "./explore-menu";
-import mock from "@/constants/mock";
-import Socials from "../socials/socials";
+import { usePathname } from "next/navigation";
+import styles from "./header.module.css";
+import Logo from "@/components/logo";
+import nav from "@/constants/nav";
 
-export default function Header({ header_links = mock.header_links }) {
-  const [activeMenu, setActiveMenu] = React.useState(null);
+export default function Header() {
+  const pathname = usePathname();
   const [visibleNav, setVisibleNav] = React.useState(false);
-  const [fixedHeader, setFixedHeader] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
-    window.addEventListener("scroll", handleHeader);
-    return () => {
-      window.removeEventListener("scroll", handleHeader);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const disableScroll = (event) => {
-    event.preventDefault();
-  };
+  React.useEffect(() => {
+    setVisibleNav(false);
+  }, [pathname]);
 
   React.useEffect(() => {
-    if (visibleNav) {
-      window.addEventListener("touchmove", disableScroll, { passive: false });
-      window.addEventListener("wheel", disableScroll, { passive: false });
-    } else {
-      window.removeEventListener("touchmove", disableScroll);
-      window.removeEventListener("wheel", disableScroll);
-    }
-
+    document.body.style.overflow = visibleNav ? "hidden" : "";
     return () => {
-      window.removeEventListener("touchmove", disableScroll);
-      window.removeEventListener("wheel", disableScroll);
+      document.body.style.overflow = "";
     };
   }, [visibleNav]);
 
-  const handleHeader = () => {
-    if (window.scrollY > 48) {
-      setFixedHeader(true);
-    } else {
-      setFixedHeader(false);
-    }
-  };
-
-  const renderMenu = (type) => {
-    switch (type) {
-      case "shop-menu":
-        return (
-          <ShopMenu className={styles.menu} onMouseLeave={handleMouseLeave} />
-        );
-      case "collections-menu":
-        return (
-          <CollectionsMenu
-            className={styles.menu}
-            onMouseLeave={handleMouseLeave}
-          />
-        );
-      case "explore-menu":
-        return (
-          <ExploreMenu
-            className={styles.menu}
-            onMouseLeave={handleMouseLeave}
-          />
-        );
-      default:
-        return null;
-    }
-  };
-
-  const handleMouseEnter = (type) => {
-    if (window.innerWidth <= 768) {
-      setActiveMenu(null);
-    } else {
-      setActiveMenu(type);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setActiveMenu(null);
-  };
+  React.useEffect(() => {
+    if (!visibleNav) return;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setVisibleNav(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [visibleNav]);
 
   return (
-    <>
-      <header
-        className={cn(styles.header, {
-          [styles.fixed_header]: fixedHeader,
-        })}
-      >
-        <div className={cn("container", styles.container)}>
-          <Link href="/" className={styles.logo}>
-            <img
-              src="/images/paramount-logo.svg"
-              alt="Paramount Consultants"
-              className={styles.logo_image}
-            />
-          </Link>
+    <header className={cn(styles.header, { [styles.scrolled]: scrolled })}>
+      <a href="#main" className={styles.skipLink}>
+        Skip to content
+      </a>
+      <div className={cn("container", styles.container)}>
+        <Logo />
 
-          <nav
-            className={cn(styles.nav, {
-              [styles.active]: visibleNav,
-            })}
-          >
-            <ul className={styles.links}>
-              {header_links.map((link) => (
-                <li
-                  key={link.href}
-                  onMouseEnter={() => handleMouseEnter(link.type)}
+        <nav
+          id="primary-navigation"
+          className={cn(styles.nav, { [styles.active]: visibleNav })}
+          aria-label="Primary"
+        >
+          <ul className={styles.links}>
+            {nav.primary.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={cn("label-small", styles.link, {
+                    [styles.currentLink]: pathname === link.href,
+                  })}
+                  aria-current={pathname === link.href ? "page" : undefined}
                 >
-                  <Link
-                    href={link.href}
-                    className={cn("label-medium", styles.link, {
-                      [styles.active]: activeMenu === link.type,
-                    })}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-                  {activeMenu === link.type && renderMenu(link.type)}
-                </li>
-              ))}
-            </ul>
+          <Link href="/contact" className={cn("button-small", styles.cta)}>
+            Contact us
+          </Link>
+        </nav>
 
-            <div className={styles.footer}>
-              <Link
-                href="/login"
-                className={cn("button-small", styles.footer_button)}
-              >
-                Login
-              </Link>
-              <Socials />
-            </div>
-          </nav>
-
-          <div className={styles.btns}>
-            <div className={styles.menu_button}>
-              <button
-                className={cn(styles.burger, {
-                  [styles.active]: visibleNav,
-                })}
-                onClick={() => setVisibleNav(!visibleNav)}
-              ></button>
-            </div>
-          </div>
-        </div>
-      </header>
-    </>
+        <button
+          type="button"
+          className={cn(styles.burger, { [styles.active]: visibleNav })}
+          onClick={() => setVisibleNav((v) => !v)}
+          aria-expanded={visibleNav}
+          aria-controls="primary-navigation"
+          aria-label={visibleNav ? "Close menu" : "Open menu"}
+        >
+          <span />
+          <span />
+        </button>
+      </div>
+    </header>
   );
 }

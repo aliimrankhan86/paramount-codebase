@@ -1,13 +1,21 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import cn from "classnames";
-import styles from "./support.module.css"; // or whatever your css module is named
-import mock from "@/constants/mock";
+import styles from "./support.module.css";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
-// import Socials from "@/components/socials/socials"; // adjust path if needed
+import site from "@/constants/site";
 
-export default function Support({ support = mock.support }) {
+const businessOptions = [
+  { value: "consulting", label: "Consulting" },
+  { value: "ecommerce", label: "E-commerce" },
+  { value: "finance", label: "Finance" },
+  { value: "technology", label: "Technology" },
+  { value: "other", label: "Other" },
+];
+
+export default function ContactUs() {
   const [form, setForm] = useState({
     firstname: "",
     lastname: "",
@@ -16,24 +24,18 @@ export default function Support({ support = mock.support }) {
     nature: "",
     subject: "",
   });
-  const [isValid, setIsValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // null | 'success' | 'error'
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-  // Validate form on every change
-  useEffect(() => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const valid =
-      form.firstname.trim().length > 0 &&
-      form.lastname.trim().length > 0 &&
-      emailRegex.test(form.email) &&
-      form.nature.trim().length > 0 &&
-      form.subject.trim().length > 0 &&
-      form.phone.startsWith("+") &&
-      form.phone.length >= 6;
-
-    setIsValid(valid);
-  }, [form]);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isValid =
+    form.firstname.trim().length > 0 &&
+    form.lastname.trim().length > 0 &&
+    emailRegex.test(form.email) &&
+    form.nature.trim().length > 0 &&
+    form.subject.trim().length > 0 &&
+    form.phone.startsWith("+") &&
+    form.phone.length >= 6;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,49 +48,23 @@ export default function Support({ support = mock.support }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("📩 Form submitted — handleSubmit triggered");
-    console.log("📄 Form data:", form);
-
-    if (!isValid) {
-      console.warn("❌ Form is not valid. Please fill all fields correctly.");
-      return;
-    }
+    if (!isValid || isSubmitting) return;
 
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      const response = await fetch(
-        "https://avamedio.app.n8n.cloud/webhook-test/0db20153-8fa2-4301-b336-f88104cebd8d",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        }
-      );
+      const response = await fetch(site.contactWebhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-      console.log("📨 Response status:", response.status);
-      const responseBody = await response.text();
-      console.log("📦 Response body:", responseBody);
+      if (!response.ok) throw new Error(`Request failed with ${response.status}`);
 
-      if (response.ok) {
-        console.log("✅ Success: Data sent to Make.com");
-        setSubmitStatus("success");
-        setForm({
-          firstname: "",
-          lastname: "",
-          email: "",
-          phone: "",
-          nature: "",
-          subject: "",
-        });
-      } else {
-        throw new Error(`HTTP ${response.status}: ${responseBody}`);
-      }
+      setSubmitStatus("success");
+      setForm({ firstname: "", lastname: "", email: "", phone: "", nature: "", subject: "" });
     } catch (error) {
-      console.error("🚨 Submission failed:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -96,130 +72,110 @@ export default function Support({ support = mock.support }) {
   };
 
   return (
-    <div id="contact" className={cn("section", styles.section)}>
-      <div className={cn("container")}>
-        <h2
-          className="heading-2"
-          style={{ textAlign: "center", marginBottom: 24 }}
-        >
-          Contact Us
-        </h2>
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit} noValidate>
+        <div className={styles.formGrid}>
+          <div className={cn("formRow", styles.formRow)}>
+            <label htmlFor="fname">First name</label>
+            <input
+              type="text"
+              id="fname"
+              name="firstname"
+              autoComplete="given-name"
+              placeholder="Jordan"
+              value={form.firstname}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className={styles.formContainer}>
-          <form onSubmit={handleSubmit}>
-            <div className="formRow">
-              <label htmlFor="fname">First Name</label>
-              <input
-                type="text"
-                id="fname"
-                name="firstname"
-                placeholder="John"
-                value={form.firstname}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="formRow">
-              <label htmlFor="lname">Last Name</label>
-              <input
-                type="text"
-                id="lname"
-                name="lastname"
-                placeholder="Doe"
-                value={form.lastname}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="formRow">
-              <label htmlFor="email">Your Email address</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="john@example.com"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="formRow">
-              <label htmlFor="phone">Your contact number</label>
-              <PhoneInput
-                defaultCountry="us"
-                value={form.phone}
-                onChange={handlePhoneChange}
-                inputClassName={`${styles.phoneInput} label-medium`}
-                required
-              />
-            </div>
-
-            <div className="formRow">
-              <label htmlFor="nature">Nature of Business</label>
-              <select
-                id="nature"
-                name="nature"
-                value={form.nature}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select...</option>
-                <option value="consulting">Consulting</option>
-                <option value="ecommerce">E-commerce</option>
-                <option value="finance">Finance</option>
-                <option value="technology">Technology</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div className="formRow">
-              <label htmlFor="subject">Subject</label>
-              <textarea
-                id="subject"
-                name="subject"
-                placeholder="How can we help you?"
-                style={{ height: "200px", resize: "none" }}
-                value={form.subject}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={!isValid || isSubmitting}
-              className={cn("button", styles.button)}
-            >
-              {isSubmitting ? "Sending..." : "Submit"}
-            </button>
-
-            {submitStatus === "success" && (
-              <p
-                className={cn("paragraph-medium", styles.successMessage)}
-                style={{
-                  color: "green",
-                  fontWeight: "bold",
-                  marginTop: "10px",
-                }}
-              >
-                ✅ Thanks for reaching out! We’ll get back to you soon.
-              </p>
-            )}
-
-            {submitStatus === "error" && (
-              <p
-                className={cn("paragraph-medium", styles.errorMessage)}
-                style={{ color: "red", marginTop: "10px" }}
-              >
-                ❌ Something went wrong. Please try again or email us directly.
-              </p>
-            )}
-          </form>
+          <div className={cn("formRow", styles.formRow)}>
+            <label htmlFor="lname">Last name</label>
+            <input
+              type="text"
+              id="lname"
+              name="lastname"
+              autoComplete="family-name"
+              placeholder="Blake"
+              value={form.lastname}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
-      </div>
+
+        <div className={cn("formRow", styles.formRow)}>
+          <label htmlFor="email">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autoComplete="email"
+            placeholder="jordan@company.com"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className={cn("formRow", styles.formRow)}>
+          <label htmlFor="phone">Contact number</label>
+          <PhoneInput
+            defaultCountry="gb"
+            value={form.phone}
+            onChange={handlePhoneChange}
+            inputProps={{ id: "phone", name: "phone", required: true }}
+            inputClassName={cn(styles.phoneInput, "label-medium")}
+          />
+        </div>
+
+        <div className={cn("formRow", styles.formRow)}>
+          <label htmlFor="nature">Nature of business</label>
+          <select
+            id="nature"
+            name="nature"
+            value={form.nature}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select...</option>
+            {businessOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className={cn("formRow", styles.formRow)}>
+          <label htmlFor="subject">How can we help?</label>
+          <textarea
+            id="subject"
+            name="subject"
+            placeholder="Tell us briefly what you're working on"
+            value={form.subject}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <button type="submit" disabled={!isValid || isSubmitting} className={cn("button", styles.button)}>
+          {isSubmitting ? "Sending…" : "Send message"}
+        </button>
+
+        <div role="status" aria-live="polite" className={styles.status}>
+          {submitStatus === "success" && (
+            <p className={cn("paragraph-medium", styles.successMessage)}>
+              Thanks for reaching out. We reply to every enquiry, usually within one business day.
+            </p>
+          )}
+          {submitStatus === "error" && (
+            <p className={cn("paragraph-medium", styles.errorMessage)}>
+              Something went wrong sending that. Please try again in a moment.
+            </p>
+          )}
+        </div>
+      </form>
     </div>
   );
 }

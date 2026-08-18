@@ -1,127 +1,140 @@
-.slides {
-  position: relative;
-  width: 100%;
-  height: 700px;
-}
-
 .slide {
-  flex-shrink: 0;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 16px;
-}
-
-.backgroundImage {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-}
-
-.overlay {
-  width: 100%;
-  height: 100%;
-  padding: 80px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  min-height: 100%;
+  overflow: hidden;
   display: flex;
   align-items: flex-end;
+}
+
+.mesh {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: -10%;
+  background-repeat: no-repeat;
+  animation: drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-2%, -1.5%, 0) scale(1.04);
+  }
+}
+
+.tone-indigo {
+  background: var(--ink-950);
+}
+.tone-indigo .mesh {
+  background-image: radial-gradient(circle at 22% 25%, rgba(37, 99, 235, 0.55), transparent 45%),
+    radial-gradient(circle at 78% 70%, rgba(59, 118, 240, 0.35), transparent 50%);
+}
+
+.tone-graphite {
+  background: #17171a;
+}
+.tone-graphite .mesh {
+  background-image: radial-gradient(circle at 75% 20%, rgba(134, 134, 139, 0.4), transparent 45%),
+    radial-gradient(circle at 15% 80%, rgba(37, 99, 235, 0.25), transparent 50%);
+}
+
+.tone-slate {
+  background: #101215;
+}
+.tone-slate .mesh {
+  background-image: radial-gradient(circle at 30% 75%, rgba(148, 163, 184, 0.32), transparent 50%),
+    radial-gradient(circle at 80% 15%, rgba(37, 99, 235, 0.3), transparent 45%);
+}
+
+.tone-midnight {
+  background: #0a0a0c;
+}
+.tone-midnight .mesh {
+  background-image: radial-gradient(circle at 85% 85%, rgba(59, 118, 240, 0.4), transparent 50%),
+    radial-gradient(circle at 10% 10%, rgba(93, 93, 255, 0.2), transparent 45%);
 }
 
 .content {
-  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 56px;
+  max-width: 780px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
-.topWrapper,
-.bottomWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.eyebrow {
+  color: var(--accent-300);
 }
 
-.title,
-.subtitle {
+.content .title,
+.content .subtitle {
   color: var(--white);
 }
 
-.subtitle {
+.content .title {
+  font-size: 56px;
+}
+
+.content .subtitle {
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 560px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-top: 12px;
+  flex-wrap: wrap;
 }
 
-.breakline {
-  width: 100%;
-  height: 0.5px;
-  background-color: rgba(255, 255, 255, 0.1);
+.secondaryAction {
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.4) inset;
+  color: var(--white);
+  background: transparent;
 }
 
-.arrow svg {
+.secondaryAction svg {
   stroke: var(--white);
 }
 
-.button {
-  background-color: var(--white);
-  color: var(--black);
+.secondaryAction:hover {
+  box-shadow: 0 0 0 1.5px var(--white) inset;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.button:hover {
-  background-color: var(--black);
-  color: var(--white);
-  border-color: var(--white);
-}
-
-@media (max-width: 1024px) {
-  .slide {
-    height: 600px;
+@media (max-width: 768px) {
+  .content {
+    padding: 32px;
   }
 
-  .overlay {
-    padding: 48px;
-  }
-
-  .title {
-    font-size: 72px;
-    line-height: auto;
-    letter-spacing: -2%;
+  .content .title {
+    font-size: 38px;
   }
 }
 
-@media (max-width: 430px) {
-  .overlay {
-    padding: 48px 24px;
+@media (max-width: 480px) {
+  .content {
+    padding: 24px;
+    gap: 16px;
   }
 
-  .topWrapper {
+  .content .title {
+    font-size: 32px;
+  }
+
+  .content .subtitle {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .actions {
     flex-direction: column;
-    gap: 24px;
-    align-items: flex-start;
-  }
-
-  .title {
-    font-size: 48px;
-    line-height: 56px;
-    letter-spacing: -0.64px;
-  }
-
-  .button {
-    width: 100%;
+    align-items: stretch;
   }
 }

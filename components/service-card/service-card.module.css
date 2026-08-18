@@ -1,0 +1,66 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 32px;
+  border-radius: var(--border-radius-lg);
+  background: var(--ink-50);
+  border: 1px solid var(--ink-150);
+  transition: transform 0.25s var(--ease-out), border-color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ink-300);
+  background: var(--white);
+  box-shadow: 0 24px 48px -24px rgba(10, 10, 12, 0.18);
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-050);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconWrap svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent-600);
+}
+
+.title {
+  color: var(--ink-950);
+}
+
+.description {
+  color: var(--ink-500);
+  flex: 1;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-dm-sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink-950);
+  margin-top: 4px;
+}
+
+.link svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--ink-950);
+  transition: transform 0.2s var(--ease-out);
+}
+
+.card:hover .link svg {
+  transform: translateX(3px);
+}
