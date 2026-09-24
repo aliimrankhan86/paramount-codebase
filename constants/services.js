@@ -74,6 +74,10 @@ const services = [
       "Coaching for teams moving from waterfall or ad hoc delivery into a sprint cadence",
       "Delivery governance for programmes with multiple workstreams running in parallel",
     ],
+    relatedProduct: {
+      slug: "point-poker",
+      note: "Our teams estimate in Point Poker, the free planning poker tool we built for sprint planning and backlog refinement. Any team can use it, with no sign-up.",
+    },
     process: engagementProcess,
   },
   {
@@ -92,6 +96,10 @@ const services = [
       "Code review, documentation and handover practices so the codebase isn't a black box",
       "Ongoing maintenance and feature work once the initial build has shipped",
     ],
+    relatedProduct: {
+      slug: "point-poker",
+      note: "Point Poker is one of our own builds: a real-time React and Firebase app with prerendered, multilingual pages, more than 500 automated tests and a deploy on every push.",
+    },
     process: engagementProcess,
   },
   {

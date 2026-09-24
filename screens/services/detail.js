@@ -4,9 +4,14 @@ import Layout from "@/components/Layout";
 import CtaBand from "@/components/cta-band/cta-band";
 import Reveal from "@/components/motion/reveal";
 import icons from "@/constants/icons";
+import products from "@/constants/products";
 import styles from "./detail.module.css";
 
 export default function ServiceDetailPage({ service }) {
+  const product = service.relatedProduct
+    ? products.find((item) => item.slug === service.relatedProduct.slug)
+    : null;
+
   return (
     <Layout>
       <section className={cn("section", styles.hero)}>
@@ -31,6 +36,22 @@ export default function ServiceDetailPage({ service }) {
                 </li>
               ))}
             </ul>
+            {product && (
+              <aside className={styles.productCallout}>
+                <div className={cn("label-small", styles.productEyebrow)}>Built by us</div>
+                <p className={cn("paragraph-medium", styles.productNote)}>
+                  {service.relatedProduct.note}
+                </p>
+                <div className={styles.productLinks}>
+                  <Link href={`/products/${product.slug}`} className={styles.productLink}>
+                    About {product.name} {icons.ArrowRight}
+                  </Link>
+                  <a href={product.url} className={styles.productLink}>
+                    Open {product.name} {icons.ArrowRight}
+                  </a>
+                </div>
+              </aside>
+            )}
           </Reveal>
         </div>
       </section>

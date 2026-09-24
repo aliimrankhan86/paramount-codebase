@@ -164,6 +164,15 @@ const Gantt = (
   </svg>
 );
 
+const Cards = (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3.75" y="5.75" width="10.5" height="14.5" rx="2" strokeWidth="1.5" transform="rotate(-8 9 13)" />
+    <rect x="9.75" y="3.75" width="10.5" height="14.5" rx="2" strokeWidth="1.5" />
+    <path d="M15 8.5V13.5" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M12.5 11H17.5" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
 export default {
   ArrowRight,
   ArrowLeft,
@@ -186,4 +195,5 @@ export default {
   CrmPulse,
   NativeApp,
   Gantt,
+  Cards,
 };

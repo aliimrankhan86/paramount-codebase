@@ -65,3 +65,17 @@ template; everything below replaces it with a 4-page Apple-inspired consultancy 
   across different logo shapes (border visibly clipped on some tiles). Replaced with a
   neutral, all-round soft shadow lift (no border-color change), so every tile hovers
   consistently regardless of logo aspect ratio.
+
+## 2026-09-24 — Products section and the Point Poker page
+
+- New `/products` index and `/products/point-poker` page, driven by
+  `constants/products.js`: what Point Poker does, how a session runs, how it was built,
+  links into the relevant pointpoker.app guides, and `SoftwareApplication` plus
+  `BreadcrumbList` structured data with Paramount Consultants as publisher.
+- "Products" added to the header and footer navigation, and both routes added to the
+  sitemap.
+- Agile Project Delivery and Full-Stack Software Development pages show a "Built by us"
+  callout linking to the Point Poker page and the live product (`relatedProduct` on the
+  service entry).
+- New `Cards` icon. Footer top row widened from 640px to 720px so the five nav links
+  stay on one line.

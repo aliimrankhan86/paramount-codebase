@@ -110,6 +110,46 @@
   stroke: var(--ink-700);
 }
 
+.productCallout {
+  margin-top: 40px;
+  padding: 24px 28px;
+  border-radius: var(--border-radius-lg);
+  background: var(--accent-050);
+  border: 1px solid var(--accent-100);
+}
+
+.productEyebrow {
+  color: var(--accent-700);
+}
+
+.productNote {
+  margin-top: 8px;
+  color: var(--ink-700);
+}
+
+.productLinks {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.productLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-dm-sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink-950);
+}
+
+.productLink svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--ink-950);
+}
+
 @media (max-width: 900px) {
   .processGrid {
     grid-template-columns: repeat(2, 1fr);

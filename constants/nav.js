@@ -1,5 +1,6 @@
 const primary = [
   { label: "Services", href: "/services" },
+  { label: "Products", href: "/products" },
   { label: "Clients", href: "/clients" },
   { label: "Contact", href: "/contact" },
 ];
@@ -8,6 +9,7 @@ const footer = {
   company: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
+    { label: "Products", href: "/products" },
     { label: "Clients", href: "/clients" },
     { label: "Contact", href: "/contact" },
   ],
