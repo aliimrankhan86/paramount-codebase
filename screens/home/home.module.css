@@ -1,15 +1,80 @@
-.clientsHeading {
-  text-align: center;
-  max-width: 620px;
-  margin: 0 auto 48px;
+.clientsSection {
+  border-top: 0;
 }
 
+.clientsHead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+  padding-bottom: clamp(24px, 3vw, 40px);
+}
+
+.clientsTitle {
+  max-width: 18ch;
+}
+
+.clientsSub {
+  color: var(--ink-600);
+  max-width: 42ch;
+  justify-self: end;
+  padding-bottom: 4px;
+}
+
+/* The strip breaks the container and runs the full viewport width. */
 .marquee {
-  padding: 8px 0;
+  padding: clamp(12px, 1.6vw, 22px) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+}
+
+ul.clientGrid {
+  border-top: 0;
+  border-left: 0;
+}
+
+.clientGrid li {
+  border-left: 1px solid var(--line);
+}
+
+.clientGrid li:nth-child(-n + 5) {
+  border-top: 1px solid var(--line);
 }
 
 .clientsFooter {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+  margin-top: 32px;
+}
+
+@media (max-width: 1024px) {
+  .clientGrid li:nth-child(-n + 5) {
+    border-top: 0;
+  }
+
+  .clientGrid li:nth-child(-n + 3) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 900px) {
+  .clientsHead {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .clientsSub {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 600px) {
+  .clientGrid li:nth-child(-n + 3) {
+    border-top: 0;
+  }
+
+  .clientGrid li:nth-child(-n + 2) {
+    border-top: 1px solid var(--line);
+  }
 }

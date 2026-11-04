@@ -15,10 +15,14 @@ function getInitials(name) {
   return (words[0][0] + words[1][0]).toUpperCase();
 }
 
-export default function ClientMarquee({ className, size = "default" }) {
+export default function ClientMarquee({ className, size = "default", reverse = false }) {
   return (
     <div
-      className={cn(styles.wrap, { [styles.large]: size === "large" }, className)}
+      className={cn(
+        styles.wrap,
+        { [styles.large]: size === "large", [styles.reverse]: reverse },
+        className
+      )}
       role="group"
       aria-label="Organisations we've worked with"
     >

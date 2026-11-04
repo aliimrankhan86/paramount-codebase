@@ -12,12 +12,30 @@ export default function Header() {
   const pathname = usePathname();
   const [visibleNav, setVisibleNav] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 8);
-    handleScroll();
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrolled(window.scrollY > 8);
+      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    };
+
+    const handleScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   React.useEffect(() => {
@@ -40,11 +58,14 @@ export default function Header() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [visibleNav]);
 
+  const isActive = (href) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
+
   return (
-    <header className={cn(styles.header, { [styles.scrolled]: scrolled })}>
+    <header id="top" className={cn(styles.header, { [styles.scrolled]: scrolled })}>
       <a href="#main" className={styles.skipLink}>
         Skip to content
       </a>
+
       <div className={cn("container", styles.container)}>
         <Logo />
 
@@ -59,9 +80,9 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={cn("label-small", styles.link, {
-                    [styles.currentLink]: pathname === link.href,
+                    [styles.currentLink]: isActive(link.href),
                   })}
-                  aria-current={pathname === link.href ? "page" : undefined}
+                  aria-current={isActive(link.href) ? "page" : undefined}
                 >
                   {link.label}
                 </Link>
@@ -69,8 +90,9 @@ export default function Header() {
             ))}
           </ul>
 
-          <Link href="/contact" className={cn("button-small", styles.cta)}>
-            Contact us
+          <Link href="/contact" className={cn("button-small", "button-accent", styles.cta)}>
+            Start a project
+            <ArrowIcon />
           </Link>
         </nav>
 
@@ -86,6 +108,24 @@ export default function Header() {
           <span />
         </button>
       </div>
+
+      <div className={styles.progressTrack} aria-hidden="true">
+        <span className={styles.progressBar} style={{ transform: `scaleX(${progress})` }} />
+      </div>
     </header>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4.75 12h14.5" strokeWidth="1.6" strokeLinecap="round" />
+      <path
+        d="M13.75 6.75 19.25 12l-5.5 5.25"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

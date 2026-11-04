@@ -3,37 +3,46 @@ import cn from "classnames";
 import Link from "next/link";
 import styles from "./services.module.css";
 import services from "@/constants/services";
-import ServiceCard from "@/components/service-card/service-card";
-import Reveal from "@/components/motion/reveal";
-import icons from "@/constants/icons";
+import ServiceRow from "@/components/service-row/service-row";
+import MaskedLines from "@/components/motion/masked-lines";
 
 export default function Services() {
   return (
-    <section id="services" className={cn("section")}>
+    <section id="services" className={cn("section", "section-tight", styles.section)}>
       <div className={cn("container")}>
-        <Reveal className={styles.heading}>
-          <div className="eyebrow">What we do</div>
-          <h2 className="heading-2">Six disciplines, one accountable team</h2>
-          <p className={cn("paragraph-large", styles.subtitle)}>
-            We keep the list short on purpose. Every service below is something we do ourselves,
-            not something we broker out to a subcontractor.
-          </p>
-        </Reveal>
+        <div className={styles.headRow}>
+          <MaskedLines
+            className={cn("heading-2", styles.heading)}
+            lines={[<>Six disciplines.</>, <><em>One</em> accountable team.</>]}
+          />
 
-        <div className={styles.grid}>
-          {services.map((service, index) => (
-            <Reveal key={service.id} delay={index * 0.06}>
-              <ServiceCard service={service} />
-            </Reveal>
-          ))}
+          <div className={styles.headAside}>
+            <p className={cn("paragraph-medium", styles.headNote)}>
+              Each service is scoped and staffed independently, but most real projects draw on
+              more than one at once.
+            </p>
+            <Link href="/services" className="link-arrow">
+              See every service
+              <Arrow />
+            </Link>
+          </div>
         </div>
 
-        <Reveal className={styles.footer}>
-          <Link href="/services" className={cn("button", "button-stroke")}>
-            View all services {icons.ArrowRight}
-          </Link>
-        </Reveal>
+        <div className={styles.list}>
+          {services.map((service, index) => (
+            <ServiceRow key={service.id} service={service} index={index} />
+          ))}
+        </div>
       </div>
     </section>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4.75 12h14.5" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M13.75 6.75 19.25 12l-5.5 5.25" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

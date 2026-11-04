@@ -1,0 +1,405 @@
+/* The accounting practice reads as a ledger: ruled rows, figures aligned right,
+   no cards and no shadows. */
+
+.ledeGrid {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.lede {
+  max-width: 24ch;
+}
+
+.ledeBody {
+  margin-top: 28px;
+  max-width: 56ch;
+  color: var(--ink-600);
+}
+
+/* ---- Material ---- */
+
+.material {
+  padding: 0 0 clamp(56px, 7vw, 96px);
+}
+
+/* ---- Areas ---- */
+
+.areasSection {
+  border-top: 1px solid var(--line);
+}
+
+.areasHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+.areasNote {
+  color: var(--ink-500);
+  max-width: 30ch;
+  text-align: right;
+}
+
+.ledger {
+  border-top: 2px solid var(--ink-950);
+}
+
+.areaRow {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 120px;
+  gap: 32px;
+  align-items: start;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.3s var(--ease-out);
+}
+
+.areaRow:hover {
+  background: rgba(236, 231, 220, 0.4);
+}
+
+.areaIndex {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-400);
+  padding-top: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.areaTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.areaTitle a {
+  transition: color 0.25s var(--ease-out);
+}
+
+.areaRow:hover .areaTitle a {
+  color: var(--accent-600);
+}
+
+.areaCopy {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-500);
+  max-width: 52ch;
+}
+
+.serviceList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.serviceList li {
+  display: flex;
+  align-items: center;
+}
+
+.serviceList li:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 12px;
+  margin: 0 14px;
+  background: var(--ink-200);
+}
+
+.serviceList a {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-700);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+
+.serviceList a:hover,
+.serviceList a:focus-visible {
+  color: var(--accent-600);
+  border-bottom-color: var(--accent-600);
+}
+
+.areaMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  padding-top: 6px;
+}
+
+.areaCount {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 1;
+  color: var(--ink-500);
+}
+
+.areaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-600);
+  transition: color 0.25s var(--ease-out);
+}
+
+.areaLink svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.areaRow:hover .areaLink {
+  color: var(--accent-600);
+}
+
+.areaRow:hover .areaLink svg {
+  transform: translateX(3px);
+}
+
+/* ---- Promise ---- */
+
+.promiseSection {
+  background-color: var(--ink-950);
+  color: var(--paper);
+}
+
+.promiseGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+}
+
+.promiseTitle {
+  margin-top: 22px;
+  color: var(--paper);
+  max-width: 14ch;
+}
+
+.promiseBody {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(244, 241, 234, 0.78);
+  max-width: 50ch;
+}
+
+.promiseCommitment {
+  color: var(--paper);
+  font-weight: 500;
+  padding-left: 18px;
+  border-left: 2px solid var(--accent-400);
+}
+
+.promiseExclusion {
+  font-size: 15px;
+  color: rgba(244, 241, 234, 0.6);
+  padding-top: 18px;
+  border-top: 1px solid rgba(244, 241, 234, 0.16);
+}
+
+/* ---- Person ---- */
+
+.personGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.personCard {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.personInitials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--ink-200);
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--ink-700);
+}
+
+.personName {
+  margin-top: 18px;
+  font-family: var(--font-serif);
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.personCredential {
+  font-size: 0.62em;
+  letter-spacing: 0.04em;
+  color: var(--ink-500);
+}
+
+.personRole {
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.personFocus {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.personFocus li {
+  font-size: 14px;
+  color: var(--ink-600);
+  padding-left: 16px;
+  position: relative;
+}
+
+.personFocus li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 1px;
+  background: var(--accent-600);
+}
+
+.personIntro {
+  text-wrap: balance;
+}
+
+.personBio {
+  margin-top: 22px;
+  color: var(--ink-600);
+  max-width: 58ch;
+}
+
+.disclosure {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-500);
+  max-width: 62ch;
+}
+
+/* ---- Engagement rhythm ---- */
+
+.rhythmSection {
+  background: var(--paper-2);
+}
+
+.rhythm {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+  list-style: none;
+  padding: 0;
+  counter-reset: none;
+}
+
+.rhythmStep {
+  padding-top: 20px;
+  border-top: 1px solid var(--ink-200);
+}
+
+.rhythmIndex {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--accent-600);
+}
+
+.rhythmTitle {
+  margin-top: 12px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+}
+
+.rhythmCopy {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-600);
+}
+
+@media (max-width: 900px) {
+  .ledeGrid,
+  .personGrid,
+  .promiseGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .areasHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .areasNote {
+    text-align: left;
+  }
+
+  .areaRow {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .areaMeta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .areaCount {
+    font-size: 22px;
+  }
+
+  .rhythm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .rhythm {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .serviceList li:not(:last-child)::after {
+    margin: 0 9px;
+  }
+}

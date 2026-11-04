@@ -1,0 +1,23 @@
+.heading {
+  display: block;
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  /* Room for descenders and italic tails inside the mask. */
+  padding-bottom: 0.09em;
+  margin-bottom: -0.09em;
+}
+
+.line {
+  display: block;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transform: none !important;
+    will-change: auto;
+  }
+}

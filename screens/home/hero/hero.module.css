@@ -1,80 +1,149 @@
-.section {
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.slides {
-  position: relative;
-  width: 100%;
-  min-height: 640px;
-  border-radius: var(--border-radius-lg);
+.hero {
+  padding: clamp(24px, 3vw, 44px) 0 clamp(24px, 2.6vw, 36px);
   overflow: hidden;
 }
 
-.controls {
+.topline {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
 }
 
-.arrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-600);
+}
+
+.kicker::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--accent-600);
+}
+
+.meta {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.title {
+  margin: clamp(20px, 2.4vw, 32px) 0 clamp(22px, 2.6vw, 38px);
+}
+
+/*
+  The hero sits on one baseline: the copy column stretches to the figure's
+  height and pins its last line to the caption line, instead of floating in
+  the middle of its own column.
+*/
+.bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.66fr);
+  gap: clamp(40px, 7vw, 112px);
+  align-items: stretch;
+  padding-top: clamp(20px, 2.5vw, 32px);
+  border-top: 1px solid var(--line);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: clamp(24px, 2.4vw, 34px);
+  max-width: 520px;
+}
+
+.subtitle {
+  color: var(--ink-600);
+  max-width: 46ch;
+}
+
+.actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 1.5px solid var(--ink-200);
-  transition: border-color 0.2s, background-color 0.2s;
-  cursor: pointer;
+  gap: 28px;
+  flex-wrap: wrap;
 }
 
-.arrow svg {
-  stroke: var(--ink-800);
-}
-
-.arrow:hover {
-  border-color: var(--ink-950);
-  background: var(--ink-100);
-}
-
-.dots {
+.ticker {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 16px;
+  padding-top: 8px;
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1.5px solid var(--ink-200);
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.2s;
+.tickerLabel {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-500);
 }
 
-.activeDot {
-  background: var(--ink-950);
-  border-color: var(--ink-950);
-  width: 20px;
-  border-radius: 4px;
+.tickerWord {
+  position: relative;
+  display: inline-block;
+  min-width: 220px;
+  height: 20px;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-950);
 }
 
-@media (max-width: 768px) {
-  .slides {
-    min-height: 560px;
+.tickerWord span {
+  display: block;
+  white-space: nowrap;
+}
+
+.figure {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .bottom {
+    grid-template-columns: 1fr;
+    gap: 44px;
+    align-items: start;
+  }
+
+  .copy {
+    justify-content: flex-start;
+    max-width: none;
+  }
+
+  .figure {
+    max-width: 520px;
   }
 }
 
-@media (max-width: 480px) {
-  .slides {
-    min-height: 600px;
+@media (max-width: 700px) {
+  .topline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .tickerWord {
+    min-width: 0;
   }
 }

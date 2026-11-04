@@ -1,0 +1,81 @@
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr) 24px;
+  align-items: baseline;
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(18px, 1.8vw, 26px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.7vw, 42px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: var(--ink-950);
+  text-wrap: balance;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-500);
+  max-width: 34ch;
+}
+
+/* One cue only: the arrow moves and picks up the accent. */
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 24px;
+  height: 24px;
+  color: var(--ink-500);
+  transition: color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.arrow svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.row:hover .arrow,
+.row:focus-visible .arrow {
+  color: var(--accent-600);
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) 24px;
+    grid-template-areas:
+      "title arrow"
+      "desc arrow";
+    align-items: start;
+    gap: 10px 20px;
+    padding: 22px 0;
+  }
+
+  .title {
+    grid-area: title;
+  }
+
+  .description {
+    grid-area: desc;
+  }
+
+  .arrow {
+    grid-area: arrow;
+  }
+}
+
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr) 24px;
+    gap: 8px 12px;
+  }
+}

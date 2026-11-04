@@ -1,29 +1,71 @@
 [class^="section"] {
-  padding: 128px 0;
+  padding: clamp(56px, 6vw, 96px) 0;
   position: relative;
 }
 
+/*
+  Rhythm is intentional, not uniform. A page where every band is a hairline plus
+  152px of air reads as a template. These variants let a section change pace
+  without inventing a new spacing value.
+*/
 .section-tight {
-  padding: 80px 0;
+  padding: clamp(40px, 4vw, 64px) 0;
+}
+
+.section-break {
+  padding: clamp(24px, 2.4vw, 40px) 0;
+}
+
+.section-tall {
+  padding: clamp(72px, 8vw, 128px) 0;
+}
+
+.section-flush {
+  padding: 0;
+}
+
+.section-bleed {
+  padding: 0;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+/* Opt out of the default rule where a hard colour edge already separates. */
+.section-unruled {
+  border-top: 0;
 }
 
 .section-dark {
   background-color: var(--ink-950);
-  color: var(--white);
+  color: var(--paper);
 }
 
 .section-tint {
-  background-color: var(--ink-100);
+  background-color: var(--ink-50);
 }
 
-@media (max-width: 1024px) {
-  [class^="section"] {
-    padding: 72px 0;
-  }
+.section-paper-2 {
+  background-color: var(--paper-2);
+}
+
+.section-hairline {
+  border-top: 1px solid var(--line);
+}
+
+.section-hairline-inverse {
+  border-top: 1px solid var(--line-inverse);
 }
 
 @media (max-width: 600px) {
   [class^="section"] {
+    padding: 44px 0;
+  }
+
+  .section-tight {
+    padding: 32px 0;
+  }
+
+  .section-tall {
     padding: 56px 0;
   }
 }

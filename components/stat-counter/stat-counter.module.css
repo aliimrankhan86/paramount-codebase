@@ -1,0 +1,26 @@
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.value {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(56px, 6.5vw, 104px);
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  color: var(--ink-950);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  color: var(--ink-600);
+  max-width: 22ch;
+  margin-top: 4px;
+}

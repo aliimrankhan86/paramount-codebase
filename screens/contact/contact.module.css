@@ -1,12 +1,117 @@
-.formWrap {
-  background: var(--ink-50);
-  border: 1px solid var(--ink-150);
-  border-radius: var(--border-radius-lg);
-  padding: 40px;
+.layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
 }
 
-@media (max-width: 560px) {
+.aside {
+  position: sticky;
+  top: calc(var(--header-height) + 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.stepIndex {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--accent-600);
+  padding-top: 5px;
+}
+
+.stepTitle {
+  color: var(--ink-950);
+  margin-bottom: 5px;
+}
+
+.stepText {
+  color: var(--ink-500);
+}
+
+.assurance {
+  display: flex;
+  gap: 12px;
+  padding: 18px;
+  background: var(--ink-50);
+  border: 1px solid var(--line);
+}
+
+.assuranceIcon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.assuranceIcon svg {
+  width: 21px;
+  height: 21px;
+  stroke: var(--accent-600);
+}
+
+.assuranceText {
+  color: var(--ink-600);
+}
+
+.figure {
+  margin: 0;
+}
+
+.formWrap {
+  background: var(--paper);
+  border-top: 2px solid var(--ink-950);
+  padding: clamp(24px, 3.5vw, 44px) 0 0;
+}
+
+.formHead {
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.formTitle {
+  color: var(--ink-950);
+}
+
+.formSub {
+  margin-top: 8px;
+  color: var(--ink-500);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aside {
+    position: static;
+    order: 2;
+  }
+
   .formWrap {
-    padding: 24px;
+    order: 1;
+  }
+
+  .figure {
+    max-width: 420px;
   }
 }

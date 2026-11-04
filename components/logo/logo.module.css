@@ -1,13 +1,13 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--ink-900);
+  gap: 11px;
+  color: var(--ink-950);
 }
 
 .mark {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
 }
 
@@ -18,20 +18,21 @@
 }
 
 .name {
-  font-family: var(--font-dm-sans);
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: -0.2px;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 21px;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
 }
 
 .suffix {
-  font-family: var(--font-dm-sans);
-  font-weight: 500;
-  font-size: 9px;
-  letter-spacing: 2.4px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--ink-400);
-  margin-top: 2px;
+  color: var(--ink-500);
+  margin-top: 3px;
 }
 
 @media (max-width: 480px) {

@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import styles from "./values.module.css";
+import MaskedLines from "@/components/motion/masked-lines";
 import Reveal from "@/components/motion/reveal";
 
 const values = [
@@ -23,18 +24,18 @@ const values = [
 
 export default function Values() {
   return (
-    <section className={cn("section")}>
+    <section className={cn("section", "section-tight", styles.section)}>
       <div className={cn("container")}>
-        <Reveal className={styles.heading}>
-          <div className="eyebrow">What we hold to</div>
-          <h2 className="heading-2">Working principles, not slogans</h2>
-        </Reveal>
+        <MaskedLines
+          className={cn("heading-2", styles.heading)}
+          lines={[<>Principles,</>, <>not slogans.</>]}
+        />
 
         <div className={styles.grid}>
           {values.map((value, index) => (
-            <Reveal key={value.title} className={styles.card} delay={index * 0.08}>
-              <h3 className={cn("heading-5", styles.title)}>{value.title}</h3>
-              <p className={cn("paragraph-medium", styles.description)}>{value.description}</p>
+            <Reveal key={value.title} className={styles.item} delay={index * 0.05} y={10}>
+              <h3 className={cn("heading-3", styles.title)}>{value.title}</h3>
+              <p className={cn("paragraph-small", styles.description)}>{value.description}</p>
             </Reveal>
           ))}
         </div>

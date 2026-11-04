@@ -1,90 +1,293 @@
+/*
+  Footer as a masthead, not a link dump: one oversized wordmark, an inline index,
+  then three detail clusters. Paper stock so it separates from the ink CTA above,
+  closed by a full-bleed cobalt legal strip.
+*/
 .footer {
-  background: var(--ink-100);
-  border-top: 1px solid var(--ink-150);
-  padding: 40px 0 24px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  background: var(--paper-2);
+  color: var(--ink-950);
+  padding: clamp(40px, 5vw, 72px) 0 0;
+  overflow: hidden;
 }
 
 .top {
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  max-width: 720px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--ink-150);
+  gap: 48px;
+  padding-bottom: clamp(24px, 3vw, 40px);
+  border-bottom: 1px solid var(--line);
 }
 
-.brand {
-  max-width: 280px;
+.statement {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 2.6vw, 38px);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  max-width: 22ch;
+  text-wrap: balance;
 }
 
-.tagline {
-  margin-top: 8px;
-  color: var(--ink-500);
+.bigLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ink-950);
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  transition: color 0.3s var(--ease-out), border-color 0.3s var(--ease-out),
+    gap 0.3s var(--ease-out);
 }
 
-.sitemap {
-  min-width: 120px;
+.bigLink svg {
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+  transition: transform 0.3s var(--ease-out);
 }
 
-.sitemapTitle {
-  color: var(--ink-500);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
+.bigLink:hover,
+.bigLink:focus-visible {
+  color: var(--accent-600);
+  border-color: var(--accent-600);
+  gap: 20px;
 }
 
-.links {
+.wordmarkRow {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 8px 28px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: clamp(14px, 1.8vw, 24px);
+  border-bottom: 2px solid var(--ink-950);
 }
 
-.link {
-  color: var(--ink-700);
-  transition: color 0.2s;
-}
-
-.link:hover {
+.wordmark {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(68px, 12vw, 180px);
+  line-height: 0.78;
+  letter-spacing: -0.055em;
   color: var(--ink-950);
+  transition: color 0.3s var(--ease-out);
+}
+
+.wordmark:hover,
+.wordmark:focus-visible {
+  color: var(--accent-600);
+}
+
+.wordmarkMeta {
+  flex-shrink: 0;
+  padding-bottom: 0.7em;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-600);
+}
+
+.indexRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px clamp(24px, 3vw, 48px);
+  padding: clamp(12px, 1.6vw, 20px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.indexLabel {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-600);
+}
+
+.indexLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px clamp(18px, 2.6vw, 44px);
+}
+
+.indexLink {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink-950);
+  transition: color 0.25s var(--ease-out);
+}
+
+.indexLink:hover,
+.indexLink:focus-visible {
+  color: var(--accent-600);
+}
+
+.detailRow {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(18px, 2.2vw, 30px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.detailTitle {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-600);
+  margin-bottom: 16px;
+}
+
+.links,
+.serviceLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.serviceLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px 28px;
+}
+
+.detailLink {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink-700);
+  width: fit-content;
+  transition: color 0.2s var(--ease-out);
+}
+
+.detailLink:hover,
+.detailLink:focus-visible {
+  color: var(--accent-600);
+}
+
+.meta {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-600);
+  max-width: 28ch;
 }
 
 .legal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(18px, 2.2vw, 28px) 0 clamp(22px, 2.6vw, 34px);
+}
+
+.legal p {
+  max-width: 62ch;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-600);
+}
+
+.strip {
+  background: var(--accent-600);
+  color: var(--paper);
+}
+
+.stripInner {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 20px 0;
-  max-width: 640px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
-.legalText {
-  color: var(--ink-500);
+.stripText,
+.backToTop {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
 }
 
-.bottom {
-  padding-top: 12px;
-  border-top: 1px solid var(--ink-150);
+.backToTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: gap 0.25s var(--ease-out);
 }
 
-.copyright {
-  color: var(--ink-500);
+.backToTop svg {
+  stroke: currentColor;
+  transition: transform 0.25s var(--ease-out);
 }
 
-@media (max-width: 600px) {
+.backToTop:hover,
+.backToTop:focus-visible {
+  gap: 11px;
+}
+
+.backToTop:hover svg {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
   .top {
     flex-direction: column;
-    gap: 24px;
-    max-width: none;
+    align-items: flex-start;
+    gap: 28px;
   }
 
-  .links {
+  .detailRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .detailRow > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .legal {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .wordmarkRow {
     flex-direction: column;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .wordmarkMeta {
+    text-align: left;
+    padding-bottom: 0;
+  }
+
+  .detailRow {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceLinks {
+    grid-template-columns: 1fr;
+  }
+
+  .stripInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 }

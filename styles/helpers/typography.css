@@ -1,205 +1,262 @@
+/*
+  Two families only: Instrument Serif for display, Instrument Sans for everything
+  else. One scale, weights 400 / 500 / 600. Nothing below 12px. Digits are
+  tabular everywhere they sit in a column, so counters and ledger rows never jitter.
+*/
+
 .hero,
 .hero-2,
 .heading-1,
 .heading-2,
-.heading-3,
-.heading-4,
-.heading-5,
-.heading-6 {
-  font-family: var(--font-dm-sans);
+.heading-3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
   color: var(--ink-950);
-  font-weight: 700;
+  text-wrap: balance;
+  letter-spacing: -0.018em;
 }
 
+/*
+  Exaggerated minimalism with a 400-only serif: boldness comes from scale and
+  tight tracking, never from a synthesised weight. The scale is deliberately
+  wider than a normal marketing site so the page reads as printed matter.
+*/
 .hero {
-  font-size: 88px;
-  line-height: 1.02;
-  letter-spacing: -2.5px;
+  font-size: clamp(3.25rem, 10vw, 12rem);
+  line-height: 0.84;
+  letter-spacing: -0.05em;
 }
 
 .hero-2 {
-  font-size: 64px;
-  line-height: 1.05;
-  letter-spacing: -1.8px;
+  font-size: clamp(44px, 5.4vw, 84px);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
 }
 
 .heading-1 {
-  font-size: 56px;
-  line-height: 1.08;
-  letter-spacing: -1.4px;
+  font-size: clamp(42px, 6vw, 96px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
 }
 
 .heading-2 {
-  font-size: 44px;
-  line-height: 1.12;
-  letter-spacing: -1px;
+  font-size: clamp(34px, 4.6vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.035em;
 }
 
 .heading-3 {
-  font-size: 34px;
-  line-height: 1.18;
-  letter-spacing: -0.6px;
+  font-size: clamp(26px, 3.2vw, 44px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.herog,
+.heading-4,
+.heading-5,
+.heading-6 {
+  font-family: var(--font-sans);
+  color: var(--ink-950);
+  font-weight: 600;
+  text-wrap: balance;
 }
 
 .heading-4 {
-  font-size: 28px;
+  font-size: clamp(21px, 2vw, 26px);
   line-height: 1.2;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.022em;
 }
 
 .heading-5 {
-  font-size: 22px;
-  line-height: 1.25;
-  letter-spacing: -0.2px;
+  font-size: clamp(18px, 1.5vw, 20px);
+  line-height: 1.3;
+  letter-spacing: -0.018em;
 }
 
 .heading-6 {
-  font-size: 18px;
-  line-height: 1.3;
-  letter-spacing: -0.1px;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
 }
 
-@media (max-width: 768px) {
-  .hero {
-    font-size: 52px;
-    letter-spacing: -1.4px;
-  }
-
-  .hero-2 {
-    font-size: 42px;
-    letter-spacing: -1px;
-  }
-
-  .heading-1 {
-    font-size: 40px;
-    letter-spacing: -0.8px;
-  }
-
-  .heading-2 {
-    font-size: 32px;
-    letter-spacing: -0.6px;
-  }
-
-  .heading-3 {
-    font-size: 26px;
-    letter-spacing: -0.4px;
-  }
+/*
+  Italic emphasis is part of the editorial voice, but it is not a colour cue.
+  Cobalt is reserved for structure (blocks, rules, one action); a sentence that
+  paints a single word blue is the tell this design removes.
+*/
+.serif-italic,
+.heading-1 em,
+.heading-2 em,
+.heading-3 em,
+.hero em,
+.hero-2 em {
+  font-style: italic;
+  color: inherit;
+  letter-spacing: -0.01em;
 }
 
 .subheading-x-large {
   font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 1.2px;
-  font-family: var(--font-inter);
+  line-height: 28px;
+  font-family: var(--font-sans);
 }
 
 .subheading-large {
   font-size: 18px;
-  line-height: 24px;
-  letter-spacing: 1.2px;
-  font-family: var(--font-inter);
+  line-height: 26px;
+  font-family: var(--font-sans);
 }
 
 .subheading-medium {
   font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 1.2px;
-  font-family: var(--font-inter);
+  line-height: 24px;
+  font-family: var(--font-sans);
 }
 
 .subheading-small {
   font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.8px;
-  font-family: var(--font-inter);
+  line-height: 21px;
+  font-family: var(--font-sans);
 }
 
 .subheading-x-small {
-  font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0.8px;
-  font-family: var(--font-inter);
+  font-size: 13px;
+  line-height: 19px;
+  font-family: var(--font-sans);
 }
 
 .paragraph-2x-large {
-  font-size: 24px;
-  line-height: 40px;
-  letter-spacing: -0.44px;
-  font-family: var(--font-inter);
+  font-size: clamp(19px, 1.9vw, 23px);
+  line-height: 1.5;
+  letter-spacing: -0.018em;
+  font-family: var(--font-sans);
+  text-wrap: pretty;
 }
 
 .paragraph-x-large {
-  font-size: 21px;
-  line-height: 32px;
-  letter-spacing: -0.32px;
-  font-family: var(--font-inter);
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.6;
+  letter-spacing: -0.012em;
+  font-family: var(--font-sans);
   color: var(--ink-500);
+  text-wrap: pretty;
 }
 
 .paragraph-large {
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: -0.26px;
-  font-family: var(--font-inter);
+  font-size: 17px;
+  line-height: 1.62;
+  letter-spacing: -0.011em;
+  font-family: var(--font-sans);
+  text-wrap: pretty;
 }
 
 .paragraph-medium {
   font-size: 16px;
-  line-height: 28px;
-  letter-spacing: -0.18px;
-  font-family: var(--font-inter);
+  line-height: 1.65;
+  letter-spacing: -0.008em;
+  font-family: var(--font-sans);
+  text-wrap: pretty;
 }
 
 .paragraph-small {
   font-size: 14px;
-  line-height: 22px;
-  letter-spacing: -0.08px;
-  font-family: var(--font-inter);
+  line-height: 1.6;
+  letter-spacing: -0.004em;
+  font-family: var(--font-sans);
+  text-wrap: pretty;
 }
 
 .paragraph-x-small {
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 0px;
-  font-family: var(--font-inter);
+  font-size: 13px;
+  line-height: 1.55;
+  font-family: var(--font-sans);
+  text-wrap: pretty;
 }
 
 .label-large {
-  font-family: var(--font-dm-sans);
-  font-size: 18px;
+  font-family: var(--font-sans);
+  font-size: 16px;
   line-height: 24px;
-  letter-spacing: -0.24px;
-  font-weight: 500;
+  letter-spacing: -0.012em;
+  font-weight: 600;
 }
 
 .label-medium {
-  font-family: var(--font-dm-sans);
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.18px;
-  font-weight: 500;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.008em;
+  font-weight: 600;
 }
 
 .label-small {
-  font-family: var(--font-dm-sans);
-  font-size: 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
   line-height: 20px;
-  letter-spacing: -0.08px;
+  letter-spacing: -0.004em;
+  font-weight: 500;
 }
 
 .label-x-small {
-  font-family: var(--font-dm-sans);
+  font-family: var(--font-sans);
   font-size: 12px;
-  line-height: 16px;
-  letter-spacing: 0px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
 }
 
 .eyebrow {
-  font-family: var(--font-inter);
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-600);
+}
+
+.eyebrow-inverse {
+  color: rgba(244, 241, 234, 0.72);
+}
+
+.eyebrow-inverse::before {
+  background: var(--accent-400);
+}
+
+/* Small caps-style microlabels for indices, meta and captions. */
+.mono {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+.mono-lg {
+  font-family: var(--font-sans);
   font-size: 13px;
   line-height: 20px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: var(--accent-600);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Columns of figures: ledger rows, stats, tables. */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }

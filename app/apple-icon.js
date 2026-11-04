@@ -13,13 +13,13 @@ export default async function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#0a0a0c",
+          backgroundColor: "#0e0e0c",
         }}
       >
         <svg width="112" height="112" viewBox="0 0 40 40" fill="none">
-          <rect x="13" y="10" width="5" height="21" rx="2" fill="#ffffff" />
-          <path d="M18 10C25 10 28 12.6 28 16.3C28 20 25 22.4 18 22.4Z" fill="#ffffff" />
-          <circle cx="29" cy="12" r="3.2" fill="#2563eb" />
+          <rect x="13" y="10" width="4.6" height="21" rx="1.4" fill="#f4f1ea" />
+          <path d="M17.6 10C24.6 10 27.6 12.6 27.6 16.3C27.6 20 24.6 22.4 17.6 22.4Z" fill="#f4f1ea" />
+          <circle cx="28.8" cy="12" r="3" fill="#1d2bff" />
         </svg>
       </div>
     ),

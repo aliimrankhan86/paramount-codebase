@@ -3,74 +3,148 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 52px;
-  min-height: 52px;
-  padding: 0 26px;
+  height: 54px;
+  min-height: 54px;
+  padding: 0 28px;
   background: var(--ink-950);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 24px;
-  letter-spacing: -0.18px;
-  font-family: var(--font-dm-sans);
+  letter-spacing: -0.01em;
+  font-family: var(--font-sans);
   border-radius: var(--border-radius-pill);
-  color: var(--white);
-  transition: all 0.2s var(--ease-out);
-  border: 1.5px solid transparent;
-  gap: 8px;
+  color: var(--paper);
+  transition: background-color var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out),
+    color var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
+  border: 1px solid transparent;
+  gap: 10px;
   cursor: pointer;
+  white-space: nowrap;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
 }
 
 [class^="button"]:hover {
-  background: var(--ink-800);
-  transform: translateY(-1px);
+  background: var(--accent-600);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+[class^="button"]:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 [class^="button"][disabled],
 [class^="button"].disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   pointer-events: none;
   transform: none;
+  box-shadow: none;
 }
 
 [class^="button"] svg {
-  stroke: var(--white);
-  width: 20px;
-  height: 20px;
+  stroke: currentColor;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform var(--duration) var(--ease-out);
+}
+
+[class^="button"]:hover svg {
+  transform: translateX(3px);
 }
 
 .button-stroke {
-  background: none;
-  box-shadow: 0 0 0 1.5px var(--ink-200) inset;
+  background: transparent;
+  border-color: var(--line-strong);
   color: var(--ink-950);
-}
-
-.button-stroke svg {
-  stroke: var(--ink-950);
 }
 
 .button-stroke:hover {
-  box-shadow: 0 0 0 1.5px var(--ink-950) inset;
-  background: var(--white);
+  background: var(--ink-950);
+  border-color: var(--ink-950);
+  color: var(--paper);
+  box-shadow: none;
 }
 
-.button-white {
-  background: var(--white);
+.button-inverse {
+  background: var(--paper);
   color: var(--ink-950);
 }
 
-.button-white:hover {
-  background: var(--ink-100);
+.button-inverse:hover {
+  background: var(--accent-600);
+  color: var(--white);
 }
 
-.button-white svg {
-  stroke: var(--ink-950);
+.button-accent {
+  background: var(--accent-600);
+  color: var(--white);
+}
+
+.button-accent:hover {
+  background: var(--accent-800);
+}
+
+.button-outline-inverse {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--line-inverse);
+}
+
+.button-outline-inverse:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink-950);
+  box-shadow: none;
+}
+
+.button-ghost {
+  background: transparent;
+  color: var(--ink-950);
+  padding: 0;
+  height: auto;
+  min-height: 0;
+  border-radius: 0;
+}
+
+.button-ghost:hover {
+  background: transparent;
+  box-shadow: none;
+  color: var(--accent-600);
+  transform: none;
 }
 
 .button-small {
   height: 44px;
   min-height: 44px;
   padding: 0 20px;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.08px;
+  font-size: 13px;
+  gap: 8px;
+}
+
+.button-small svg {
+  width: 15px;
+  height: 15px;
+}
+
+.button-large {
+  height: 62px;
+  min-height: 62px;
+  padding: 0 34px;
+  font-size: 16px;
+}
+
+.button-block {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  [class^="button"] {
+    height: 52px;
+    min-height: 52px;
+    padding: 0 22px;
+  }
 }

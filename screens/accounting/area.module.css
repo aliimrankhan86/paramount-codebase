@@ -1,0 +1,232 @@
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+
+/* ---- In-page index ---- */
+
+.index {
+  position: sticky;
+  top: calc(var(--header-height) + 32px);
+  border-top: 2px solid var(--ink-950);
+  padding-top: 18px;
+}
+
+.indexTitle {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.indexList {
+  margin-top: 16px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.indexList a {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ink-600);
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s var(--ease-out);
+}
+
+.indexList a:hover,
+.indexList a:focus-visible {
+  color: var(--accent-600);
+}
+
+.indexNum {
+  color: var(--ink-400);
+  flex: none;
+}
+
+/* ---- Body ---- */
+
+.intro {
+  max-width: 30ch;
+  margin-bottom: 56px;
+}
+
+.service {
+  scroll-margin-top: calc(var(--header-height) + 32px);
+  padding: 36px 0 40px;
+  border-top: 1px solid var(--line);
+}
+
+.serviceHead {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.serviceNum {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-400);
+}
+
+.serviceTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.08;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.serviceSummary {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-600);
+  max-width: 62ch;
+}
+
+.includes {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.includesLabel {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.includes ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.includes li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-700);
+}
+
+.includes li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 1px;
+  background: var(--accent-600);
+}
+
+.serviceCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-950);
+  border-bottom: 1px solid var(--ink-300);
+  padding-bottom: 3px;
+  transition: color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+}
+
+.serviceCta svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.serviceCta:hover,
+.serviceCta:focus-visible {
+  color: var(--accent-600);
+  border-bottom-color: var(--accent-600);
+}
+
+.serviceCta:hover svg {
+  transform: translateX(3px);
+}
+
+/* ---- Other areas ---- */
+
+.otherSection {
+  background: var(--paper-2);
+}
+
+.otherTitle {
+  margin-bottom: 24px;
+}
+
+.otherList {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--ink-200);
+}
+
+.otherList a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ink-200);
+  transition: color 0.2s var(--ease-out);
+}
+
+.otherName {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  letter-spacing: -0.018em;
+}
+
+.otherCount {
+  font-size: 13px;
+  color: var(--ink-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.otherList a:hover {
+  color: var(--accent-600);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .index {
+    position: static;
+  }
+
+  .indexList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 20px;
+  }
+
+  .includes {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}

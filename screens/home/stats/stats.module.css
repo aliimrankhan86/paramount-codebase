@@ -1,0 +1,28 @@
+/* No heading, no hairline, no label column. Four figures on ruled stock. */
+.section {
+  padding: clamp(28px, 3vw, 44px) 0 clamp(32px, 3.5vw, 56px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 48px);
+}
+
+.item {
+  padding-top: 16px;
+  border-top: 2px solid var(--ink-950);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -2,6 +2,74 @@
 
 Running changelog for paramountconsultants.online. Updated on every push.
 
+## Launch gates
+
+- **AML supervision (MLR 2017) — open.** The accounting practice needs a solicitor to
+  confirm the correct supervisory position and the wording used on the site before
+  launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
+  current accounting disclaimer until that advice is settled.
+
+## 2026-11-04 — Technology photography
+
+- Replaced the placeholder art with four Pexels photographs (free for commercial use):
+  circuit board on the home hero, server rack in the AI section, logic-board die on
+  `/contact`, and a cabinet row as the `/accounting` banner.
+- All four run through one grade (88% desaturation, +10% contrast, warm highlights) so
+  they read as a single commissioned set rather than unrelated stock.
+- Exported at the exact frame ratios: 1600×1200, 1600×2000, 1600×1600, 2520×1080.
+- Alt text and caption notes rewritten to describe the new images; the `/accounting`
+  banner previously had no image and now has a `src`.
+
+## 2026-11-04 — Bold editorial pass
+
+- Type: display scale widened to `clamp(3.25rem, 10vw, 12rem)` at -0.05em tracking, with
+  the heading tiers enlarged to match. Boldness comes from scale and tight tracking only;
+  Instrument Serif ships weight 400, so no faux-bold anywhere.
+- Cobalt is now structural rather than decorative: a full-bleed solid band between the hero
+  and the stats, and the footer's legal strip. Removed every "one word in blue" emphasis
+  across the site; italic emphasis keeps its own colour.
+- Home rhythm rebuilt: hero → cobalt statement → stat ledger → services → ink AI section →
+  full-bleed client marquee → tall intro → values → approach → CTA. Added section variants
+  (`section-tall`, `section-break`, `section-flush`, `section-bleed`, `section-unruled`) so
+  not every band is a hairline plus the same padding.
+- Motion: headings reveal line-by-line out of a mask (`MaskedLines`); body copy keeps a
+  short fade; images use one frame. Fixed an observer bug where the translated line sat
+  outside its own `overflow: hidden` mask and never fired `whileInView`.
+- Images: single `Figure` component (frame, index tile, two-part caption, paper/ink/accent
+  tones, ruled placeholder). Applied on home, `/services`, `/contact` and `/accounting`.
+- Footer rebuilt as a masthead: oversized wordmark, inline index row, three detail clusters,
+  full-bleed cobalt legal strip.
+- Hero copy column now bottom-aligns to the figure caption line instead of floating.
+- Contact form no longer sits in a white card; it is a ruled column on the paper stock.
+  The message prompt now adapts to the chosen practice (technology vs accounting) without
+  touching the `nature` option values or the n8n webhook.
+- Footer small text raised from `--ink-500` to `--ink-600` so 12px legal copy clears 4.5:1
+  on the `--paper-2` background.
+
+## 2026-11-04 — Services index and navigation
+
+- Journey audit found the gap: the nav said "Technology & AI" and `/services` listed only
+  the six technology services, so "what does Paramount offer?" had no single answer.
+- Nav item renamed to "Services" (same route). Footer index updated; the footer's technology
+  column is now labelled "Technology & AI" so there are not two things called Services.
+- `/services` is now the complete index: six technology services, then all fifteen accounting
+  services grouped by their four areas, with an in-page jump nav and a link into `/accounting`.
+- Removed the decorative material image from `/services` so the two practices sit adjacent.
+- Metadata and the `ItemList` schema now cover the accounting services as well.
+- Home services link changed from "All services" to "See every service".
+
+## 2026-11-04 — Density pass
+
+- Measured the vertical space first: Intro had 390px of pure padding, CTA 367px, Approach
+  294px, and every section repeated 86–130px top and bottom.
+- Section rhythm reduced to 96px default, 64px tight, 128px tall (mobile 44/32/56).
+- Hero image 4:5 → 4:3 and hero padding cut; hero section 1069px → 806px.
+- Stats, service rows, AI capability items, client strip, values, approach and footer all
+  tightened at the same ratios. Type scale unchanged.
+- Page height at 1440: 10,018px → 8,342px (−17%). At 390: 11,245px → 10,323px.
+- Service rows: split the single hover effect from three (background + accent bar + filled
+  button) down to the arrow only, and baseline-aligned the description with the title.
+
 ## 2026-08-18 — Initial rebuild commit
 
 First commit of the rebuilt site. The repo started as a leftover Next.js e-commerce

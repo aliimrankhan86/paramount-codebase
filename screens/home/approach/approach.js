@@ -1,6 +1,7 @@
 import React from "react";
 import cn from "classnames";
 import styles from "./approach.module.css";
+import MaskedLines from "@/components/motion/masked-lines";
 import Reveal from "@/components/motion/reveal";
 
 const pillars = [
@@ -28,18 +29,25 @@ const pillars = [
 
 export default function Approach() {
   return (
-    <section id="approach" className={cn("section", "section-tint")}>
+    <section id="approach" className={cn("section", "section-paper-2", styles.section)}>
       <div className={cn("container")}>
-        <Reveal className={styles.heading}>
-          <div className="eyebrow">How we work</div>
-          <h2 className="heading-2">A small team, on purpose</h2>
-        </Reveal>
+        <div className={styles.headRow}>
+          <MaskedLines
+            className={cn("heading-2", styles.heading)}
+            lines={[<>A small team,</>, <>on purpose.</>]}
+          />
+          <Reveal delay={0.05} y={10}>
+            <p className={cn("paragraph-large", styles.sub)}>
+              Four commitments that shape every engagement, from the first call to the post-launch
+              review.
+            </p>
+          </Reveal>
+        </div>
 
         <div className={styles.grid}>
           {pillars.map((pillar, index) => (
-            <Reveal key={pillar.title} className={styles.item} delay={index * 0.06}>
-              <span className={styles.index}>{String(index + 1).padStart(2, "0")}</span>
-              <h3 className={cn("heading-6", styles.title)}>{pillar.title}</h3>
+            <Reveal key={pillar.title} className={styles.item} delay={index * 0.05} y={10}>
+              <h3 className={styles.title}>{pillar.title}</h3>
               <p className={cn("paragraph-small", styles.description)}>{pillar.description}</p>
             </Reveal>
           ))}

@@ -1,0 +1,81 @@
+.wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 70s linear infinite;
+}
+
+.wrap:hover .track {
+  animation-play-state: paused;
+}
+
+.strip {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+  white-space: nowrap;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: -0.015em;
+  color: var(--ink-700);
+}
+
+.mark {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-600);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* Display variant: the client strip becomes the section's visual event. */
+.display .item {
+  gap: clamp(28px, 3.4vw, 56px);
+  padding-right: clamp(28px, 3.4vw, 56px);
+}
+
+.display .name {
+  font-size: clamp(40px, 6vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  color: var(--ink-950);
+}
+
+.display .mark {
+  width: 10px;
+  height: 10px;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .wrap {
+    overflow-x: auto;
+  }
+}

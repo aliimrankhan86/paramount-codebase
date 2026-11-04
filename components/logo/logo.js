@@ -4,10 +4,9 @@ import Link from "next/link";
 import styles from "./logo.module.css";
 
 /**
- * Fixed-tile monogram: a bold "P" on a dark badge, with a single accent node
- * at the shoulder standing in for the "agent" in agentic AI. Same badge is
- * reused for the favicon, apple touch icon and OG image so the mark is
- * identical everywhere it appears, not redrawn per surface.
+ * Monogram: a bold "P" on an ink tile with one cobalt node at the shoulder,
+ * standing in for the agent in agentic AI. The same badge is reused for the
+ * favicon, apple touch icon and OG image.
  */
 export function LogoMark({ className }) {
   return (
@@ -17,10 +16,10 @@ export function LogoMark({ className }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <rect width="40" height="40" rx="9" fill="var(--ink-950)" />
-      <rect x="13" y="10" width="5" height="21" rx="2" fill="#ffffff" />
-      <path d="M18 10C25 10 28 12.6 28 16.3C28 20 25 22.4 18 22.4Z" fill="#ffffff" />
-      <circle cx="29" cy="12" r="3.2" fill="var(--accent-600)" />
+      <rect width="40" height="40" rx="4" fill="var(--ink-950)" />
+      <rect x="13" y="10" width="4.6" height="21" rx="1.4" fill="var(--paper)" />
+      <path d="M17.6 10C24.6 10 27.6 12.6 27.6 16.3C27.6 20 24.6 22.4 17.6 22.4Z" fill="var(--paper)" />
+      <circle cx="28.8" cy="12" r="3" fill="var(--accent-600)" />
     </svg>
   );
 }
