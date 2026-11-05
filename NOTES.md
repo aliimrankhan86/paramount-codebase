@@ -9,6 +9,23 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — DESIGN.md
+
+- Added `DESIGN.md`: the standing design position rather than the chronology. Covers the
+  ground rules, colour and type tokens, layout, the component map, the conventions that
+  were each a fix for a real defect (breadcrumbs, product marks, footer, images), the
+  accessibility floor, recipes for adding products and services, operational gotchas and
+  the definition of done.
+- `CLAUDE.md`, `AGENTS.md` and `README.md` now point at it, so any agent reads the design
+  rules before touching the UI. It is tracked in git, not ignored.
+- It carries its own maintenance rule at the top: verify claims against the code, delete
+  anything stale or unverifiable, and fix the file in the same commit that invalidates it.
+- Two claims were corrected during that first verification pass: sections have no default
+  border (`.section-hairline` adds one, and base styles come from `[class^="section"]`),
+  and only `MaskedLines` has a no-JS fallback — `Reveal` depends on hydration.
+- Recorded as a known exception: `screens/home/hero/slide/slide.module.css` holds four
+  hardcoded dark backgrounds and is imported by nothing.
+
 ## 2026-11-05 — Logo centring, breadcrumb hover
 
 - The PilgrimCompare mark sat left of centre in its black tile: the base `.logo` rule pins
