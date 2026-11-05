@@ -9,6 +9,19 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Real product marks
+
+- Each product now carries its own mark instead of the generic line icon: the Play Store
+  icon for SajdaTime and Point Poker, Voicecake's black SVG, PilgrimCompare's hexagon, and
+  the MetaMind mark already in `public/clients/`. Assets live in `public/products/`; the
+  MetaMind one is referenced from `public/clients/` rather than duplicated.
+- Cards show the mark at 52px, product heroes at 72px, `object-fit: contain`, no tinted
+  tile behind them. The line icons remain as the fallback when a product has no logo.
+- Intrinsic `width`/`height` come from `logoWidth`/`logoHeight` so nothing shifts while
+  the image loads.
+- Point Poker's is a 192px PNG — the largest official source. Fine at 52px, short of
+  retina at 72px.
+
 ## 2026-11-05 — Four more products
 
 - Added `/products/sajdatime`, `/products/voicecake`, `/products/metamind-ai` and

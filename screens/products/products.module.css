@@ -44,6 +44,16 @@
   stroke: var(--accent-600);
 }
 
+/* Real product mark: no tile, no tint, just the brand as it ships. */
+.logo {
+  display: block;
+  height: 52px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  object-position: left center;
+}
+
 .category {
   color: var(--accent-700);
 }

@@ -22,7 +22,22 @@ export default function ProductsIndexPage() {
             {products.map((product, index) => (
               <Reveal key={product.slug} delay={index * 0.06}>
                 <Link href={`/products/${product.slug}`} className={styles.card}>
-                  <div className={styles.iconWrap}>{icons[product.icon]}</div>
+                  {product.logo ? (
+                    // Brand mark, served at its own intrinsic size. next/image
+                    // adds nothing for a 2–13 KB logo and cannot size an SVG.
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={product.logo}
+                      alt=""
+                      width={product.logoWidth}
+                      height={product.logoHeight}
+                      className={styles.logo}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div className={styles.iconWrap}>{icons[product.icon]}</div>
+                  )}
                   <div className={cn("label-small", styles.category)}>{product.category}</div>
                   <h2 className={cn("heading-5", styles.title)}>{product.name}</h2>
                   <p className={cn("paragraph-medium", styles.description)}>

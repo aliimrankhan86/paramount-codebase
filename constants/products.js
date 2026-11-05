@@ -11,6 +11,9 @@ const POINT_POKER = "https://www.pointpoker.app";
 const products = [
   {
     slug: "point-poker",
+    logo: "/products/point-poker.png",
+    logoWidth: 192,
+    logoHeight: 192,
     name: "Point Poker",
     icon: "Cards",
     url: `${POINT_POKER}/`,
@@ -83,6 +86,9 @@ const products = [
 
   {
     slug: "sajdatime",
+    logo: "/products/sajdatime.png",
+    logoWidth: 512,
+    logoHeight: 512,
     name: "SajdaTime",
     icon: "NativeApp",
     url: "https://play.google.com/store/apps/details?id=com.sajdatime.app",
@@ -135,6 +141,9 @@ const products = [
 
   {
     slug: "voicecake",
+    logo: "/products/voicecake.svg",
+    logoWidth: 275,
+    logoHeight: 188,
     name: "Voicecake",
     icon: "AutomationBolt",
     url: "https://voicecake.co.uk/",
@@ -172,6 +181,9 @@ const products = [
 
   {
     slug: "metamind-ai",
+    logo: "/clients/mind-meta-ai.svg",
+    logoWidth: 733,
+    logoHeight: 816,
     name: "MetaMind AI",
     icon: "Sparkle",
     category: "AI software",
@@ -187,6 +199,9 @@ const products = [
 
   {
     slug: "pilgrimcompare",
+    logo: "/products/pilgrimcompare.png",
+    logoWidth: 263,
+    logoHeight: 312,
     name: "PilgrimCompare",
     icon: "Layers",
     url: "https://pilgrimcompare.com/",

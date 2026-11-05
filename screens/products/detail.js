@@ -56,7 +56,19 @@ export default function ProductDetailPage({ product }) {
       <section className={cn("section", styles.hero)}>
         <div className={cn("container", "container-narrow")}>
           <Reveal className={styles.heroInner}>
-            <div className={styles.iconWrap}>{icons[product.icon]}</div>
+            {product.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={product.logo}
+                alt=""
+                width={product.logoWidth}
+                height={product.logoHeight}
+                className={styles.logo}
+                decoding="async"
+              />
+            ) : (
+              <div className={styles.iconWrap}>{icons[product.icon]}</div>
+            )}
             <div className="eyebrow">{product.category}</div>
             <h1 className={cn("heading-1", styles.title)}>{product.name}</h1>
             <p className={cn("paragraph-x-large", styles.intro)}>{product.intro}</p>

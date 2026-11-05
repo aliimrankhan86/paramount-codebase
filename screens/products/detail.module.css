@@ -26,6 +26,16 @@
   stroke: var(--accent-600);
 }
 
+/* Real product mark, sized for presence without competing with the title. */
+.logo {
+  display: block;
+  height: 72px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  object-position: center;
+}
+
 .title {
   color: var(--ink-950);
 }
