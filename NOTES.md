@@ -9,6 +9,14 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — PilgrimCompare logo on ink
+
+- The gold hexagon has a white cut-out, so on paper it read as a pale smudge. Products can
+  now set `logoBackdrop: "ink"`, which renders the mark on a black rounded tile at every
+  size: 52px on the index card, 72px in the product hero, 36px in the "More products" strip.
+- Only PilgrimCompare sets it. The other four marks carry their own contrast and stay
+  untitled, as before.
+
 ## 2026-11-05 — Product breadcrumb
 
 - "All products" was a back link at the very bottom of every product page, underneath

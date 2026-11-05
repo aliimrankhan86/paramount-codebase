@@ -73,7 +73,9 @@ export default function ProductDetailPage({ product }) {
                 alt=""
                 width={product.logoWidth}
                 height={product.logoHeight}
-                className={styles.logo}
+                className={cn(styles.logo, {
+                  [styles.logoOnInk]: product.logoBackdrop === "ink",
+                })}
                 decoding="async"
               />
             ) : (
@@ -212,7 +214,9 @@ export default function ProductDetailPage({ product }) {
                       alt=""
                       width={item.logoWidth}
                       height={item.logoHeight}
-                      className={styles.moreLogo}
+                      className={cn(styles.moreLogo, {
+                        [styles.moreLogoOnInk]: item.logoBackdrop === "ink",
+                      })}
                       loading="lazy"
                       decoding="async"
                     />

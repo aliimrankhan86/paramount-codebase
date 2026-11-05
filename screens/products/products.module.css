@@ -54,6 +54,16 @@
   object-position: left center;
 }
 
+/* Marks with a light or cut-out figure need their own ground to read on paper. */
+.logoOnInk {
+  width: 52px;
+  height: 52px;
+  padding: 9px;
+  box-sizing: border-box;
+  background: var(--ink-950);
+  border-radius: 10px;
+}
+
 .category {
   color: var(--accent-700);
 }

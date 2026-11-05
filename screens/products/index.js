@@ -31,7 +31,9 @@ export default function ProductsIndexPage() {
                       alt=""
                       width={product.logoWidth}
                       height={product.logoHeight}
-                      className={styles.logo}
+                      className={cn(styles.logo, {
+                        [styles.logoOnInk]: product.logoBackdrop === "ink",
+                      })}
                       loading="lazy"
                       decoding="async"
                     />

@@ -248,6 +248,8 @@ const products = [
     logo: "/products/pilgrimcompare.png",
     logoWidth: 263,
     logoHeight: 312,
+    // Gold mark with a white cut-out: unreadable on paper, but strong on ink.
+    logoBackdrop: "ink",
     name: "PilgrimCompare",
     icon: "Layers",
     url: "https://pilgrimcompare.com/",
