@@ -76,9 +76,6 @@ Rules that hold:
 - Components reference semantic tokens, never literals. Literal colours exist only in
   `variables.css` and the generated icons (`app/icon.svg`, `app/apple-icon.js`,
   `app/opengraph-image.js`), which must be updated together with `--accent-600`.
-  One exception: four dark backgrounds in `screens/home/hero/slide/slide.module.css`,
-  a component nothing currently imports. Do not add more; if you touch that file,
-  tokenise it or delete it.
 - `--ink-500` is tuned so secondary text clears **4.5:1 on `--paper-2`**, not just on
   `--paper`. Do not lighten it. `--ink-400` is below AA for text — use it for borders
   only.

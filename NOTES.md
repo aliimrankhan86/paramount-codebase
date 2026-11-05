@@ -9,6 +9,22 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Clean sweep before parking
+
+- Removed the last two unreferenced files: `screens/home/hero/slide/` (an unimported
+  carousel slide that held four hardcoded dark backgrounds) and `public/art/paper-form.jpg`.
+  Nothing imported either.
+- `DESIGN.md` lost its literal-colour exception for that slide, since the file no longer
+  exists. The colour rule now has no exceptions beyond the generated icons.
+- Known and deliberately left: `digital-marketing.webp` carries Instagram / LinkedIn / Meta
+  / Mail marks and a magenta palette; `it-project-management.webp` has "Programme Delivery"
+  rendered into the image. Both are supplied kit assets with no replacement available, so
+  they stay until new art exists. Four service illustrations are ~505px wide, which is fine
+  at the 500px render size but soft on retina.
+- Verified: build passes, every route prerenders, lint shows only the two known `<img>`
+  warnings, axe reports zero violations across 21 routes at 1440px and 390px, no overflow
+  at 768 / 1920.
+
 ## 2026-11-05 — DESIGN.md
 
 - Added `DESIGN.md`: the standing design position rather than the chronology. Covers the
