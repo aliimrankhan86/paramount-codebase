@@ -9,6 +9,14 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Logo centring, breadcrumb hover
+
+- The PilgrimCompare mark sat left of centre in its black tile: the base `.logo` rule pins
+  marks to `object-position: left center` for left-aligned layouts, and the tile inherited
+  it. Both ink variants now centre.
+- Breadcrumb links: weight raised to 500 at rest, and hover/focus now draws a 2px underline
+  at 4px offset in the accent colour. Weight is fixed so nothing nudges on hover.
+
 ## 2026-11-05 — One breadcrumb, everywhere
 
 - Three hand-rolled breadcrumbs had drifted: page hero, service detail, product detail. The

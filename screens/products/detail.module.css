@@ -290,6 +290,7 @@
   box-sizing: border-box;
   background: var(--ink-950);
   border-radius: 7px;
+  object-position: center;
 }
 
 .moreCategory {

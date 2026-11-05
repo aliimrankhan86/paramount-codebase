@@ -62,6 +62,8 @@
   box-sizing: border-box;
   background: var(--ink-950);
   border-radius: 10px;
+  /* The base `.logo` pins marks left; inside its own tile the mark is centred. */
+  object-position: center;
 }
 
 .category {

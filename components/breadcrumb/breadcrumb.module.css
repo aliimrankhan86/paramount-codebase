@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   font-family: var(--font-sans);
   font-size: 12px;
+  font-weight: 500;
   line-height: 18px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -13,10 +14,18 @@
 
 .breadcrumb a {
   color: var(--ink-500);
+  text-decoration: none;
   transition: color 0.2s var(--ease-out);
 }
 
+/*
+  Hover echoes the site's link-arrow affordance: colour shift plus a firm rule
+  under the word. Weight is already 500 at rest, so the underline is what changes.
+*/
 .breadcrumb a:hover,
 .breadcrumb a:focus-visible {
   color: var(--accent-600);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
