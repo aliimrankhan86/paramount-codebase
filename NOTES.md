@@ -9,6 +9,12 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Marquee keyboard access
+
+- The client marquee on `/` clips an overflowing track, which axe reports as a scrollable
+  region no keyboard user can reach. The wrapper is now `tabIndex={0}` with a visible
+  `:focus-visible` outline, so it can be scrolled from the keyboard.
+
 ## 2026-11-05 — Company identity
 
 - `constants/site.js` gains `legalName` ("Paramount Consultants Limited") and `director`

@@ -1,3 +1,12 @@
+/*
+  Focusable so keyboard users can scroll the overflowing track themselves.
+  The marquee is clipped, so without this the content is only reachable by pointer.
+*/
+.wrap:focus-visible {
+  outline: 2px solid var(--accent-600);
+  outline-offset: 3px;
+}
+
 .wrap {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);

@@ -9,6 +9,7 @@ export default function NameMarquee({ className, display = false }) {
       className={cn(styles.wrap, { [styles.display]: display }, className)}
       role="group"
       aria-label="Organisations we've worked with"
+      tabIndex={0}
     >
       <div className={styles.track}>
         {[0, 1].map((copy) => (
