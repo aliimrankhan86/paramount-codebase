@@ -57,6 +57,14 @@ export default function ProductDetailPage({ product }) {
     <Layout>
       <section className={cn("section", styles.hero)}>
         <div className={cn("container", "container-narrow")}>
+          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/products">Products</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{product.name}</span>
+          </nav>
+
           <Reveal className={styles.heroInner}>
             {product.logo ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -215,14 +223,6 @@ export default function ProductDetailPage({ product }) {
               </Reveal>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section className={cn("section-tight", styles.backSection)}>
-        <div className={cn("container", "container-narrow")}>
-          <Link href="/products" className={styles.backLink}>
-            {icons.ArrowLeft} All products
-          </Link>
         </div>
       </section>
 

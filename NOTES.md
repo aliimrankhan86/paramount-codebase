@@ -9,6 +9,14 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Product breadcrumb
+
+- "All products" was a back link at the very bottom of every product page, underneath
+  the "More products" grid — after 3,000px of scrolling. It is now a breadcrumb at the
+  top of the hero: Home / Products / <Product>, matching the service detail pages.
+- The bottom link is gone. "More products" already carries onward navigation, so the
+  trailing duplicate was noise.
+
 ## 2026-11-05 — MetaMind AI page written
 
 - No public source exists for MetaMind AI: nothing in search engines, no Play listing, and

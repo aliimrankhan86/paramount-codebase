@@ -3,6 +3,34 @@
   text-align: center;
 }
 
+/*
+  Breadcrumb sits above the centred hero, left-aligned to the same column, so the
+  way back to the range is available before the first scroll rather than after it.
+  Matches the service detail breadcrumb.
+*/
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(20px, 2.4vw, 32px);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+
+.breadcrumb a {
+  color: var(--ink-500);
+  transition: color 0.2s var(--ease-out);
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  color: var(--accent-600);
+}
+
 .heroInner {
   display: flex;
   flex-direction: column;
@@ -291,25 +319,6 @@
   .moreGrid {
     grid-template-columns: 1fr;
   }
-}
-
-.backSection {
-  padding-top: 0;
-}
-
-.backLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-dm-sans);
-  font-weight: 600;
-  color: var(--ink-700);
-}
-
-.backLink svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--ink-700);
 }
 
 @media (max-width: 900px) {
