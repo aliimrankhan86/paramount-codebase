@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
-import Link from "next/link";
 import styles from "./page-hero.module.css";
+import Breadcrumb from "@/components/breadcrumb/breadcrumb";
 import Reveal from "@/components/motion/reveal";
 import MaskedLines from "@/components/motion/masked-lines";
 
@@ -11,11 +11,7 @@ export default function PageHero({ eyebrow, title, titleLines, subtitle, meta, c
       <div className={cn("container")}>
         <Reveal className={styles.inner}>
           <div className={styles.topRow}>
-            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-              <Link href="/">Home</Link>
-              <span aria-hidden="true">/</span>
-              <span aria-current="page">{eyebrow}</span>
-            </nav>
+            <Breadcrumb trail={[{ label: "Home", href: "/" }, { label: eyebrow }]} />
             {meta && <span className={styles.meta}>{meta}</span>}
           </div>
 

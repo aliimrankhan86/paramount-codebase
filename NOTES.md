@@ -9,6 +9,17 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — One breadcrumb, everywhere
+
+- Three hand-rolled breadcrumbs had drifted: page hero, service detail, product detail. The
+  product one was the worst — inside `container-narrow`, so it started 370px right of every
+  other breadcrumb on the site.
+- Replaced all three with `components/breadcrumb/breadcrumb.js`, which takes a trail of
+  `{ label, href }`. Duplicated CSS removed from the page hero and service detail modules.
+- The product hero now uses the same top padding as the service detail hero, so the
+  breadcrumb sits on the same baseline on both. Measured: every breadcrumb on the site now
+  starts at x=132, y=148 at 1440, and x=20, y=124 at 390.
+
 ## 2026-11-05 — PilgrimCompare logo on ink
 
 - The gold hexagon has a white cut-out, so on paper it read as a pale smudge. Products can

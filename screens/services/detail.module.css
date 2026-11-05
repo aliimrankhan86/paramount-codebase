@@ -10,27 +10,6 @@
   gap: 24px;
 }
 
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-500);
-}
-
-.breadcrumb a {
-  color: var(--ink-500);
-  transition: color 0.2s var(--ease-out);
-}
-
-.breadcrumb a:hover {
-  color: var(--accent-600);
-}
-
 .metaRow {
   display: flex;
   align-items: center;

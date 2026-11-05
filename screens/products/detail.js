@@ -1,6 +1,7 @@
 import Link from "next/link";
 import cn from "classnames";
 import Layout from "@/components/Layout";
+import Breadcrumb from "@/components/breadcrumb/breadcrumb";
 import CtaBand from "@/components/cta-band/cta-band";
 import Reveal from "@/components/motion/reveal";
 import icons from "@/constants/icons";
@@ -56,15 +57,18 @@ export default function ProductDetailPage({ product }) {
   return (
     <Layout>
       <section className={cn("section", styles.hero)}>
-        <div className={cn("container", "container-narrow")}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
-            <span aria-hidden="true">/</span>
-            <Link href="/products">Products</Link>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">{product.name}</span>
-          </nav>
+        <div className={cn("container")}>
+          <Breadcrumb
+            className={styles.breadcrumb}
+            trail={[
+              { label: "Home", href: "/" },
+              { label: "Products", href: "/products" },
+              { label: product.name },
+            ]}
+          />
+        </div>
 
+        <div className={cn("container", "container-narrow")}>
           <Reveal className={styles.heroInner}>
             {product.logo ? (
               // eslint-disable-next-line @next/next/no-img-element

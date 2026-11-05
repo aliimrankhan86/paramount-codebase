@@ -1,6 +1,7 @@
 import Link from "next/link";
 import cn from "classnames";
 import Layout from "@/components/Layout";
+import Breadcrumb from "@/components/breadcrumb/breadcrumb";
 import CtaBand from "@/components/cta-band/cta-band";
 import ServiceRow from "@/components/service-row/service-row";
 import Figure from "@/components/figure/figure";
@@ -21,13 +22,13 @@ export default function ServiceDetailPage({ service }) {
       <section className={cn("section", styles.hero)}>
         <div className={cn("container")}>
           <Reveal className={styles.heroInner}>
-            <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-              <Link href="/">Home</Link>
-              <span aria-hidden="true">/</span>
-              <Link href="/services">Services</Link>
-              <span aria-hidden="true">/</span>
-              <span aria-current="page">{service.title}</span>
-            </nav>
+            <Breadcrumb
+              trail={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: service.title },
+              ]}
+            />
 
             <div className={styles.metaRow}>
               <span>Service {String(index + 1).padStart(2, "0")} / 06</span>
