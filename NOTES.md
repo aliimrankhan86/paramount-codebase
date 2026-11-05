@@ -9,6 +9,17 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — MetaMind AI page written
+
+- No public source exists for MetaMind AI: nothing in search engines, no Play listing, and
+  none of twelve candidate domains resolve to it. The page has been written from scratch
+  at the owner's instruction.
+- It is framed as an AI workspace for research and thinking — notes, documents and
+  conversations in one place, answers drawn from that material with the source attached.
+  **This framing is our copy, not sourced fact.** It needs the owner's confirmation
+  before it is treated as accurate.
+- No numbers, dates, client names or pricing are claimed anywhere on the page.
+
 ## 2026-11-05 — SajdaTime copy, cross-product links
 
 - SajdaTime now lists six languages including Bengali, and its structured data carries

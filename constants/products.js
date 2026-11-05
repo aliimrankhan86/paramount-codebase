@@ -198,14 +198,48 @@ const products = [
     logoHeight: 816,
     name: "MetaMind AI",
     icon: "Sparkle",
-    category: "AI software",
+    category: "AI workspace for research and thinking",
     applicationCategory: "BusinessApplication",
-    metaTitle: "MetaMind AI",
+    operatingSystem: "Web browser",
+    metaTitle: "MetaMind AI: An AI Workspace for Research and Thinking",
     metaDescription:
-      "MetaMind AI is AI software created and implemented by Paramount Consultants.",
-    shortDescription: "AI software created and implemented by Paramount Consultants.",
+      "MetaMind AI pulls your notes, documents and conversations into one connected workspace, then answers questions from that material with the source attached. Built by Paramount Consultants.",
+    shortDescription:
+      "An AI workspace that pulls notes, documents and conversations into one connected picture, then answers questions from that material with the source attached.",
     intro:
-      "MetaMind AI is an AI product Paramount Consultants created and implemented.",
+      "Most knowledge work is spread across a dozen tabs: notes in one app, documents in another, half the decisions buried in a chat thread. MetaMind AI puts all of it in one workspace and builds the connections between them, so a question about a project is answered from what you actually wrote rather than from a general model's guess. Paramount Consultants built and implemented the product.",
+    highlights: [
+      { value: "One", label: "Workspace for notes, documents and conversations" },
+      { value: "Cited", label: "Every answer points back to the item it came from" },
+      { value: "Yours", label: "Answers drawn from your material, not the open web" },
+      { value: "Built by us", label: "Designed, implemented and maintained by Paramount" },
+    ],
+    features: [
+      {
+        title: "Everything in one place",
+        body: "Notes, documents, links and conversation transcripts live in a single workspace instead of four apps that do not know about each other.",
+      },
+      {
+        title: "Connected, not filed",
+        body: "Related items are linked as they arrive, so knowledge surfaces itself rather than depending on someone remembering which folder it went into.",
+      },
+      {
+        title: "Ask your own material",
+        body: "Questions are answered from what is in your workspace. When the answer is not there, the product says so instead of filling the gap.",
+      },
+      {
+        title: "Source attached",
+        body: "Every answer cites the note or document behind it, so a claim can be checked in one click before anyone acts on it.",
+      },
+      {
+        title: "Built on agentic foundations",
+        body: "The same coordination layer we build for clients: explicit tool access, permission boundaries and a human checkpoint before anything consequential happens.",
+      },
+      {
+        title: "Implemented, not just installed",
+        body: "We build the product and we run the rollout: importing existing material, setting access, and training the people who will use it.",
+      },
+    ],
     relatedServices: ["agentic-ai", "full-stack-development"],
   },
 
