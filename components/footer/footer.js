@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./footer.module.css";
 import nav from "@/constants/nav";
 import services from "@/constants/services";
+import site from "@/constants/site";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -98,11 +99,17 @@ export default function Footer() {
             acting on anything published here.
           </p>
         </div>
+
+        <p className={styles.company}>
+          {site.legalName} &middot; Director: {site.director}
+        </p>
       </div>
 
       <div className={styles.strip}>
         <div className={cn("container", styles.stripInner)}>
-          <p className={styles.stripText}>&copy; {year} Paramount Consultants</p>
+          <p className={styles.stripText}>
+            &copy; {year} {site.legalName}
+          </p>
           <p className={styles.stripText}>Replies within one working day, Monday to Friday</p>
           <a href="#top" className={styles.backToTop}>
             Back to top

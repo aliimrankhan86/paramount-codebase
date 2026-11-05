@@ -9,6 +9,15 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Company identity
+
+- `constants/site.js` gains `legalName` ("Paramount Consultants Limited") and `director`
+  ("Ali Imran Khan"), set from the owner's instruction.
+- Organisation structured data now carries `legalName` and a `founder` Person node.
+- The footer's copyright line reads "© Paramount Consultants Limited", and a new line
+  above the cobalt strip reads "Paramount Consultants Limited · Director: Ali Imran Khan".
+- The accounting disclaimer is untouched — it is still covered by the open AML gate.
+
 ## 2026-11-05 — Real product marks
 
 - Each product now carries its own mark instead of the generic line icon: the Play Store

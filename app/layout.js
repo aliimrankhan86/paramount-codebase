@@ -42,6 +42,12 @@ const organizationSchema = {
   "@type": "ProfessionalService",
   "@id": `${site.url}/#organization`,
   name: site.name,
+  legalName: site.legalName,
+  founder: {
+    "@type": "Person",
+    name: site.director,
+    jobTitle: "Director",
+  },
   url: site.url,
   logo: {
     "@type": "ImageObject",

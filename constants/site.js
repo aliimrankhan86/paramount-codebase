@@ -2,6 +2,8 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.paramountconsu
 
 export default {
   name: "Paramount Consultants",
+  legalName: "Paramount Consultants Limited",
+  director: "Ali Imran Khan",
   shortName: "Paramount",
   url: siteUrl,
   tagline: "Digital transformation, delivered with precision.",
