@@ -9,6 +9,14 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Current University of East London logo
+
+- The client tile was using UEL's pre-rebrand "UEL" block wordmark. Replaced with the
+  current official lockup (crest, wordmark and "Pioneering Futures since 1898"), taken
+  from `uel.ac.uk/sites/default/files/2025-04/UEL_Logo_Strapline_white.svg` and recoloured
+  white → black for the light grid, since only a knockout version is published.
+- Same file, no path change: `public/clients/university-of-east-london.svg`.
+
 ## 2026-11-05 — Repo cleanup
 
 - Removed the three superseded photographs from `public/art/` (`hero-glass.jpg`,
