@@ -13,8 +13,8 @@ export default function ProductsIndexPage() {
     <Layout>
       <PageHero
         eyebrow="Products"
-        title="Software we build and run ourselves"
-        subtitle="Alongside client work, we build, host and maintain our own products. They are live, free to use, and held to the same standard as anything we deliver for a client."
+        title="Software we build"
+        subtitle="Some of these we run ourselves. Others we designed and implemented for a client and still look after. Every one is live, and held to the same standard as anything else we deliver."
       />
       <section className={cn("section", "section-tight")}>
         <div className={cn("container")}>

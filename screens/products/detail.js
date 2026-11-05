@@ -10,21 +10,26 @@ import styles from "./detail.module.css";
 
 function productSchema(product) {
   const pageUrl = `${site.url}/products/${product.slug}`;
+  const application = {
+    "@type": "SoftwareApplication",
+    "@id": `${pageUrl}#software`,
+    name: product.name,
+    description: product.shortDescription,
+    applicationCategory: product.applicationCategory || "BusinessApplication",
+    publisher: { "@type": "Organization", name: site.name, url: site.url },
+  };
+
+  if (product.url) application.url = product.url;
+  if (product.operatingSystem) application.operatingSystem = product.operatingSystem;
+  if (product.inLanguage) application.inLanguage = product.inLanguage;
+  if (product.free) {
+    application.offers = { "@type": "Offer", price: "0", priceCurrency: "GBP" };
+  }
+
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "@id": `${pageUrl}#software`,
-        name: product.name,
-        url: product.url,
-        description: product.shortDescription,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web browser",
-        inLanguage: ["en", "pt-BR", "ja"],
-        offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
-        publisher: { "@type": "Organization", name: site.name, url: site.url },
-      },
+      application,
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -38,9 +43,13 @@ function productSchema(product) {
 }
 
 export default function ProductDetailPage({ product }) {
-  const related = product.relatedServices
+  const related = (product.relatedServices || [])
     .map((slug) => services.find((service) => service.slug === slug))
     .filter(Boolean);
+  const hasHighlights = Boolean(product.highlights?.length);
+  const hasFeatures = Boolean(product.features?.length);
+  const hasSteps = Boolean(product.steps?.length);
+  const hasBuild = Boolean(product.builtWith?.length);
 
   return (
     <Layout>
@@ -52,84 +61,99 @@ export default function ProductDetailPage({ product }) {
             <h1 className={cn("heading-1", styles.title)}>{product.name}</h1>
             <p className={cn("paragraph-x-large", styles.intro)}>{product.intro}</p>
             <div className={styles.actions}>
-              <a href={product.url} className="button">
-                Open {product.name} {icons.ArrowRight}
-              </a>
-              <a href="#how-it-works" className="button-stroke">
-                How it works
-              </a>
+              {product.url && (
+                <a href={product.url} className="button">
+                  Open {product.name} {icons.ArrowRight}
+                </a>
+              )}
+              {hasSteps && (
+                <a href="#how-it-works" className="button-stroke">
+                  How it works
+                </a>
+              )}
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className={cn("section-tight", styles.highlightsSection)}>
-        <div className={cn("container")}>
-          <dl className={styles.highlights}>
-            {product.highlights.map((item) => (
-              <div key={item.label} className={styles.highlight}>
-                <dt className={cn("heading-3", styles.highlightValue)}>{item.value}</dt>
-                <dd className={cn("paragraph-small", styles.highlightLabel)}>{item.label}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      <section className={cn("section", "section-tight")}>
-        <div className={cn("container")}>
-          <Reveal className={styles.sectionHeading}>
-            <h2 className="heading-3">What it does</h2>
-          </Reveal>
-          <div className={styles.featureGrid}>
-            {product.features.map((feature, index) => (
-              <Reveal key={feature.title} delay={index * 0.05} className={styles.feature}>
-                <h3 className={cn("heading-6", styles.featureTitle)}>{feature.title}</h3>
-                <p className={cn("paragraph-small", styles.featureBody)}>{feature.body}</p>
-                {feature.link && (
-                  <a href={feature.link.href} className={styles.featureLink}>
-                    {feature.link.label} {icons.ArrowRight}
-                  </a>
-                )}
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="how-it-works" className={cn("section", "section-tight", "section-tint")}>
-        <div className={cn("container")}>
-          <Reveal className={styles.sectionHeading}>
-            <h2 className="heading-3">How a session runs</h2>
-          </Reveal>
-          <div className={styles.processGrid}>
-            {product.steps.map((step, index) => (
-              <Reveal key={step.title} delay={index * 0.06} className={styles.processStep}>
-                <span className={styles.processIndex}>{String(index + 1).padStart(2, "0")}</span>
-                <h3 className={cn("heading-6", styles.processTitle)}>{step.title}</h3>
-                <p className={cn("paragraph-small", styles.processDescription)}>
-                  {step.description}
-                </p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className={cn("section", "section-tight")}>
-        <div className={cn("container", "container-narrow")}>
-          <Reveal>
-            <h2 className="heading-4">How we built it</h2>
-            <p className={cn("paragraph-medium", styles.builtIntro)}>{product.builtWithIntro}</p>
-            <ul className={styles.list}>
-              {product.builtWith.map((item) => (
-                <li key={item} className={styles.listItem}>
-                  <span className={styles.checkIcon}>{icons.CheckCircle}</span>
-                  <span className={cn("paragraph-medium", styles.listText)}>{item}</span>
-                </li>
+      {hasHighlights && (
+        <section className={cn("section-tight", styles.highlightsSection)}>
+          <div className={cn("container")}>
+            <dl className={styles.highlights}>
+              {product.highlights.map((item) => (
+                <div key={item.label} className={styles.highlight}>
+                  <dt className={cn("heading-3", styles.highlightValue)}>{item.value}</dt>
+                  <dd className={cn("paragraph-small", styles.highlightLabel)}>{item.label}</dd>
+                </div>
               ))}
-            </ul>
-            {related.length > 0 && (
+            </dl>
+          </div>
+        </section>
+      )}
+
+      {hasFeatures && (
+        <section className={cn("section", "section-tight")}>
+          <div className={cn("container")}>
+            <Reveal className={styles.sectionHeading}>
+              <h2 className="heading-3">What it does</h2>
+            </Reveal>
+            <div className={styles.featureGrid}>
+              {product.features.map((feature, index) => (
+                <Reveal key={feature.title} delay={index * 0.05} className={styles.feature}>
+                  <h3 className={cn("heading-6", styles.featureTitle)}>{feature.title}</h3>
+                  <p className={cn("paragraph-small", styles.featureBody)}>{feature.body}</p>
+                  {feature.link && (
+                    <a href={feature.link.href} className={styles.featureLink}>
+                      {feature.link.label} {icons.ArrowRight}
+                    </a>
+                  )}
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {hasSteps && (
+        <section id="how-it-works" className={cn("section", "section-tight", "section-tint")}>
+          <div className={cn("container")}>
+            <Reveal className={styles.sectionHeading}>
+              <h2 className="heading-3">How a session runs</h2>
+            </Reveal>
+            <div className={styles.processGrid}>
+              {product.steps.map((step, index) => (
+                <Reveal key={step.title} delay={index * 0.06} className={styles.processStep}>
+                  <span className={styles.processIndex}>{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className={cn("heading-6", styles.processTitle)}>{step.title}</h3>
+                  <p className={cn("paragraph-small", styles.processDescription)}>
+                    {step.description}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {(hasBuild || related.length > 0) && (
+        <section className={cn("section", "section-tight")}>
+          <div className={cn("container", "container-narrow")}>
+            <Reveal>
+              {hasBuild && <h2 className="heading-4">How we built it</h2>}
+              {product.builtWithIntro && (
+                <p className={cn("paragraph-medium", styles.builtIntro)}>{product.builtWithIntro}</p>
+              )}
+              {product.builtWith?.length ? (
+                <ul className={styles.list}>
+                  {product.builtWith.map((item) => (
+                    <li key={item} className={styles.listItem}>
+                      <span className={styles.checkIcon}>{icons.CheckCircle}</span>
+                      <span className={cn("paragraph-medium", styles.listText)}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              {related.length > 0 && (
               <div className={styles.related}>
                 <div className={cn("label-small", styles.relatedTitle)}>Related services</div>
                 <ul className={styles.relatedLinks}>
@@ -145,7 +169,8 @@ export default function ProductDetailPage({ product }) {
             )}
           </Reveal>
         </div>
-      </section>
+        </section>
+      )}
 
       <section className={cn("section-tight", styles.backSection)}>
         <div className={cn("container", "container-narrow")}>

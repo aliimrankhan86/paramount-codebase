@@ -9,6 +9,19 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Four more products
+
+- Added `/products/sajdatime`, `/products/voicecake`, `/products/metamind-ai` and
+  `/products/pilgrimcompare` to `constants/products.js`.
+- SajdaTime copy is taken from its Google Play listing; Voicecake and PilgrimCompare from
+  their live sites. MetaMind AI has no public source, so its entry is deliberately thin —
+  it needs a one-line description before it goes out.
+- The product detail template now treats `url`, `highlights`, `features`, `steps`,
+  `builtWith` and `relatedServices` as optional, and the structured data is built per
+  product instead of being hardcoded to Point Poker's languages and free offer.
+- `/products` hero changed from "Software we build and run ourselves" / "free to use",
+  which stopped being true once client-built products were listed.
+
 ## 2026-11-05 — Current University of East London logo
 
 - The client tile was using UEL's pre-rebrand "UEL" block wordmark. Replaced with the
