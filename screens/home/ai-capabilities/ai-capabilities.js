@@ -54,12 +54,12 @@ export default function AiCapabilities() {
           <Figure
             className={styles.figureWrap}
             tone="ink"
-            src="/art/ai-orb.jpg"
-            alt="A row of server blades in a darkened rack, each with small indicator lights"
-            ratio="4 / 5"
+            src="/art/agentic-ai.webp"
+            alt="Illustration of connected automation systems with human approval checkpoints"
+            ratio="3 / 2"
             index="02"
             caption="Fig. 02 — Agentic systems"
-            note="Rack hardware"
+            note="Automation map"
             sizes="(max-width: 900px) 100vw, 38vw"
           />
 

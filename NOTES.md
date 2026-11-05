@@ -9,6 +9,52 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — Repo cleanup
+
+- Removed the three superseded photographs from `public/art/` (`hero-glass.jpg`,
+  `ai-orb.jpg`, `practice-banner.jpg`), about 1 MB of assets nothing referenced.
+- Removed 18 Finder duplicate artefacts (`… 2.js`, `… 2.css`, `AGENTS 2.md`). Every one
+  was either byte-identical to its original or a stale snapshot of a file edited since.
+- The working tree now matches what ships: only the eight new WebP assets under
+  `public/art/` are new.
+
+## 2026-11-05 — Accessibility pass
+
+- `/accounting`: the engagement steps were an `<ol>` containing `<div>` wrappers, so the
+  `<li>`s had no list parent. Now `<Reveal as="li">`, matching every other numbered list
+  on the site.
+- Contrast: `--ink-400` index numbers on `/accounting` and the four area pages moved to
+  `--ink-600` (3.2:1 → 7.4:1). `--ink-500` nudged from `#6c685e` to `#6a665c` so secondary
+  text clears 4.5:1 on paper-2, where it was 4.46:1.
+- axe-core now reports zero violations across all 17 routes at 1440px and 390px.
+
+## 2026-11-05 — Royal blue accent, footer trimmed
+
+- Accent scale retuned from electric cobalt (`#1d2bff`) to a deep royal blue
+  (`accent-600` is now `#1c3a8c`). Gradient, shadow and the generated app/OG icons
+  follow. Contrast is unchanged or better: 9.16:1 for accent on paper, 5.41:1 for
+  `accent-400` on ink.
+- Footer lost its `Index` row (Home / Services / Accounting / Products / Clients /
+  Contact) because it repeated the header nav. A `Company` column now carries
+  Products / Clients / Contact; Home is the wordmark.
+- Footer wordmark scaled down from `clamp(68px, 12vw, 180px)` to
+  `clamp(50px, 8.4vw, 122px)` and section padding tightened. Desktop footer is
+  723px, down from 849px.
+
+## 2026-11-05 — Image kit
+
+- Swapped the three flagged photographs for the supplied kit: `home-hero.webp` on the
+  home hero, `agentic-ai.webp` in the AI section, `accounting-practice.webp` on the
+  `/accounting` banner. The AI frame moved from 4:5 to 3:2 so the illustration is not
+  cropped; the accounting banner stays 21:9.
+- Added one optional image slot to the service-detail template, rendered from
+  `service.image` in `constants/services.js`, so all six technology services use the same
+  figure at 2:1, 500px maximum, below the workstream list.
+- `Figure` gained an optional `objectPosition` prop for per-image focal points.
+- Not used: `our-approach.webp` and `contact-cta.webp` (both optional in the kit brief).
+- Old `hero-glass.jpg`, `ai-orb.jpg` and `practice-banner.jpg` are unreferenced and were
+  removed from `public/art/` in the cleanup below.
+
 ## 2026-11-04 — Technology photography
 
 - Replaced the placeholder art with four Pexels photographs (free for commercial use):

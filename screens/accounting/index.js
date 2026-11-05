@@ -46,12 +46,13 @@ export default function AccountingPage() {
       <section className={cn("section", "section-flush", styles.material)} aria-label="Material study">
         <div className={cn("container")}>
           <Figure
-            src="/art/practice-banner.jpg"
-            alt="Rows of server cabinets filling the frame, seen at an angle"
+            src="/art/accounting-practice.webp"
+            alt="Accountant reviewing financial reports, calculations and dashboard charts"
             ratio="21 / 9"
             index="01"
             caption="Fig. 01 — The practice"
-            note="Infrastructure"
+            note="Working papers"
+            objectPosition="50% 55%"
             sizes="(max-width: 900px) 100vw, 100vw"
           />
         </div>
@@ -172,12 +173,15 @@ export default function AccountingPage() {
           </Reveal>
           <ol className={styles.rhythm}>
             {engagement.map((item, index) => (
-              <Reveal key={item.step} delay={index * 0.05}>
-                <li className={styles.rhythmStep}>
-                  <span className={cn("tnum", styles.rhythmIndex)}>{item.step}</span>
-                  <h3 className={styles.rhythmTitle}>{item.title}</h3>
-                  <p className={styles.rhythmCopy}>{item.description}</p>
-                </li>
+              <Reveal
+                as="li"
+                key={item.step}
+                delay={index * 0.05}
+                className={styles.rhythmStep}
+              >
+                <span className={cn("tnum", styles.rhythmIndex)}>{item.step}</span>
+                <h3 className={styles.rhythmTitle}>{item.title}</h3>
+                <p className={styles.rhythmCopy}>{item.description}</p>
               </Reveal>
             ))}
           </ol>

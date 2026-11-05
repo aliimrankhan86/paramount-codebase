@@ -13,6 +13,7 @@ import styles from "./figure.module.css";
  *
  * ratio: any CSS aspect-ratio value, e.g. "4 / 5", "3 / 2", "16 / 9".
  * tone:  "paper" (default) | "ink" | "accent"
+ * objectPosition: focal point for the cover crop, e.g. "62% 50%".
  */
 export default function Figure({
   src,
@@ -22,6 +23,7 @@ export default function Figure({
   index,
   ratio = "4 / 5",
   tone = "paper",
+  objectPosition,
   priority = false,
   sizes = "(max-width: 900px) 100vw, 40vw",
   className,
@@ -38,6 +40,7 @@ export default function Figure({
             priority={priority}
             sizes={sizes}
             className={cn(styles.image, imageClassName)}
+            style={objectPosition ? { objectPosition } : undefined}
           />
         ) : (
           <span className={styles.placeholder} aria-hidden="true">

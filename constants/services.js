@@ -27,6 +27,11 @@ const services = [
     slug: "agentic-ai",
     icon: "Sparkle",
     title: "Agentic AI Services",
+    image: {
+      src: "/art/agentic-ai.webp",
+      alt: "Illustration of connected automation systems with human approval checkpoints",
+      note: "Automation map",
+    },
     shortDescription:
       "Coordinated AI agents that plan, act and adapt across your tools, not a single-prompt chatbot.",
     intro:
@@ -45,6 +50,11 @@ const services = [
     slug: "adobe-experience-manager",
     icon: "Layers",
     title: "Adobe Experience Manager (AEM) Solutions",
+    image: {
+      src: "/art/aem-experience.webp",
+      alt: "Illustration of a content platform distributing experiences across devices",
+      note: "Multi-channel content",
+    },
     shortDescription:
       "Implementation, migration and ongoing development for Adobe's enterprise content platform.",
     intro:
@@ -63,6 +73,11 @@ const services = [
     slug: "agile-delivery",
     icon: "Cycle",
     title: "Agile Project Delivery",
+    image: {
+      src: "/art/agile-delivery.webp",
+      alt: "Illustrative agile board with work organised by delivery stage",
+      note: "Delivery board",
+    },
     shortDescription:
       "Sprint-based delivery with real visibility, so stakeholders see progress rather than promises.",
     intro:
@@ -85,6 +100,11 @@ const services = [
     slug: "full-stack-development",
     icon: "CodeBrackets",
     title: "Full-Stack Software Development",
+    image: {
+      src: "/art/fullstack-development.webp",
+      alt: "Development workspace with code and connected application services",
+      note: "Build environment",
+    },
     shortDescription:
       "End-to-end engineering across front end, back end and the APIs that connect them.",
     intro:
@@ -107,6 +127,11 @@ const services = [
     slug: "digital-marketing",
     icon: "TrendingUp",
     title: "Digital Marketing & Strategy",
+    image: {
+      src: "/art/digital-marketing.webp",
+      alt: "Illustrative campaign analytics dashboard and marketing channels",
+      note: "Campaign analytics",
+    },
     shortDescription:
       "SEO, content and campaign work judged by the numbers it actually moves.",
     intro:
@@ -125,6 +150,11 @@ const services = [
     slug: "it-project-management",
     icon: "Gantt",
     title: "IT Project Management",
+    image: {
+      src: "/art/it-project-management.webp",
+      alt: "Illustrative programme delivery timeline and milestones",
+      note: "Delivery timeline",
+    },
     shortDescription:
       "Delivery governance, risk ownership and stakeholder reporting for IT programmes that can't afford to drift.",
     intro:

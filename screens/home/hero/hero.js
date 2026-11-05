@@ -87,12 +87,13 @@ export default function Hero() {
 
           <Figure
             className={styles.figure}
-            src="/art/hero-glass.jpg"
-            alt="Macro photograph of a dark circuit board, densely packed with surface-mounted components"
+            src="/art/home-hero.webp"
+            alt=""
             ratio="4 / 3"
             index="01"
             caption="Fig. 01 — Applied intelligence"
-            note="Circuit board"
+            note="Concept study"
+            objectPosition="62% 50%"
             priority
             sizes="(max-width: 900px) 100vw, 34vw"
           />

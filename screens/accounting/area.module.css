@@ -48,7 +48,7 @@
 }
 
 .indexNum {
-  color: var(--ink-400);
+  color: var(--ink-600);
   flex: none;
 }
 
@@ -74,7 +74,7 @@
 .serviceNum {
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: var(--ink-400);
+  color: var(--ink-600);
 }
 
 .serviceTitle {

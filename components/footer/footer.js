@@ -8,12 +8,9 @@ import services from "@/constants/services";
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  const indexLinks = [
-    nav.footer.company[0],
-    nav.footer.company[1],
-    { label: "Accounting", href: "/accounting" },
-    ...nav.footer.company.slice(2),
-  ];
+  const companyLinks = nav.footer.company.filter(
+    (link) => link.href !== "/services" && link.href !== "/"
+  );
 
   return (
     <footer className={styles.footer}>
@@ -39,18 +36,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className={styles.indexRow}>
-          <span className={styles.indexLabel}>Index</span>
-          <nav className={styles.indexLinks} aria-label="Footer">
-            {indexLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={styles.indexLink}>
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-
-        <div className={styles.detailRow}>
+        <nav className={styles.detailRow} aria-label="Footer">
           <div>
             <h2 className={styles.detailTitle}>Technology &amp; AI</h2>
             <ul className={styles.serviceLinks}>
@@ -78,6 +64,19 @@ export default function Footer() {
           </div>
 
           <div>
+            <h2 className={styles.detailTitle}>Company</h2>
+            <ul className={styles.links}>
+              {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className={styles.detailLink}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <h2 className={styles.detailTitle}>Working with us</h2>
             <ul className={styles.links}>
               <li className={styles.meta}>Every enquiry answered by the team doing the work</li>
@@ -85,7 +84,7 @@ export default function Footer() {
               <li className={styles.meta}>Confidentiality from the first conversation</li>
             </ul>
           </div>
-        </div>
+        </nav>
 
         <div className={styles.legal}>
           <p>

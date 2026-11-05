@@ -3,6 +3,7 @@ import cn from "classnames";
 import Layout from "@/components/Layout";
 import CtaBand from "@/components/cta-band/cta-band";
 import ServiceRow from "@/components/service-row/service-row";
+import Figure from "@/components/figure/figure";
 import Reveal from "@/components/motion/reveal";
 import services from "@/constants/services";
 import products from "@/constants/products";
@@ -93,6 +94,19 @@ export default function ServiceDetailPage({ service }) {
                   </li>
                 ))}
               </ol>
+
+              {service.image && (
+                <Figure
+                  className={styles.serviceFigure}
+                  src={service.image.src}
+                  alt={service.image.alt}
+                  ratio="2 / 1"
+                  index={String(index + 1).padStart(2, "0")}
+                  caption="Illustrative"
+                  note={service.image.note}
+                  sizes="(max-width: 900px) 100vw, 500px"
+                />
+              )}
 
               {product && (
                 <aside className={styles.productCallout}>

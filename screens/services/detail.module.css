@@ -166,6 +166,17 @@
   color: var(--ink-700);
 }
 
+/*
+  Supporting illustration for the service, kept as a small inset plate so it
+  never competes with the heading or the workstream list. Fixed ratio across
+  all six services so the detail template stays identical.
+*/
+.serviceFigure {
+  /* Capped near the source width of the illustrations so they are never upscaled. */
+  max-width: 500px;
+  margin-top: clamp(20px, 2.4vw, 32px);
+}
+
 .side {
   position: sticky;
   top: calc(var(--header-height) + 32px);
