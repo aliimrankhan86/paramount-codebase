@@ -9,6 +9,17 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-05 — SajdaTime copy, cross-product links
+
+- SajdaTime now lists six languages including Bengali, and its structured data carries
+  `bn`. Note: the Play Store listing still lists five and does not mention Bengali — the
+  store description needs updating to match.
+- Added the owner-supplied points: 4.5+ Google Play rating, modern uncluttered design,
+  pro bono work for different communities, and an iOS version rolling out soon.
+  The listing currently shows 5.0 from 10 reviews, so "4.5+" is a floor, not the headline.
+- Every product page now ends with a "More products" strip linking to the other four,
+  so the range is discoverable from any single product.
+
 ## 2026-11-05 — Marquee keyboard access
 
 - The client marquee on `/` clips an overflowing track, which axe reports as a scrollable

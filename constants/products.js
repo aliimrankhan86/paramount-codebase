@@ -95,7 +95,7 @@ const products = [
     category: "Prayer times for Android and Wear OS",
     applicationCategory: "LifestyleApplication",
     operatingSystem: "Android, Wear OS",
-    inLanguage: ["en", "ar", "ur", "tr", "id"],
+    inLanguage: ["en", "ar", "ur", "tr", "id", "bn"],
     free: true,
     metaTitle: "SajdaTime: Prayer Times, Qibla and Adhan Alerts",
     metaDescription:
@@ -103,12 +103,12 @@ const products = [
     shortDescription:
       "Prayer times, adhan alerts and a Qibla compass for Sunni and Shia Muslims, on Android and Wear OS. No ads, no account, and it works offline.",
     intro:
-      "SajdaTime works out prayer times on your own phone, so they are right whether you have signal or not. Fajr through Isha, adhan alerts and a Qibla compass for Android, with a watch app and tile for Wear OS.",
+      "SajdaTime works out prayer times on your own phone, so they are right whether you have signal or not. Fajr through Isha, adhan alerts and a Qibla compass for Android, with a watch app and tile for Wear OS. It is pro bono work: built to serve communities rather than a market.",
     highlights: [
+      { value: "4.5+", label: "Google Play rating from verified reviewers" },
+      { value: "6", label: "Languages: English, Arabic, Urdu, Turkish, Indonesian and Bengali" },
       { value: "Offline", label: "Prayer times calculated on the handset, no signal needed" },
-      { value: "0", label: "Ads and accounts, whether you pay or sign up" },
-      { value: "5", label: "Languages: English, Arabic, Urdu, Turkish and Indonesian" },
-      { value: "Wear OS", label: "Watch app and tile, following the phone or working alone" },
+      { value: "0", label: "Ads, accounts or anything to buy" },
     ],
     features: [
       {
@@ -134,6 +134,18 @@ const products = [
       {
         title: "PDF timetables",
         body: "Timetables for today, seven days, the month or Ramadan, ready to save or print.",
+      },
+      {
+        title: "Modern, uncluttered design",
+        body: "A calm, contemporary interface that follows your phone's light or dark theme, and works with large text and screen readers.",
+      },
+      {
+        title: "Pro bono, and free to use",
+        body: "There is no paid tier and nothing to buy. SajdaTime is built pro bono, as a way to put the practice's skills to work for different communities.",
+      },
+      {
+        title: "iPhone version on the way",
+        body: "An iOS release is in development and rolling out soon, so the same prayer times, alerts and Qibla reach iPhone users.",
       },
     ],
     relatedServices: ["full-stack-development", "it-project-management"],

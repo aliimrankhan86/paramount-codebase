@@ -5,6 +5,7 @@ import CtaBand from "@/components/cta-band/cta-band";
 import Reveal from "@/components/motion/reveal";
 import icons from "@/constants/icons";
 import services from "@/constants/services";
+import products from "@/constants/products";
 import site from "@/constants/site";
 import styles from "./detail.module.css";
 
@@ -50,6 +51,7 @@ export default function ProductDetailPage({ product }) {
   const hasFeatures = Boolean(product.features?.length);
   const hasSteps = Boolean(product.steps?.length);
   const hasBuild = Boolean(product.builtWith?.length);
+  const others = products.filter((item) => item.slug !== product.slug);
 
   return (
     <Layout>
@@ -183,6 +185,38 @@ export default function ProductDetailPage({ product }) {
         </div>
         </section>
       )}
+
+      <section className={cn("section", "section-tight", "section-tint")} aria-labelledby="more-products">
+        <div className={cn("container")}>
+          <Reveal className={styles.sectionHeading}>
+            <h2 id="more-products" className="heading-3">
+              More products
+            </h2>
+          </Reveal>
+          <ul className={styles.moreGrid}>
+            {others.map((item, index) => (
+              <Reveal as="li" key={item.slug} delay={index * 0.05}>
+                <Link href={`/products/${item.slug}`} className={styles.moreCard}>
+                  {item.logo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={item.logo}
+                      alt=""
+                      width={item.logoWidth}
+                      height={item.logoHeight}
+                      className={styles.moreLogo}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : null}
+                  <span className={styles.moreCategory}>{item.category}</span>
+                  <span className={cn("heading-6", styles.moreTitle)}>{item.name}</span>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section className={cn("section-tight", styles.backSection)}>
         <div className={cn("container", "container-narrow")}>
