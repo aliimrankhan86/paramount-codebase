@@ -9,6 +9,16 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-07 — Image weight and cache lifetimes
+
+- Product marks converted to WebP: point-poker 48 KB → 9.2 KB, pilgrimcompare
+  13 KB → 11 KB, sajdatime 6.7 KB → 3.4 KB. The 192px PNG was being drawn at 52px.
+  The superseded PNGs are deleted and `constants/products.js` points at the WebP files.
+- `images.minimumCacheTTL` raised from Next's 60-second default to 30 days. Static
+  chunks already had a one-year immutable cache; optimised images were being
+  re-fetched on every visit. Thirty days, not a year, because these paths are not
+  content-hashed and a replaced image must be able to age out.
+
 ## 2026-11-07 — Performance: paint heroes immediately, defer the heavy widgets
 
 - **Root cause of the poor Lighthouse score.** `Reveal` and `MaskedLines` start their

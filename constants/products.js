@@ -11,7 +11,7 @@ const POINT_POKER = "https://www.pointpoker.app";
 const products = [
   {
     slug: "point-poker",
-    logo: "/products/point-poker.png",
+    logo: "/products/point-poker.webp",
     logoWidth: 192,
     logoHeight: 192,
     name: "Point Poker",
@@ -86,7 +86,7 @@ const products = [
 
   {
     slug: "sajdatime",
-    logo: "/products/sajdatime.png",
+    logo: "/products/sajdatime.webp",
     logoWidth: 512,
     logoHeight: 512,
     name: "SajdaTime",
@@ -251,7 +251,7 @@ const products = [
 
   {
     slug: "pilgrimcompare",
-    logo: "/products/pilgrimcompare.png",
+    logo: "/products/pilgrimcompare.webp",
     logoWidth: 263,
     logoHeight: 312,
     // Gold mark with a white cut-out: unreadable on paper, but strong on ink.
