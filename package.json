@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@popmotion/popcorn": "^0.4.4",
+    "@splinetool/react-spline": "^4.2.0",
+    "@splinetool/runtime": "^2.0.151",
     "classnames": "^2.5.1",
     "framer-motion": "^11.0.28",
     "next": "14.2.1",

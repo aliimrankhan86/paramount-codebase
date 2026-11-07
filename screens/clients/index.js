@@ -60,7 +60,7 @@ export default function ClientsPage() {
         </div>
       </section>
 
-      <section className={cn("section", "section-tight", "section-paper-2")}>
+      <section className={cn("section", "section-tight", "section-violet")}>
         <div className={cn("container")}>
           <div className={styles.headRow}>
             <Reveal>

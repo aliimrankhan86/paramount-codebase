@@ -1,0 +1,13 @@
+.spot {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, var(--accent-200), transparent 68%);
+  filter: blur(22px);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-out);
+}
+
+.on {
+  opacity: 1;
+}

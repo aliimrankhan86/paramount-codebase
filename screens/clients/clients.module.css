@@ -13,7 +13,7 @@
   border: 1px solid var(--line);
   border-radius: var(--border-radius-pill);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-600);
@@ -47,13 +47,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .card {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 28px 32px 8px 0;
+  padding: 28px 32px;
   border-right: 1px solid var(--line);
 }
 

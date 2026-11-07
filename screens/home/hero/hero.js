@@ -3,32 +3,11 @@
 import React from "react";
 import cn from "classnames";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import MaskedLines from "@/components/motion/masked-lines";
 import Figure from "@/components/figure/figure";
 import styles from "./hero.module.css";
 
-const disciplines = [
-  "Agentic AI",
-  "Adobe Experience Manager",
-  "Agile delivery",
-  "Full-stack engineering",
-  "Digital marketing",
-  "IT project management",
-];
-
 export default function Hero() {
-  const reduceMotion = useReducedMotion();
-  const [active, setActive] = React.useState(0);
-
-  React.useEffect(() => {
-    if (reduceMotion) return;
-    const timer = setInterval(() => {
-      setActive((current) => (current + 1) % disciplines.length);
-    }, 2800);
-    return () => clearInterval(timer);
-  }, [reduceMotion]);
-
   return (
     <section className={styles.hero}>
       <div className={cn("container")}>
@@ -65,23 +44,6 @@ export default function Hero() {
                 Explore services
                 <Arrow />
               </Link>
-            </div>
-
-            <div className={styles.ticker} aria-label="Services we work across">
-              <span className={styles.tickerLabel}>Working across</span>
-              <span className={styles.tickerWord} aria-live="off">
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.span
-                    key={disciplines[active]}
-                    initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: reduceMotion ? 0 : -8 }}
-                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    {disciplines[active]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
             </div>
           </div>
 

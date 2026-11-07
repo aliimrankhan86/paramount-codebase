@@ -6,6 +6,8 @@
  * sourced, the marquee falls back to a typographic tile instead of guessing.
  */
 const clients = [
+  // Every mark is shown as supplied, on a white plate in the grid — dark
+  // wordmarks read black and coloured marks keep their brand colour.
   { name: "Mind Meta AI", logo: "/clients/mind-meta-ai.svg" },
   { name: "Voicecake", logo: "/clients/voicecake.svg" },
   { name: "University of East London", logo: "/clients/university-of-east-london.svg" },

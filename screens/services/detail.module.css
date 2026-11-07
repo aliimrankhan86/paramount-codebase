@@ -18,7 +18,7 @@
   padding-top: 18px;
   border-top: 1px solid var(--line);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-500);
@@ -50,7 +50,7 @@
 
 .glanceTitle {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-500);
@@ -75,7 +75,7 @@
 
 .glanceList dt {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-500);
@@ -135,7 +135,7 @@
 
 .listIndex {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   color: var(--accent-600);
   padding-top: 4px;
@@ -167,20 +167,20 @@
   align-items: flex-start;
   gap: 12px;
   padding: 28px;
-  background: var(--ink-950);
-  color: var(--paper);
+  background: var(--band);
+  color: var(--on-band);
 }
 
 .sideEyebrow {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent-400);
 }
 
 .sideTitle {
-  color: var(--paper);
+  color: var(--on-band);
 }
 
 .sideText {
@@ -200,13 +200,14 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .processStep {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 26px 28px 8px 0;
+  padding: 26px 28px;
   border-right: 1px solid var(--line);
 }
 
@@ -267,7 +268,7 @@
 }
 
 .productEyebrow {
-  color: var(--accent-700);
+  color: var(--accent-600);
 }
 
 .productNote {

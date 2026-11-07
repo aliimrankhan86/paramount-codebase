@@ -21,7 +21,7 @@
 }
 
 .jump span {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ink-500);
   font-variant-numeric: tabular-nums;
 }
@@ -74,24 +74,37 @@
 .areas {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* Two real rows: every title shares row 1, every list shares row 2. */
+  grid-template-rows: auto auto;
+  /* Stretch, not start: it makes every title cell the height of the tallest, so
+     the rule under the title row lands on one line across all four columns. */
+  align-items: stretch;
   border-top: 2px solid var(--ink-950);
+  border-bottom: 1px solid var(--line);
 }
 
+/*
+  display: contents promotes each title and list to its own grid item, so the
+  four lists start at the same y whether the title runs one line or three. The
+  previous min-height hack reserved two title lines in every column, which left
+  a 100px dead gap under one-line titles like "Tax".
+*/
 .area {
-  padding: clamp(20px, 2vw, 28px) clamp(20px, 2vw, 28px) 4px 0;
-  border-right: 1px solid var(--line);
-}
-
-.area:last-child {
-  border-right: 0;
-  padding-right: 0;
+  display: contents;
 }
 
 .areaHead {
+  grid-row: 1;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
+  /* The rule under the title closes the title zone, so the space left by a
+     one-line title reads as deliberate rather than as a gap. */
+  padding: clamp(24px, 2.4vw, 32px) clamp(24px, 2.4vw, 32px)
+    clamp(18px, 1.8vw, 24px) 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .areaTitle {
@@ -102,8 +115,6 @@
   letter-spacing: -0.025em;
   color: var(--ink-950);
   text-wrap: balance;
-  /* Keeps the four service lists starting on the same line when one title wraps. */
-  min-height: 2.1em;
 }
 
 .areaTitle a {
@@ -118,17 +129,25 @@
 .areaCount {
   flex-shrink: 0;
   font-family: var(--font-sans);
-  font-size: 12px;
-  color: var(--ink-500);
+  font-size: 13px;
+  color: var(--spectrum-orange);
 }
 
 .areaList {
+  grid-row: 2;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 16px;
-  padding: 0;
+  gap: 10px;
+  padding: clamp(16px, 1.6vw, 20px) clamp(24px, 2.4vw, 32px)
+    clamp(24px, 2.4vw, 32px) 0;
   list-style: none;
+  border-right: 1px solid var(--line);
+}
+
+.area:last-child .areaHead,
+.area:last-child .areaList {
+  border-right: 0;
+  padding-right: 0;
 }
 
 .areaList a {
@@ -176,13 +195,15 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 2px solid var(--ink-950);
+  border-bottom: 1px solid var(--line);
 }
 
 .processStep {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: clamp(18px, 1.8vw, 24px) clamp(20px, 2vw, 28px) 0 0;
+  gap: 10px;
+  padding: clamp(24px, 2.4vw, 32px) clamp(24px, 2.4vw, 32px)
+    clamp(24px, 2.4vw, 32px) 0;
   border-right: 1px solid var(--line);
 }
 
@@ -197,9 +218,9 @@
 
 .processIndex {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
-  color: var(--accent-600);
+  color: var(--spectrum-orange);
   font-variant-numeric: tabular-nums;
 }
 
@@ -220,20 +241,22 @@
     align-items: start;
   }
 
-  .areaTitle {
-    min-height: 0;
-  }
-
   .processSub {
     justify-self: start;
   }
 
+  /* Below four columns the shared-row trick stops making sense: each area
+     becomes one block again so the title and its list travel together. */
   .areas {
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    border-bottom: 0;
   }
 
   .area {
+    display: block;
     padding: 20px 20px 20px 0;
+    border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
 
@@ -243,8 +266,22 @@
     padding-left: 20px;
   }
 
+  .areaHead {
+    grid-row: auto;
+    padding: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .areaList {
+    grid-row: auto;
+    padding: 16px 0 0;
+    border-right: 0;
+  }
+
   .processGrid {
     grid-template-columns: 1fr 1fr;
+    border-bottom: 0;
   }
 
   .processStep {
@@ -272,5 +309,9 @@
     padding: 18px 0;
     border-right: 0;
     border-left: 0;
+  }
+
+  .area:last-child {
+    border-bottom: 0;
   }
 }

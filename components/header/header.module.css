@@ -16,7 +16,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(244, 241, 234, 0.72);
+  background: var(--header-glass);
   -webkit-backdrop-filter: saturate(150%) blur(16px);
   backdrop-filter: saturate(150%) blur(16px);
   opacity: 0;
@@ -42,7 +42,7 @@
   border-radius: var(--border-radius-sm);
   z-index: 2000;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: top 0.2s var(--ease-out);
@@ -75,19 +75,33 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  color: var(--ink-600);
-  font-size: 13px;
+  gap: 9px;
+  color: var(--ink-700);
+  font-size: 15px;
+  line-height: 20px;
   letter-spacing: -0.005em;
-  transition: color 0.2s var(--ease-out);
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+
+/* Constant weight so hovering never changes text width and nudges the row.
+   Active/hover are marked by colour, the dot and the underline instead. */
+.links .link {
+  font-weight: 600;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .link::before {
   content: "";
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--accent-600);
+  box-shadow: 0 0 0 3px var(--accent-ring-soft);
   opacity: 0;
   transform: scale(0.4);
   transition: opacity 0.25s var(--ease-out), transform 0.25s var(--ease-out);
@@ -98,20 +112,21 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 2px;
-  height: 1px;
+  bottom: -9px;
+  height: 3px;
+  border-radius: 2px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform 0.3s var(--ease-out);
 }
 
-.link:hover::after {
-  transform: scaleX(1);
-}
-
 .link:hover {
   color: var(--ink-950);
+}
+
+.link:hover::after {
+  transform: scaleX(1);
 }
 
 .currentLink {
@@ -121,6 +136,11 @@
 .currentLink::before {
   opacity: 1;
   transform: scale(1);
+}
+
+.currentLink::after {
+  background: var(--accent-600);
+  transform: scaleX(1);
 }
 
 .cta {
@@ -231,15 +251,19 @@
     display: none;
   }
 
-  .link {
+  /* Instrument Serif ships one weight, so the menu stays at 400 — a bold
+     override here would render as faux-bold. */
+  .links .link {
     display: flex;
     align-items: center;
     height: 68px;
     font-family: var(--font-serif);
     font-size: 34px;
+    line-height: 1.1;
     letter-spacing: -0.02em;
     border-bottom: 1px solid var(--line);
     color: var(--ink-950);
+    font-weight: 400;
     gap: 12px;
   }
 

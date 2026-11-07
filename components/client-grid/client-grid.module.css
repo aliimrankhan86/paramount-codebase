@@ -24,28 +24,33 @@
   background: var(--ink-50);
 }
 
+/* Logos sit on a light plate: brand marks are drawn for white paper, and on the
+   dark band a dark wordmark has to be inverted (losing its shape) while a
+   coloured mark loses its contrast. A white plate keeps every mark truthful. */
 .logoWrap {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 52px;
+  height: 84px;
+  padding: 14px 18px;
+  border-radius: var(--border-radius-sm);
+  background: var(--white);
+  box-shadow: var(--shadow-xs);
 }
 
 .logo {
-  max-width: 120px;
-  max-height: 44px;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.5;
-  transition: filter 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
+  opacity: 1;
+  transition: transform 0.3s var(--ease-out);
 }
 
 .cell:hover .logo {
-  filter: grayscale(0);
-  opacity: 1;
+  transform: scale(1.05);
 }
 
 .initials {
@@ -56,7 +61,7 @@
 
 .name {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.45;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -85,3 +90,6 @@
     max-height: 36px;
   }
 }
+
+/* The white plate is what makes dark wordmarks legible, so the old
+   `brightness(0) invert(1)` filter is no longer applied — see client-grid.js. */

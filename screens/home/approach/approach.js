@@ -29,7 +29,7 @@ const pillars = [
 
 export default function Approach() {
   return (
-    <section id="approach" className={cn("section", "section-paper-2", styles.section)}>
+    <section id="approach" className={cn("section", styles.section)}>
       <div className={cn("container")}>
         <div className={styles.headRow}>
           <MaskedLines

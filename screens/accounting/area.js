@@ -8,6 +8,14 @@ import Reveal from "@/components/motion/reveal";
 import { areas } from "@/constants/accounting";
 import styles from "./area.module.css";
 
+// Matches the index page: one spectrum hue per area, decorative only.
+const AREA_ACCENT = {
+  bookkeeping: "var(--spectrum-amber)",
+  tax: "var(--spectrum-rose)",
+  compliance: "var(--spectrum-teal)",
+  advisory: "var(--spectrum-violet)",
+};
+
 export default function AccountingAreaPage({ area }) {
   const others = areas.filter((item) => item.slug !== area.slug);
 
@@ -21,7 +29,10 @@ export default function AccountingAreaPage({ area }) {
       />
 
       <section className="section">
-        <div className={cn("container", styles.layout)}>
+        <div
+          className={cn("container", styles.layout)}
+          style={{ "--area-accent": AREA_ACCENT[area.slug] }}
+        >
           <nav className={styles.index} aria-label={`${area.title} services`}>
             <p className={styles.indexTitle}>On this page</p>
             <ol className={styles.indexList}>

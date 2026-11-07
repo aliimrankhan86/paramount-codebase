@@ -32,7 +32,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#f4f1ea",
+  themeColor: "#141311",
   width: "device-width",
   initialScale: 1,
 };
@@ -121,8 +121,15 @@ const structuredData = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-GB">
+    <html lang="en-GB" suppressHydrationWarning>
       <body className={cn(serif.variable, sans.variable)}>
+        {/* Dark-only: set the theme before first paint so there is no flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              '(function(){document.documentElement.setAttribute("data-theme","dark");})();',
+          }}
+        />
         {/* Masked headings animate with JS; without it, show them in place. */}
         <noscript>
           <style>{`[data-mask-line]{transform:none!important}`}</style>

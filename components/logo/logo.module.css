@@ -28,7 +28,7 @@
 .suffix {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ink-500);

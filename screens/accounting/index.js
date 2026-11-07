@@ -9,6 +9,16 @@ import Reveal from "@/components/motion/reveal";
 import { areas, engagement, lead, promise } from "@/constants/accounting";
 import styles from "./accounting.module.css";
 
+// One spectrum hue per area, in order — decorative identity only; the action
+// accent stays cobalt.
+const SPECTRUM = [
+  "var(--spectrum-amber)",
+  "var(--spectrum-rose)",
+  "var(--spectrum-teal)",
+  "var(--spectrum-violet)",
+  "var(--spectrum-green)",
+];
+
 export default function AccountingPage() {
   return (
     <Layout>
@@ -72,7 +82,10 @@ export default function AccountingPage() {
           <div className={styles.ledger}>
             {areas.map((area, index) => (
               <Reveal key={area.slug} delay={index * 0.05}>
-                <article className={styles.areaRow}>
+                <article
+                  className={styles.areaRow}
+                  style={{ "--area-accent": SPECTRUM[index % SPECTRUM.length] }}
+                >
                   <div className={styles.areaIndex}>{String(index + 1).padStart(2, "0")}</div>
 
                   <div className={styles.areaMain}>
@@ -164,7 +177,7 @@ export default function AccountingPage() {
         </div>
       </section>
 
-      <section className={cn("section", "section-tight", styles.rhythmSection)}>
+      <section className={cn("section", "section-tight", "section-orange", styles.rhythmSection)}>
         <div className={cn("container")}>
           <Reveal>
             <h2 className="heading-2">

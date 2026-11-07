@@ -154,6 +154,9 @@ const products = [
   {
     slug: "voicecake",
     logo: "/products/voicecake.svg",
+    invert: true,
+    // White mark: needs its own dark ground to read on the cream field.
+    logoBackdrop: "ink",
     logoWidth: 275,
     logoHeight: 188,
     name: "Voicecake",
@@ -194,6 +197,9 @@ const products = [
   {
     slug: "metamind-ai",
     logo: "/clients/mind-meta-ai.svg",
+    invert: true,
+    // White mark: needs its own dark ground to read on the cream field.
+    logoBackdrop: "ink",
     logoWidth: 733,
     logoHeight: 816,
     name: "MetaMind AI",

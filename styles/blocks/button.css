@@ -70,18 +70,18 @@
 }
 
 .button-inverse {
-  background: var(--paper);
-  color: var(--ink-950);
+  background: var(--on-band);
+  color: var(--band);
 }
 
 .button-inverse:hover {
-  background: var(--accent-600);
-  color: var(--white);
+  background: var(--accent-solid);
+  color: var(--on-accent);
 }
 
 .button-accent {
-  background: var(--accent-600);
-  color: var(--white);
+  background: var(--accent-solid);
+  color: var(--on-accent);
 }
 
 .button-accent:hover {
@@ -90,14 +90,14 @@
 
 .button-outline-inverse {
   background: transparent;
-  color: var(--paper);
+  color: var(--on-band);
   border-color: var(--line-inverse);
 }
 
 .button-outline-inverse:hover {
-  background: var(--paper);
-  border-color: var(--paper);
-  color: var(--ink-950);
+  background: var(--on-band);
+  border-color: var(--on-band);
+  color: var(--band);
   box-shadow: none;
 }
 
@@ -121,7 +121,7 @@
   height: 44px;
   min-height: 44px;
   padding: 0 20px;
-  font-size: 13px;
+  font-size: 14px;
   gap: 8px;
 }
 

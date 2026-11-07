@@ -9,6 +9,230 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-07 — White product marks on the cream products index
+
+- Voicecake and MetaMind AI rendered as white marks on a now-cream field and were
+  unreadable. Both given `logoBackdrop: "ink"`, matching PilgrimCompare's black tile.
+- Fixed a trap while doing it: `logoBackdrop` used to paint the tile as the
+  `<img>` background, and the `invert` filter then inverted the tile too, turning it
+  white. The tile is now a separate wrapper (`.logoTile`); the filter stays on the
+  image alone. The tile sizes to the mark so wordmarks are not squashed.
+
+## 2026-11-07 — Colour fields across the site
+
+- Added a reusable colour-field system in `styles/blocks/section.css`:
+  `.section-paper-light`, `.section-orange`, `.section-violet`. Each remaps the ink
+  ramp (`--ink-*`, `--line`, `--accent-600`, `--surface-1`, `--paper*`) so every nested
+  component flips to dark-on-light without a component-level override.
+- Placed one field per page where the dark run was longest: `/services` Practice 02
+  → cream, `/accounting` engagement rhythm → orange, `/clients` "The constant" →
+  violet, `/products` index → cream, `/product` detail "How it works" → cream,
+  `/contact` form → cream, `/services/[slug]` rhythm → cream.
+- Two contrast fixes found by axe after the first pass: the shared ink ramp was tuned
+  for cream only and failed on orange (the darkest field), so it was darkened against
+  orange; and the spectrum italic `<em>` is tuned for dark grounds and disappeared on
+  light fields, so `em` now inherits inside a field.
+
+## 2026-11-07 — Client logo plates, orange block, Practice 02 realignment
+
+- **Client logos** now sit on a white plate inside each cell and are shown
+  unmodified. The `brightness(0) invert(1)` filter and the `invert` flag in
+  `constants/clients.js` are gone: nine marks were being flattened to white and the
+  coloured ones lost contrast against the dark cell.
+- **Orange block.** The home Approach section is now the page's orange colour block
+  (`--spectrum-orange`, `#ff7a45`) with dark ink, matching the reference the owner
+  supplied. `--ink-strong-dim` raised from 0.66 to 0.8 alpha: on orange the lighter
+  value only reached 3.9:1.
+- **Practice 02 (accounting) rebuilt.** The uneven spacing was not padding — it was
+  `.areaTitle { min-height: 2.1em }` reserving two title lines in every column, which
+  left a ~100px dead gap under one-line titles such as "Tax". Replaced with real grid
+  rows: `.area { display: contents }` promotes each title and list to its own grid
+  item, so all four titles share row 1 and all four lists share row 2. A rule under
+  the title row closes the title zone. Measured: every list now starts at the same y
+  (spread 0.00px). Mobile reverts to block per area.
+
+## 2026-11-07 — Nav alignment, orange accent, grid spacing audit
+
+- **Nav realigned.** `.link` carried a `padding-bottom: 4px` that pushed the labels
+  off the optical centre, and `font-weight: 600` on hover changed the text width, so
+  the whole row shifted when you pointed at it. Weight is now constant (600, set on
+  `.links .link` so it beats `label-small`), the underline is absolutely positioned at
+  `bottom: -9px` so it never affects layout. All five labels now centre at the same y
+  and hovering moves nothing.
+- **Orange accent.** Added `--spectrum-orange` (`#ff7a45`, 7.18:1 on `--paper`) and
+  applied it to the accounting area counts and engagement-step numbers on `/services`.
+- **Grid spacing audit.** Five blocks had a near-zero bottom padding on bordered grid
+  cells, which left the content flush with the column rule and made columns end at
+  different heights: `.area` and `.processStep` on `/services` (4px / 0), `.card` on
+  `/clients` (8px), `.processStep` on service detail (8px), `.item` in home Values
+  (0). All now use symmetric padding and the grid carries a bottom rule. Also evened
+  the service-list gap (8px → 10px) and its offset from the title (16px → 18px).
+
+## 2026-11-07 — Header nav: clearer active and hover states
+
+- Made the nav's active item and hover state unmistakable: the active link is bold
+  (600) with a persistent 3px **cobalt** underline and a larger 8px accent dot with a
+  3px soft ring; hovering any link bolds it and draws the same 3px underline.
+  Previously the active item had only a 5px dot and no underline, and hover used a
+  1px hairline.
+- Raised the nav to read as primary navigation rather than body text: 15px (was 14px),
+  brighter resting colour (`--ink-700`, was `--ink-600`), more space between the dot
+  and label.
+- Kept the mobile menu on its single-weight serif (400) so the bolder desktop state
+  doesn't faux-bold the Instrument Serif.
+
+## 2026-11-07 — Colour blocks to break up the charcoal
+
+- Added two full-bleed colour blocks to the home page, following the reference the
+  owner shared: the **Intro** section is now a warm cream "paper insert"
+  (`--paper-light`) with dark ink, and the **Approach** section is a violet spectrum
+  block (`--spectrum-violet`) with dark ink. Both join the existing cobalt Statement
+  band so the page no longer reads as one long black column.
+- Added reverse-block tokens (`--paper-light`, `--ink-strong`, `--ink-strong-dim`,
+  `--line-dark`) for light fills with dark text.
+
+## 2026-11-07 — Ledger hover breathing room + site-wide heading colour
+
+- Gave the accounting ledger rows real horizontal padding (`clamp(16px, 2.4vw, 28px)`)
+  and a rounded highlight, so the hover no longer runs edge-to-edge with the text flush
+  against it; the row lifts to `--ink-100` with a spectrum-tinted bottom rule.
+- Added site-wide colour: italic emphasis words inside headings (`<em>`) now carry the
+  editorial spectrum instead of plain ink, rotated per section in `common.css`
+  (amber → rose → teal → violet → green). Cobalt stays the only action accent.
+- Updated `DESIGN.md` (heading emphasis is no longer "never colour") and added the
+  `--em-accent` default to `variables.css`.
+
+## 2026-11-07 — Accounting ledger: spectrum identity + dark hover
+
+- Gave each of the four accounting areas a spectrum hue (amber/rose/teal/violet),
+  applied to the ledger index number and the service count on `/accounting`, and to
+  the service numbers on each area page — so the rows read as distinct instead of a
+  single monochrome block.
+- Fixed the accounting row hover, which still used a light-theme wash
+  (`rgba(236,231,220,0.4)`): it now lifts to `--ink-100` and tints the row rule in the
+  area's spectrum colour, with the index number nudging right.
+
+## 2026-11-07 — Dark-only consolidation + dead-code cleanup
+
+- Collapsed `variables.css` to a single dark `:root` block: the light theme values are
+  gone entirely (previously just disabled), and the stale "system preference / header
+  toggle" comment is corrected.
+- Removed dead tokens: `--gradient-ink` (unused) and the `--logo-tile*` group, which
+  only the old logo-tile marquee referenced.
+- Deleted the orphaned `components/client-marquee/` component (superseded by
+  `NameMarquee`), leaving `next lint` with a single known `<img>` warning.
+- Updated `DESIGN.md` to show dark-only values and the Working-across word instead of
+  the removed "hero ticker". Verified: build (29 routes), no horizontal overflow or
+  axe violations at 390/768/1440/1920, no console errors.
+
+## 2026-11-06 — SonarGrid "Working across" hero + contrast + cleanup
+
+- Replaced the hero "Working across" ticker with a SonarGrid section: a canvas dot-field
+  with tap-triggered sonar rings behind a big centered headline, with the discipline word
+  rotating rapidly (1.5s) through the editorial spectrum.
+- Ported the 21st.dev `SonarGrid` to JS + CSS Modules (no Tailwind / `motion` / lucide added
+  — framer-motion and the inline arrow already cover them).
+- Fixed dim product/service category text: foreground `--accent-700` (dark navy in dark
+  mode) → `--accent-600` (light cobalt) on product categories, feature links, and the
+  service product eyebrow.
+- Deleted the now-unused `components/theme-toggle/`.
+
+## 2026-11-06 — Dark-only + inverted dark marks
+
+- The site is now dark-only: the header theme toggle is removed and `app/layout.js`
+  forces `data-theme="dark"` (no localStorage override), so the light theme can't be
+  selected.
+- Dark client/product wordmarks now render as white (`brightness(0) invert(1)` via an
+  `invert` flag in `clients.js` / `products.js`), replacing the earlier light-tile
+  approach, so black/navy marks stay legible on dark while coloured marks (Eseye, XPO,
+  Virgin Media, HSBC, Tesco) keep their brand colour.
+
+## 2026-11-06 — Colour layer + dark-mode logo legibility
+
+- Added an editorial spectrum (`--spectrum-amber` / `-rose` / `-teal` / `-violet` /
+  `-green`) used only decoratively: the hero "Working across" ticker word now cycles
+  through it, the four stat figures and their top rules are coloured, and the
+  client-name diamonds follow the same rhythm. Cobalt stays the single action accent.
+- Added ambient radial glows (`--glow-warm` / `--glow-cool`) behind the hero for depth,
+  and warmed the dark-theme secondary ink (`--ink-600`/`--ink-500`) so it reads less
+  grey.
+- Fixed dark-theme client logos: `ClientGrid` flips to light paper cells in dark mode
+  (`--logo-tile`), so dark brand marks stay legible instead of vanishing.
+- Framed the Spline scene at 4:3 so the full object is visible instead of cropping to
+  the face.
+
+## 2026-11-06 — Interactive 3D panel (Spline)
+
+- Ported the 21st.dev "Interactive 3D" component into the existing JS + CSS Modules stack
+  (no Tailwind / shadcn / TypeScript added, per DESIGN.md). Three new components:
+  `SplineScene` (lazy-loaded Spline with a Suspense loader), `Spotlight` (framer-motion
+  cursor glow), and `SplinePanel` — an "Agentic AI, made tangible" panel wired onto the
+  home page right after the hero (always visible, no scroll-reveal gating).
+- Installed `@splinetool/react-spline` and `@splinetool/runtime`; framer-motion and
+  classnames were already present. The Spline scene URL is a 21st.dev placeholder — swap
+  for the client's own `.splinecode` before launch.
+- Verified: `npm run build` (all 29 routes), `npm run lint` (the two known `<img>`
+  warnings), and Playwright — the panel renders on the dark band in Instrument Serif, the
+  Spline canvas mounts, and there are no console errors.
+
+## 2026-11-06 — Hero "Working across" panel + colour
+
+- Rebuilt the hero "Working across" strip as a full-width panel: the rotating discipline
+  word is now set in display serif (matching "Intelligence, engineered") at up to 96px,
+  in the accent colour, above a hairline rule. It sits on its own row below the hero
+  copy/figure instead of being tucked into the 520px copy column.
+- Removed the grayscale wash on client logos in `ClientGrid` and `ClientMarquee` so the
+  marks render in their full brand colour (a scale-up on hover replaced the old
+  grayscale-to-colour reveal). This is the main "more colour" change.
+- Verified: `npm run build` (all 29 routes) and `npm run lint` (two known `<img>`
+  warnings) pass; the panel renders full-width in Instrument Serif at 96px, and client
+  logos compute `filter: none`.
+
+## 2026-11-06 — Dark default, contrast and type pass
+
+- Made dark mode the default: the pre-paint script in `app/layout.js` now sets
+  `data-theme="dark"` unless an explicit choice is stored. The header toggle still
+  switches to light and persists.
+- Fixed the colour-combination bugs round one missed because they live in `screens/`
+  (outside `components/`): the "Accounting" cobalt statement block, the AI-capabilities
+  and accounting-promise dark sections, the service-detail side card, and the product
+  "ink" logo tiles were using `--accent-600` / `--ink-950` / `--paper` as solid fills and
+  band text, so in dark mode they inverted to light-on-light. They now use the role
+  tokens (`--accent-solid`, `--band`, `--on-band`, `--on-accent`) and stay a solid deep
+  blue / dark band in both themes.
+- Raised body type for desktop: paragraph-large 18px, paragraph-medium 17px,
+  paragraph-small 15px, service-row descriptions 16px, and every remaining 11/12px label
+  in `screens/` up to 13px.
+- Darkened secondary text in light mode (`--ink-600` → `#47433a`, `--ink-500` →
+  `#5f5b51`); tertiary text now clears 5.44:1 on `--paper-2`.
+- Rebuilt the hero "Working across" ticker as a bordered panel with a 24px rotating
+  value instead of a 12px inline label.
+- Verified: `npm run build` (all 29 routes) and `npm run lint` (two known `<img>`
+  warnings) pass; statement block contrast 7.69:1 (dark) / 10.33:1 (light); every text
+  pair clears 4.5:1 in both themes. Hit the two-servers-on-one-`.next` gotcha during
+  verification — a stale `next dev` made CSS tokens vanish until it was killed.
+
+## 2026-11-06 — Dark theme + larger small text
+
+- Added a dark theme (`:root[data-theme="dark"]` in `styles/helpers/variables.css`) to
+  answer the "too bright / too white" feedback. An inline script in `app/layout.js` sets
+  `data-theme` before first paint (system preference by default); a new
+  `components/theme-toggle/` button in the header flips it and persists the choice to
+  `localStorage`.
+- Introduced role tokens so the theme inverts cleanly: `--band`/`--band-2` plus
+  `--on-band`/`--on-band-dim` for solid ink bands and their text, `--accent-solid` plus
+  `--on-accent` for solid accent fills, and `--surface-1`/`--surface-1-hover` for cards,
+  inputs and tiles. Migrated the dark-band, accent-fill and white-surface usages off
+  `--ink-950` / `--paper` / `--white` / `--accent-600` accordingly.
+- Raised the small-text floor from 12px to 13px, and 13px sentence-case text to 14px:
+  breadcrumbs, eyebrows, captions, form labels, footer legal (now 14px), header nav,
+  footer column labels and client names among others.
+- Fixed a latent bug: `--surface-1` was referenced by the service card but never defined,
+  so cards rendered transparent. Defined it and `--surface-1-hover`.
+- Verified: `npm run build` passes (all 29 routes), `npm run lint` shows only the two
+  known `<img>` warnings, and the dark theme's text ramp clears WCAG AA (computed floor
+  5.27:1; body 16.17:1). Theme toggle and system-preference default confirmed live.
+
 ## 2026-11-05 — Clean sweep before parking
 
 - Removed the last two unreferenced files: `screens/home/hero/slide/` (an unimported

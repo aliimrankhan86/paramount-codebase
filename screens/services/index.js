@@ -57,7 +57,7 @@ export default function ServicesIndexPage() {
 
       <section
         id="accounting"
-        className={cn("section", "section-tight", "section-paper-2", styles.accounting)}
+        className={cn("section", "section-tight", "section-paper-light", styles.accounting)}
       >
         <div className={cn("container")}>
           <div className={styles.practiceHead}>

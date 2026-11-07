@@ -45,30 +45,42 @@
 }
 
 .ledger {
+  --ledger-pad: clamp(16px, 2.4vw, 28px);
+  margin: 0 calc(-1 * var(--ledger-pad));
+  padding: 0 var(--ledger-pad);
   border-top: 2px solid var(--ink-950);
 }
 
 .areaRow {
+  position: relative;
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr) 120px;
   gap: 32px;
   align-items: start;
-  padding: 36px 0;
+  margin: 0 calc(-1 * var(--ledger-pad));
+  padding: 36px var(--ledger-pad);
+  border-radius: var(--border-radius-md);
   border-bottom: 1px solid var(--line);
-  transition: background-color 0.3s var(--ease-out);
+  transition: background-color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
 }
 
 .areaRow:hover {
-  background: rgba(236, 231, 220, 0.4);
+  background: var(--ink-100);
+  border-bottom-color: var(--area-accent);
 }
 
 .areaIndex {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
-  color: var(--ink-600);
-  padding-top: 10px;
+  color: var(--area-accent, var(--accent-600));
+  padding-top: 12px;
   font-variant-numeric: tabular-nums;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.areaRow:hover .areaIndex {
+  transform: translateX(3px);
 }
 
 .areaTitle {
@@ -90,16 +102,16 @@
 
 .areaCopy {
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.55;
-  color: var(--ink-500);
+  color: var(--ink-600);
   max-width: 52ch;
 }
 
 .serviceList {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 0;
+  gap: 8px 0;
   margin-top: 20px;
   list-style: none;
   padding: 0;
@@ -144,7 +156,7 @@
   font-family: var(--font-serif);
   font-size: 34px;
   line-height: 1;
-  color: var(--ink-500);
+  color: var(--area-accent, var(--accent-600));
 }
 
 .areaLink {
@@ -174,8 +186,8 @@
 /* ---- Promise ---- */
 
 .promiseSection {
-  background-color: var(--ink-950);
-  color: var(--paper);
+  background-color: var(--band);
+  color: var(--on-band);
 }
 
 .promiseGrid {
@@ -186,7 +198,7 @@
 
 .promiseTitle {
   margin-top: 22px;
-  color: var(--paper);
+  color: var(--on-band);
   max-width: 14ch;
 }
 
@@ -201,7 +213,7 @@
 }
 
 .promiseCommitment {
-  color: var(--paper);
+  color: var(--on-band);
   font-weight: 500;
   padding-left: 18px;
   border-left: 2px solid var(--accent-400);
@@ -312,8 +324,10 @@
 
 /* ---- Engagement rhythm ---- */
 
+/* The colour comes from the shared `.section-orange` field; this rule only
+   carries what is specific to the block. */
 .rhythmSection {
-  background: var(--paper-2);
+  border-top: 0;
 }
 
 .rhythm {
@@ -332,7 +346,7 @@
 }
 
 .rhythmIndex {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   color: var(--accent-600);
 }
@@ -348,7 +362,7 @@
 
 .rhythmCopy {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.55;
   color: var(--ink-600);
 }

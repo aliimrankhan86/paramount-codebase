@@ -1,6 +1,9 @@
 .hero {
   padding: clamp(24px, 3vw, 44px) 0 clamp(24px, 2.6vw, 36px);
   overflow: hidden;
+  background:
+    radial-gradient(1000px 480px at 88% -8%, var(--glow-cool), transparent 62%),
+    radial-gradient(760px 420px at -6% 108%, var(--glow-warm), transparent 58%);
 }
 
 .topline {
@@ -17,7 +20,7 @@
   align-items: center;
   gap: 9px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-600);
@@ -32,7 +35,7 @@
 
 .meta {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-500);
@@ -77,38 +80,6 @@
   flex-wrap: wrap;
 }
 
-.ticker {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-top: 8px;
-}
-
-.tickerLabel {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-500);
-}
-
-.tickerWord {
-  position: relative;
-  display: inline-block;
-  min-width: 220px;
-  height: 20px;
-  overflow: hidden;
-  font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  color: var(--ink-950);
-}
-
-.tickerWord span {
-  display: block;
-  white-space: nowrap;
-}
-
 .figure {
   width: 100%;
 }
@@ -141,9 +112,5 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 20px;
-  }
-
-  .tickerWord {
-    min-width: 0;
   }
 }

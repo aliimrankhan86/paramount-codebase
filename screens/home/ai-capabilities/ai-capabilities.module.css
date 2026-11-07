@@ -11,7 +11,7 @@
 }
 
 .title {
-  color: var(--paper);
+  color: var(--on-band);
   max-width: 12ch;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .itemTitle {
-  color: var(--paper);
+  color: var(--on-band);
   max-width: 28ch;
 }
 

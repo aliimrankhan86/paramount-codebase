@@ -24,7 +24,7 @@
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--ink-300);
-  background: var(--white);
+  background: var(--surface-1-hover);
   box-shadow: 0 24px 48px -24px rgba(10, 10, 12, 0.18);
 }
 
@@ -54,20 +54,31 @@
   object-position: left center;
 }
 
-/* Marks with a light or cut-out figure need their own ground to read on paper. */
-.logoOnInk {
-  width: 52px;
+/* Marks with a light or cut-out figure need their own ground to read on a light
+   card. The tile is its own element, never the <img>: an invert filter on the
+   image would invert the tile behind it as well. It sizes to the mark, so a
+   square icon stays square and a wordmark keeps its proportions. */
+.logoTile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 52px;
-  padding: 9px;
+  min-width: 52px;
+  padding: 10px 14px;
   box-sizing: border-box;
-  background: var(--ink-950);
+  background: var(--band);
   border-radius: 10px;
-  /* The base `.logo` pins marks left; inside its own tile the mark is centred. */
-  object-position: center;
+}
+
+.logoInTile {
+  height: 32px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
 }
 
 .category {
-  color: var(--accent-700);
+  color: var(--accent-600);
 }
 
 .title {

@@ -1,0 +1,90 @@
+.panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 4vw, 72px);
+  padding: clamp(28px, 4vw, 64px);
+  background: var(--band-2);
+  border: 1px solid var(--line-inverse);
+  border-top: 2px solid var(--accent-300);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(20px, 2.4vw, 30px);
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-band-dim);
+}
+
+.kicker::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--accent-300);
+}
+
+.title {
+  color: var(--on-band);
+}
+
+.copy {
+  color: var(--on-band-dim);
+  max-width: 46ch;
+}
+
+.panel .ctaLink {
+  color: var(--accent-300);
+  border-color: var(--accent-300);
+}
+
+.panel .ctaLink:hover {
+  color: var(--on-band);
+  border-color: var(--on-band);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--band);
+  border: 1px solid var(--line-inverse);
+  border-radius: var(--border-radius);
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+}
+
+.stage canvas {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+
+  .stage {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}

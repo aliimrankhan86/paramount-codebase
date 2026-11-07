@@ -149,7 +149,7 @@ export default function ServiceDetailPage({ service }) {
         </div>
       </section>
 
-      <section className={cn("section", "section-tight", "section-paper-2")}>
+      <section className={cn("section", "section-tight", "section-paper-light")}>
         <div className={cn("container")}>
           <div className={styles.processHead}>
             <Reveal>

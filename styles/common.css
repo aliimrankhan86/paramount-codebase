@@ -32,6 +32,15 @@ main {
   isolation: isolate;
 }
 
+/* Rotate a decorative accent down the page: each section takes the next
+   spectrum hue for its heading emphasis word, so sections don't read as one
+   monochrome block. Cobalt stays the only action accent. */
+main > section:nth-of-type(5n + 1) { --em-accent: var(--spectrum-amber); }
+main > section:nth-of-type(5n + 2) { --em-accent: var(--spectrum-rose); }
+main > section:nth-of-type(5n + 3) { --em-accent: var(--spectrum-teal); }
+main > section:nth-of-type(5n + 4) { --em-accent: var(--spectrum-violet); }
+main > section:nth-of-type(5n) { --em-accent: var(--spectrum-green); }
+
 button {
   background: none;
   font-family: inherit;
@@ -49,8 +58,8 @@ svg {
 }
 
 ::selection {
-  background: var(--accent-600);
-  color: var(--white);
+  background: var(--accent-solid);
+  color: var(--on-accent);
 }
 
 :focus-visible {
@@ -138,7 +147,7 @@ svg {
   border: 1px solid var(--line);
   border-radius: var(--border-radius-pill);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-600);
@@ -205,8 +214,8 @@ svg {
 /* ---- Editorial detail ---- */
 
 ::selection {
-  background: var(--accent-600);
-  color: var(--white);
+  background: var(--accent-solid);
+  color: var(--on-accent);
 }
 
 /* Arrows inside text links travel slightly on hover; nothing else moves. */

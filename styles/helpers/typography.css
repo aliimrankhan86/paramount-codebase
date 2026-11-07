@@ -1,6 +1,6 @@
 /*
   Two families only: Instrument Serif for display, Instrument Sans for everything
-  else. One scale, weights 400 / 500 / 600. Nothing below 12px. Digits are
+  else. One scale, weights 400 / 500 / 600. Nothing below 13px. Digits are
   tabular everywhere they sit in a column, so counters and ledger rows never jitter.
 */
 
@@ -80,9 +80,10 @@
 }
 
 /*
-  Italic emphasis is part of the editorial voice, but it is not a colour cue.
-  Cobalt is reserved for structure (blocks, rules, one action); a sentence that
-  paints a single word blue is the tell this design removes.
+  Italic emphasis is part of the editorial voice, and it now carries the
+  section's spectrum hue (`--em-accent`, rotated per section) so each heading
+  gets one colour moment. Cobalt stays reserved for structure and the single
+  action accent; the spectrum word is decorative, never a link.
 */
 .serif-italic,
 .heading-1 em,
@@ -91,7 +92,7 @@
 .hero em,
 .hero-2 em {
   font-style: italic;
-  color: inherit;
+  color: var(--em-accent, var(--spectrum-amber));
   letter-spacing: -0.01em;
 }
 
@@ -120,8 +121,8 @@
 }
 
 .subheading-x-small {
-  font-size: 13px;
-  line-height: 19px;
+  font-size: 14px;
+  line-height: 20px;
   font-family: var(--font-sans);
 }
 
@@ -143,31 +144,31 @@
 }
 
 .paragraph-large {
-  font-size: 17px;
-  line-height: 1.62;
+  font-size: 18px;
+  line-height: 1.6;
   letter-spacing: -0.011em;
   font-family: var(--font-sans);
   text-wrap: pretty;
 }
 
 .paragraph-medium {
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 17px;
+  line-height: 1.6;
   letter-spacing: -0.008em;
   font-family: var(--font-sans);
   text-wrap: pretty;
 }
 
 .paragraph-small {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.55;
   letter-spacing: -0.004em;
   font-family: var(--font-sans);
   text-wrap: pretty;
 }
 
 .paragraph-x-small {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.55;
   font-family: var(--font-sans);
   text-wrap: pretty;
@@ -191,7 +192,7 @@
 
 .label-small {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.004em;
   font-weight: 500;
@@ -199,8 +200,8 @@
 
 .label-x-small {
   font-family: var(--font-sans);
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 19px;
   letter-spacing: 0.06em;
   font-weight: 500;
   text-transform: uppercase;
@@ -213,8 +214,8 @@
   gap: 10px;
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 19px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-500);
@@ -240,8 +241,8 @@
 /* Small caps-style microlabels for indices, meta and captions. */
 .mono {
   font-family: var(--font-sans);
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 19px;
   letter-spacing: 0.08em;
   font-weight: 500;
   text-transform: uppercase;
@@ -250,7 +251,7 @@
 
 .mono-lg {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.05em;
   font-variant-numeric: tabular-nums;

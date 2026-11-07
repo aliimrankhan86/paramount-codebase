@@ -25,7 +25,7 @@ right and this file is wrong.**
 Quick re-verification:
 
 ```bash
-grep -n "accent-600\|ink-500\|ink-950\|paper-2" styles/helpers/variables.css
+grep -n "accent-600\|ink-500\|ink-950\|paper-2\|accent-solid\|--band\|surface-1" styles/helpers/variables.css
 grep -oE "^\.(heading|paragraph|label|eyebrow)[a-z0-9-]*" styles/helpers/typography.css
 grep -oE "^\.section-[a-z0-9-]+" styles/blocks/section.css
 grep -oE "^\.container[a-z-]*" styles/blocks/container.css
@@ -61,25 +61,55 @@ tracking, never from weight or colour.
 
 | Role | Token | Value |
 |---|---|---|
-| Paper | `--paper` | `#f4f1ea` |
-| Paper, deeper | `--paper-2` | `#ebe6db` |
-| Ink (text, dark bands) | `--ink-950` | `#0e0e0c` |
-| Secondary text | `--ink-600` | `#514e46` |
-| Tertiary text | `--ink-500` | `#6a665c` |
-| Accent (the only one) | `--accent-600` | `#1c3a8c` |
-| Hairline | `--line` | `rgba(14, 14, 12, 0.13)` |
+| Paper | `--paper` | `#141311` |
+| Paper, deeper | `--paper-2` | `#1b1916` |
+| Ink (text) | `--ink-950` | `#f2efe8` |
+| Secondary text | `--ink-600` | `#b2a897` |
+| Tertiary text | `--ink-500` | `#9c9384` |
+| Accent (the only one) | `--accent-600` | `#8fa7df` |
+| Hairline | `--line` | `rgba(242, 239, 232, 0.14)` |
 
 Rules that hold:
 
-- **One accent.** It marks the primary action and the current location. Never add a
-  second accent colour; never use the accent decoratively.
+- **One action accent.** Cobalt (`--accent-600`) stays the only *action* accent —
+  primary buttons, links, current location. A small **editorial spectrum**
+  (`--spectrum-amber` / `-rose` / `-teal` / `-violet` / `-green`) adds colour to
+  *decorative* moments only: italic emphasis words in headings (rotated per section),
+  the Working-across word, stat figures and their rules, the accounting area numbers
+  and counts, the client-name diamonds, and the background of a colour field. Never
+  use a spectrum hue for an action or link.
+- **Colour fields.** Every page carries at most one full-bleed colour field, so no page
+  reads as a single dark column. They are `.section-paper-light` (cream),
+  `.section-orange` and `.section-violet` in `styles/blocks/section.css`, plus the
+  cobalt statement band. Each field **remaps the ink ramp** — `--ink-*`, `--line`,
+  `--accent-600`, `--surface-1`, `--paper*` — so nested components flip to dark-on-light
+  with no component-level override. The ramp is tuned against orange (the darkest
+  field), and `em` inside a field inherits instead of taking a spectrum hue, which
+  would be invisible there. Add a field by applying the class; never recolour a
+  component by hand.
 - Components reference semantic tokens, never literals. Literal colours exist only in
   `variables.css` and the generated icons (`app/icon.svg`, `app/apple-icon.js`,
   `app/opengraph-image.js`), which must be updated together with `--accent-600`.
-- `--ink-500` is tuned so secondary text clears **4.5:1 on `--paper-2`**, not just on
-  `--paper`. Do not lighten it. `--ink-400` is below AA for text — use it for borders
-  only.
-- Accent on paper is 9.16:1; `--accent-400` on ink is 5.41:1. Both safe.
+- `--ink-500` is tuned so secondary text clears **4.5:1 on `--paper-2`** (5.78:1), not
+  just on `--paper`. `--ink-400` is below AA for text — use it for borders only.
+- Accent (`--accent-600`) on `--paper` is 7.75:1, and on `--paper-2` 7.32:1. Both safe.
+- **Logo treatment.** Client marks render on a white plate, unmodified (see "Product
+  marks"). Product marks keep their own file colours.
+
+### Dark theme
+
+- The site is **dark-only**. The light theme was removed: `app/layout.js` sets
+  `data-theme="dark"` unconditionally before first paint, and the header no longer
+  offers a toggle. A single `:root` block in `variables.css` holds the dark values.
+- The warm scale reads as paper darkening (`--paper` `#141311`) and ink lightening
+  (`--ink-950` `#f2efe8`), with the foreground accent lifting to a readable cobalt
+  (`--accent-600` `#8fa7df`) while solid accent fills stay deep blue.
+- **Role tokens.** The raw scale is not enough on its own. Solid "ink" bands use
+  `--band` / `--band-2` with `--on-band` / `--on-band-dim` text (dark bands with light
+  text). Solid accent fills use `--accent-solid` with `--on-accent` text. Raised
+  surfaces (cards, inputs, tiles) use `--surface-1` / `--surface-1-hover`. Never draw a
+  band or its text with `--ink-950` / `--paper` directly.
+- The text ramp clears 4.5:1 on its backgrounds (`--ink-500` on `--paper-2` is 5.78:1).
 
 ### Type
 
@@ -87,8 +117,13 @@ Rules that hold:
   apply `font-weight` above 400 to it or you get faux-bold.
 - UI/body: **Instrument Sans** 400 / 500 / 600.
 - Scale lives in `styles/helpers/typography.css` as `heading-1…6`, `paragraph-*`,
-  `eyebrow`, `label-small`. Use those classes; do not hand-write sizes.
-- Emphasis inside a heading is italic (`<em>`), never colour.
+  `eyebrow`, `label-small`. Use those classes; do not hand-write sizes. Nothing renders
+  below 13px, and body copy runs 17–18px (paragraph-medium / paragraph-large) so desktop
+  reading stays comfortable. The "Working across" section uses a SonarGrid dot-field
+  behind an oversized rotating discipline value in display serif, cycling through the
+  editorial spectrum.
+- Emphasis inside a heading is italic (`<em>`) and carries the section's spectrum
+  hue (`--em-accent`, rotated per section in `common.css`), never cobalt.
 
 ### Layout
 
@@ -128,6 +163,14 @@ never delay task completion for animation.
 | `ServiceRow` | `components/service-row/` | Services index rows |
 | `ClientGrid` / `NameMarquee` | `components/client-grid/`, `components/name-marquee/` | Client logos and the scrolling strip |
 | `Reveal` / `MaskedLines` | `components/motion/` | Scroll and heading motion |
+| `SplineScene` | `components/spline-scene/` | Lazy-loaded Spline 3D scene (client) |
+| `Spotlight` | `components/spotlight/` | Cursor-following accent glow (framer-motion) |
+| `SplinePanel` | `components/spline-panel/` | Home "Agentic AI, made tangible" panel |
+| `SonarGrid` | `components/sonar-grid/` | Canvas dot-field with expanding sonar rings |
+| `WorkingAcross` | `components/working-across/` | Home "Working across" hero with the rotating discipline word |
+
+`SplinePanel` renders a placeholder 21st.dev scene by default — replace with the client's
+own `.splinecode` URL before launch.
 
 ---
 
@@ -145,7 +188,7 @@ These were each a fix for a real defect. Keep them.
   right of everything else.
 - **One baseline**: detail-page heroes use `padding-top: clamp(48px, 5vw, 80px)` so
   the breadcrumb lands at the same y on every page type.
-- **One style**: 12px, weight 500, `0.1em` tracking, uppercase, `--ink-500`.
+- **One style**: 13px, weight 500, `0.1em` tracking, uppercase, `--ink-500`.
   Hover/focus: `--accent-600` plus a 2px underline at 4px offset.
 - Verified targets: x=132 / y=148 at 1440px, x=20 / y=124 at 390px.
 
@@ -156,10 +199,17 @@ These were each a fix for a real defect. Keep them.
   fallback when a product has no logo.
 - Marks are shown bare at 52px (index card), 72px (product hero) and 36px ("More
   products" strip).
-- If a mark needs a ground to read on paper, set `logoBackdrop: "ink"`. That renders
-  it on a black rounded tile and **centres** it — the base `.logo` rule pins marks
-  left for left-aligned rows, so ink tiles must override `object-position`.
-- Never recolour, crop or redraw a client or product logo.
+- If a white or cut-out mark needs a ground to read on a light card, set
+  `logoBackdrop: "ink"`. The tile is a **separate wrapper element**, never the
+  `<img>` background: a `filter` on the image also inverts its own background, so a
+  black tile drawn on the image turned white. It sizes to the mark, so a square icon
+  stays square and a wordmark keeps its proportions.
+- Never recolour, crop or redraw a client or product logo. Client logos sit on a
+  **white plate** in `ClientGrid`, shown exactly as supplied: dark wordmarks read
+  black, coloured marks keep their brand colour. There is no inversion filter — on a
+  bare dark cell a dark wordmark has to be inverted (losing its shape) and a coloured
+  mark loses its contrast. The home marquee is name-based (`NameMarquee`), not a logo
+  strip.
 
 ### Images
 
@@ -202,7 +252,7 @@ WCAG 2.2 AA is the floor, verified with axe-core on every route at 1440px and 39
 - Scrollable or clipped regions must be keyboard reachable (the client marquee takes
   `tabIndex={0}` for that reason).
 - Contrast floors: body text 4.5:1, large text 3:1. Check against the actual
-  background, not the default one.
+  background, not the default one — in both light and dark themes.
 
 ---
 
@@ -243,7 +293,7 @@ process, optional image, optional relatedProduct). Routes generate from
 ## 8. Definition of done
 
 1. `npm run build` passes; every route prerenders.
-2. `npm run lint` — only the two known `<img>` warnings for client logos.
+2. `npm run lint` — only the one known `<img>` warning for client logos.
 3. axe: zero violations across all routes at 1440px and 390px.
 4. No horizontal overflow at 390 / 768 / 1440 / 1920.
 5. Rendered and inspected at desktop and mobile, not inferred from code.

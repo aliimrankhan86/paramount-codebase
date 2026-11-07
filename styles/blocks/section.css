@@ -36,8 +36,8 @@
 }
 
 .section-dark {
-  background-color: var(--ink-950);
-  color: var(--paper);
+  background-color: var(--band);
+  color: var(--on-band);
 }
 
 .section-tint {
@@ -46,6 +46,63 @@
 
 .section-paper-2 {
   background-color: var(--paper-2);
+}
+
+/*
+  Colour fields. A full-bleed block that remaps the ink ramp, so every nested
+  component — headings, body copy, rules, links, counters — flips to dark on
+  light with no component-level override. Three hues rotate across the site so
+  no page reads as one long dark column; use at most one per page.
+*/
+.section-paper-light,
+.section-orange,
+.section-violet {
+  /* Tuned against the darkest of the three fields (--spectrum-orange,
+     L 0.356), not the cream one — that is the binding constraint. */
+  --ink-950: #141311;
+  --ink-900: #1b1916;
+  --ink-800: #26231e;
+  --ink-700: #2b2620;
+  --ink-600: #332e25;
+  --ink-500: #3b3529;
+  --ink-400: #4a4438;
+  --ink-300: #6b6355;
+  --ink-200: rgba(20, 19, 17, 0.24);
+  --ink-150: rgba(20, 19, 17, 0.18);
+  --ink-100: rgba(20, 19, 17, 0.09);
+  --ink-50: rgba(20, 19, 17, 0.05);
+  --line: rgba(20, 19, 17, 0.2);
+  --line-strong: rgba(20, 19, 17, 0.34);
+  /* Cobalt has to darken to clear AA on a light ground. */
+  --accent-600: #1a2a5e;
+  --accent-500: #1a2a5e;
+  --surface-1: rgba(255, 255, 255, 0.55);
+  --surface-1-hover: #ffffff;
+  /* Panels that sit on the page ground (the contact form) follow the field. */
+  --paper: #ffffff;
+  --paper-2: #faf7f2;
+  --paper-3: #ffffff;
+  color: var(--ink-950);
+}
+
+/* The spectrum italic word is tuned for dark grounds and would vanish here;
+   on a colour field the block itself carries the colour, so emphasis inherits. */
+.section-paper-light em,
+.section-orange em,
+.section-violet em {
+  color: inherit;
+}
+
+.section-paper-light {
+  background-color: var(--paper-light);
+}
+
+.section-orange {
+  background-color: var(--spectrum-orange);
+}
+
+.section-violet {
+  background-color: var(--spectrum-violet);
 }
 
 .section-hairline {

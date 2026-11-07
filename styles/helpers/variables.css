@@ -1,59 +1,85 @@
+/*
+  Dark-only theme. The site is printed matter on warm charcoal, not a SaaS page:
+  ink lightens, paper darkens, the accent lifts to a readable cobalt, and solid
+  bands stay a touch darker than the page so the rhythm holds. `data-theme` is
+  forced to "dark" by an inline script in the root layout before first paint.
+*/
 :root {
   --white: #ffffff;
   --black: #000000;
 
-  /* Warm paper stock: the site reads as printed matter, not another SaaS page. */
-  --paper: #f4f1ea;
-  --paper-2: #ebe6db;
-  --paper-3: #e0dacd;
+  /* Warm charcoal paper. */
+  --paper: #141311;
+  --paper-2: #1b1916;
+  --paper-3: #221f1b;
 
-  /* Warm ink scale, tuned against the paper background. */
-  --ink-950: #0e0e0c;
-  --ink-900: #191915;
-  --ink-800: #272621;
-  --ink-700: #3a3832;
-  --ink-600: #514e46;
-  --ink-500: #6a665c;
-  --ink-400: #8b867a;
-  --ink-300: #aea89a;
-  --ink-200: #d3ccbd;
-  --ink-150: #e2dccf;
-  --ink-100: #ece7dc;
-  --ink-50: #f8f5ee;
+  /* Warm ink scale, lightened against the charcoal background. */
+  --ink-950: #f2efe8;
+  --ink-900: #e7e3d9;
+  --ink-800: #d8d2c5;
+  --ink-700: #c3bcad;
+  --ink-600: #b2a897;
+  --ink-500: #9c9384;
+  --ink-400: #6f6a5e;
+  --ink-300: #57534a;
+  --ink-200: #3b372f;
+  --ink-150: #2d2a24;
+  --ink-100: #25221e;
+  --ink-50: #1e1c19;
 
-  /* One deep royal blue. Everything else is paper, ink and hairline. */
-  --accent-900: #0a1638;
-  --accent-800: #10214f;
-  --accent-700: #162e6e;
-  --accent-600: #1c3a8c;
-  --accent-500: #2b4da8;
-  --accent-400: #6c86c8;
-  --accent-300: #9aabdb;
-  --accent-200: #c2cde9;
-  --accent-100: #dde3f2;
-  --accent-050: #eef1f8;
+  /* One deep royal blue. The foreground accent (`--accent-600`) lightens to a
+     readable cobalt; solid fills stay deep so white text on them keeps contrast. */
+  --accent-900: #0d1a3a;
+  --accent-800: #1c3a8c;
+  --accent-700: #23397a;
+  --accent-600: #8fa7df;
+  --accent-500: #a5b8e6;
+  --accent-400: #c3d0ef;
+  --accent-300: #d6dff4;
+  --accent-200: #e2e8f6;
+  --accent-100: #232c48;
+  --accent-050: #1b2138;
 
   /* Small warm signal, used only for live markers and error states. */
-  --signal: #c64a1f;
-  --success-600: #1f7a45;
-  --success-050: #edf7f0;
-  --danger-600: #c2351f;
-  --danger-050: #fbeeea;
+  --signal: #e88a5f;
+  --success-600: #4db87e;
+  --success-050: #15241b;
+  --danger-600: #f2775e;
+  --danger-050: #2a1a16;
 
-  --line: rgba(14, 14, 12, 0.13);
-  --line-strong: rgba(14, 14, 12, 0.24);
+  /* Editorial spectrum — decorative colour moments only. The action accent is
+     still the single cobalt (--accent-600); these hues colour the Working-across
+     word, stat figures and their rules, the accounting area numbers, and the
+     client-name diamonds, never primary actions or links. */
+  --spectrum-orange: #ff7a45;
+  --spectrum-amber: #e0a862;
+  --spectrum-rose: #e2907f;
+  --spectrum-teal: #7cc4b6;
+  --spectrum-violet: #b7a0d8;
+  --spectrum-green: #a3cd86;
+
+  /* Current section's decorative accent, rotated per section in common.css and
+     overridden inline where a section carries its own identity. */
+  --em-accent: var(--spectrum-amber);
+
+  /* Ambient glows for background depth (subtle radial washes). */
+  --glow-warm: rgba(224, 168, 98, 0.09);
+  --glow-cool: rgba(143, 167, 223, 0.10);
+
+  --line: rgba(242, 239, 232, 0.14);
+  --line-strong: rgba(242, 239, 232, 0.24);
+  /* --line-inverse is used on dark bands and stays light-faint. */
   --line-inverse: rgba(244, 241, 234, 0.16);
 
   /* Brand gradients */
   --gradient-accent: linear-gradient(135deg, #1c3a8c 0%, #10214f 100%);
-  --gradient-ink: linear-gradient(180deg, #191915 0%, #0e0e0c 100%);
 
-  /* Elevation — soft, paper-like, never glassy. */
-  --shadow-xs: 0 1px 1px rgba(14, 14, 12, 0.04);
-  --shadow-sm: 0 2px 10px -4px rgba(14, 14, 12, 0.12);
-  --shadow-md: 0 18px 40px -24px rgba(14, 14, 12, 0.3);
-  --shadow-lg: 0 40px 80px -40px rgba(14, 14, 12, 0.38);
-  --shadow-accent: 0 24px 48px -24px rgba(28, 58, 140, 0.45);
+  /* Elevation — soft, never glassy. */
+  --shadow-xs: 0 1px 1px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 18px 40px -24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 40px 80px -40px rgba(0, 0, 0, 0.7);
+  --shadow-accent: 0 24px 48px -24px rgba(43, 77, 168, 0.5);
 
   /* Radii — restrained; editorial layouts prefer near-square corners. */
   --border-radius-xs: 4px;
@@ -78,4 +104,47 @@
   --duration-fast: 160ms;
   --duration: 260ms;
   --duration-slow: 560ms;
+
+  /*
+    Role tokens. The scale above covers the "ink on paper" ramp; these cover the
+    two places a scale token is not enough on its own: solid "ink" bands (which
+    must stay dark) and text that sits on those bands (which must stay light).
+    Components that draw a solid band or its text reference these, never
+    --ink-950 / --paper directly.
+  */
+  --band: #0a0908;                    /* solid ink band: sections, buttons, CTA */
+  --band-2: #12110f;                  /* secondary dark fill (figure ink frame) */
+  --on-band: #f2efe8;                 /* text on a band */
+  --on-band-dim: rgba(242, 239, 232, 0.62);
+  --on-band-faint: rgba(242, 239, 232, 0.16);
+
+  /* Solid accent fill vs accent foreground: solid fills stay deep blue so white
+     text on them keeps its contrast. */
+  --accent-solid: #2b4da8;            /* button / strip / selection fill */
+  --on-accent: #ffffff;               /* text on a solid accent fill */
+
+  /* Accent-derived glows and rings for cards (kept out of the scale on purpose). */
+  --accent-soft: rgba(143, 167, 223, 0.16);
+  --accent-ring: rgba(143, 167, 223, 0.3);
+  --accent-ring-soft: rgba(143, 167, 223, 0.1);
+
+  /* Reverse block: a light "paper insert" (cream) and light spectrum fills,
+     drawn with near-black ink and dark rules — the inverse of the dark theme.
+     Used by the colour-block sections that break up the charcoal. */
+  --paper-light: #f5f0e8;
+  --ink-strong: #141311;
+  /* 0.8, not 0.66: on --spectrum-orange the lighter alpha only reached 3.9:1. */
+  --ink-strong-dim: rgba(20, 19, 17, 0.8);
+  --line-dark: rgba(20, 19, 17, 0.18);
+
+  /* Raised surfaces: cards, inputs, tiles. */
+  --surface-1: #1b1916;
+  --surface-1-hover: #201d19;
+
+  /* Translucent header backdrop (blurred). */
+  --header-glass: rgba(20, 19, 17, 0.72);
+
+  /* Hairline-coloured borders for the two signal states. */
+  --danger-border: rgba(242, 119, 94, 0.25);
+  --success-border: rgba(77, 184, 126, 0.25);
 }

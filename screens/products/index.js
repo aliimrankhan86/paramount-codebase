@@ -16,27 +16,36 @@ export default function ProductsIndexPage() {
         title="Software we build"
         subtitle="Some of these we run ourselves. Others we designed and implemented for a client and still look after. Every one is live, and held to the same standard as anything else we deliver."
       />
-      <section className={cn("section", "section-tight")}>
+      <section className={cn("section", "section-tight", "section-paper-light")}>
         <div className={cn("container")}>
           <div className={styles.grid}>
             {products.map((product, index) => (
               <Reveal key={product.slug} delay={index * 0.06}>
                 <Link href={`/products/${product.slug}`} className={styles.card}>
                   {product.logo ? (
-                    // Brand mark, served at its own intrinsic size. next/image
-                    // adds nothing for a 2–13 KB logo and cannot size an SVG.
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={product.logo}
-                      alt=""
-                      width={product.logoWidth}
-                      height={product.logoHeight}
-                      className={cn(styles.logo, {
-                        [styles.logoOnInk]: product.logoBackdrop === "ink",
+                    // Brand mark at its own intrinsic size. The invert filter is
+                    // on the <img> alone and the tile is a separate element:
+                    // a filter also inverts the element's own background, which
+                    // turned the black tile white.
+                    <span
+                      className={cn({
+                        [styles.logoTile]: product.logoBackdrop === "ink",
                       })}
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={product.logo}
+                        alt=""
+                        width={product.logoWidth}
+                        height={product.logoHeight}
+                        className={cn(styles.logo, {
+                          [styles.logoInTile]: product.logoBackdrop === "ink",
+                        })}
+                        style={product.invert ? { filter: "brightness(0) invert(1)" } : undefined}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
                   ) : (
                     <div className={styles.iconWrap}>{icons[product.icon]}</div>
                   )}

@@ -19,9 +19,9 @@
 }
 
 .description {
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--ink-500);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-600);
   max-width: 34ch;
 }
 

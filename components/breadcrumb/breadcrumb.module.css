@@ -4,9 +4,9 @@
   gap: 8px;
   flex-wrap: wrap;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 19px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-500);

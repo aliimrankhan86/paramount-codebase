@@ -2,10 +2,12 @@ import Link from "next/link";
 import cn from "classnames";
 import Layout from "@/components/Layout";
 import Hero from "./hero";
+import WorkingAcross from "@/components/working-across/working-across";
 import Statement from "./statement/statement";
 import Stats from "./stats/stats";
 import Services from "./services/services";
 import AiCapabilities from "./ai-capabilities/ai-capabilities";
+import SplinePanel from "@/components/spline-panel/spline-panel";
 import Intro from "./intro/intro";
 import Values from "./values/values";
 import Approach from "./approach/approach";
@@ -20,6 +22,8 @@ export default function HomePage() {
   return (
     <Layout>
       <Hero />
+      <WorkingAcross />
+      <SplinePanel />
       <Statement />
       <Stats />
       <Services />

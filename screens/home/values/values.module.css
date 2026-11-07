@@ -11,13 +11,14 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 2px solid var(--ink-950);
+  border-bottom: 1px solid var(--line);
 }
 
 .item {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: clamp(26px, 2.8vw, 40px) clamp(24px, 3vw, 48px) 0 0;
+  padding: clamp(26px, 2.8vw, 40px) clamp(24px, 3vw, 48px);
   border-right: 1px solid var(--line);
 }
 

@@ -34,7 +34,7 @@ export default function ContactPage() {
         meta="Replies within one working day"
       />
 
-      <section className={cn("section", "section-tight")}>
+      <section className={cn("section", "section-tight", "section-paper-light")}>
         <div className={cn("container", styles.layout)}>
           <Reveal className={styles.aside} variant="left">
             <div className="eyebrow">What happens next</div>

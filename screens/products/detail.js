@@ -80,6 +80,7 @@ export default function ProductDetailPage({ product }) {
                 className={cn(styles.logo, {
                   [styles.logoOnInk]: product.logoBackdrop === "ink",
                 })}
+                style={product.invert ? { filter: "brightness(0) invert(1)" } : undefined}
                 decoding="async"
               />
             ) : (
@@ -143,7 +144,7 @@ export default function ProductDetailPage({ product }) {
       )}
 
       {hasSteps && (
-        <section id="how-it-works" className={cn("section", "section-tight", "section-tint")}>
+        <section id="how-it-works" className={cn("section", "section-tight", "section-paper-light")}>
           <div className={cn("container")}>
             <Reveal className={styles.sectionHeading}>
               <h2 className="heading-3">How a session runs</h2>
@@ -221,6 +222,7 @@ export default function ProductDetailPage({ product }) {
                       className={cn(styles.moreLogo, {
                         [styles.moreLogoOnInk]: item.logoBackdrop === "ink",
                       })}
+                      style={item.invert ? { filter: "brightness(0) invert(1)" } : undefined}
                       loading="lazy"
                       decoding="async"
                     />

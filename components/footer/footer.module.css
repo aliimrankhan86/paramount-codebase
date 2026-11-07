@@ -87,7 +87,7 @@
   padding-bottom: 0.7em;
   text-align: right;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.7;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -104,7 +104,7 @@
 
 .detailTitle {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -157,7 +157,7 @@
 .legal p {
   max-width: 62ch;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--ink-600);
 }
@@ -167,7 +167,7 @@
   padding-bottom: clamp(20px, 2.4vw, 30px);
   border-top: 1px solid var(--line);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.6;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -175,8 +175,8 @@
 }
 
 .strip {
-  background: var(--accent-600);
-  color: var(--paper);
+  background: var(--accent-solid);
+  color: var(--on-accent);
 }
 
 .stripInner {
@@ -192,11 +192,11 @@
 .stripText,
 .backToTop {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--paper);
+  color: var(--on-accent);
 }
 
 .backToTop {

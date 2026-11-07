@@ -53,7 +53,7 @@
   height: 72px;
   padding: 13px;
   box-sizing: border-box;
-  background: var(--ink-950);
+  background: var(--band);
   border-radius: 15px;
 }
 
@@ -140,13 +140,13 @@
   font-family: var(--font-dm-sans);
   font-weight: 600;
   font-size: 14px;
-  color: var(--accent-700);
+  color: var(--accent-600);
 }
 
 .featureLink svg {
   width: 16px;
   height: 16px;
-  stroke: var(--accent-700);
+  stroke: var(--accent-600);
 }
 
 .featureLink:hover {
@@ -288,18 +288,18 @@
   height: 36px;
   padding: 6px;
   box-sizing: border-box;
-  background: var(--ink-950);
+  background: var(--band);
   border-radius: 7px;
   object-position: center;
 }
 
 .moreCategory {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.45;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--accent-700);
+  color: var(--accent-600);
 }
 
 .moreTitle {

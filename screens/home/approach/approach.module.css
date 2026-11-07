@@ -1,5 +1,7 @@
+/* The approach is the page's orange colour block: dark ink on a warm fill. */
 .section {
-  border-top: 0;
+  background: var(--spectrum-orange);
+  color: var(--ink-strong);
 }
 
 .headRow {
@@ -10,12 +12,13 @@
   padding-bottom: clamp(24px, 3vw, 40px);
 }
 
-.heading {
+.section .heading {
   max-width: 14ch;
+  color: var(--ink-strong);
 }
 
 .sub {
-  color: var(--ink-600);
+  color: var(--ink-strong-dim);
   max-width: 40ch;
   padding-bottom: 4px;
 }
@@ -23,8 +26,8 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 2px solid var(--ink-950);
-  border-left: 1px solid var(--line);
+  border-top: 2px solid var(--ink-strong);
+  border-left: 1px solid var(--line-dark);
 }
 
 .item {
@@ -32,8 +35,8 @@
   flex-direction: column;
   gap: 12px;
   padding: clamp(20px, 2.2vw, 32px);
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
 }
 
 .title {
@@ -42,13 +45,13 @@
   font-size: clamp(24px, 2.4vw, 34px);
   line-height: 1.02;
   letter-spacing: -0.03em;
-  color: var(--ink-950);
+  color: var(--ink-strong);
   max-width: 22ch;
   text-wrap: balance;
 }
 
 .description {
-  color: var(--ink-500);
+  color: var(--ink-strong-dim);
   max-width: 40ch;
 }
 

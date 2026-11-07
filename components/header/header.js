@@ -96,17 +96,19 @@ export default function Header() {
           </Link>
         </nav>
 
-        <button
-          type="button"
-          className={cn(styles.burger, { [styles.active]: visibleNav })}
-          onClick={() => setVisibleNav((v) => !v)}
-          aria-expanded={visibleNav}
-          aria-controls="primary-navigation"
-          aria-label={visibleNav ? "Close menu" : "Open menu"}
-        >
-          <span />
-          <span />
-        </button>
+        <div className={styles.right}>
+          <button
+            type="button"
+            className={cn(styles.burger, { [styles.active]: visibleNav })}
+            onClick={() => setVisibleNav((v) => !v)}
+            aria-expanded={visibleNav}
+            aria-controls="primary-navigation"
+            aria-label={visibleNav ? "Close menu" : "Open menu"}
+          >
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
 
       <div className={styles.progressTrack} aria-hidden="true">

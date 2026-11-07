@@ -2,8 +2,8 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: var(--ink-950);
-  color: var(--paper);
+  background: var(--band);
+  color: var(--on-band);
   padding: clamp(64px, 6vw, 104px) 0;
 }
 
@@ -28,14 +28,14 @@
 
 .meta {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(244, 241, 234, 0.58);
+  color: var(--on-band-dim);
 }
 
 .title {
-  color: var(--paper);
+  color: var(--on-band);
   max-width: 15ch;
   font-size: clamp(40px, 7vw, 112px);
   line-height: 0.9;
@@ -51,7 +51,7 @@
 }
 
 .subtitle {
-  color: rgba(244, 241, 234, 0.6);
+  color: var(--on-band-dim);
   max-width: 480px;
 }
 

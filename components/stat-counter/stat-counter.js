@@ -8,7 +8,7 @@ import styles from "./stat-counter.module.css";
  * Renders the final value on the server, then counts up once when scrolled into
  * view. Reduced-motion visitors and no-JS readers always get the real number.
  */
-export default function StatCounter({ value, suffix = "", label, delay = 0 }) {
+export default function StatCounter({ value, suffix = "", label, delay = 0, color }) {
   const ref = React.useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const reduceMotion = useReducedMotion();
@@ -48,7 +48,7 @@ export default function StatCounter({ value, suffix = "", label, delay = 0 }) {
 
   return (
     <div ref={ref} className={styles.stat}>
-      <div className={styles.value}>
+      <div className={styles.value} style={color ? { color } : undefined}>
         {display}
         {suffix}
       </div>

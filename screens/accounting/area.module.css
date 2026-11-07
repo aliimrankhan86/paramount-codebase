@@ -15,7 +15,7 @@
 }
 
 .indexTitle {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-500);
@@ -72,9 +72,9 @@
 }
 
 .serviceNum {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
-  color: var(--ink-600);
+  color: var(--area-accent, var(--accent-600));
 }
 
 .serviceTitle {
@@ -104,7 +104,7 @@
 }
 
 .includesLabel {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-500);
