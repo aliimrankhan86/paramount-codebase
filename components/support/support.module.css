@@ -13,8 +13,8 @@
 .formRow {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin: 12px 0;
+  gap: 6px;
+  margin: 4px 0;
 }
 
 .formRow label,
@@ -165,22 +165,25 @@
   border-color: var(--danger-600) !important;
 }
 
+/*
+  The error slot is reserved at all times, whether or not a message is showing.
+  Without the reserved line every validation message pushed the rest of the form
+  down ~20px as you typed, and in the two-column name row it left the columns at
+  different heights because only one cell grew. One line, always: nothing moves.
+*/
 .fieldError {
-  min-height: 0;
+  min-height: 1.4em;
   margin: 0;
   font-family: var(--font-sans);
   font-size: 13px;
   line-height: 1.4;
   color: var(--danger-600);
   opacity: 0;
-  transform: translateY(-2px);
-  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  transition: opacity 0.2s var(--ease-out);
 }
 
 .fieldErrorVisible {
   opacity: 1;
-  transform: translateY(0);
-  margin-top: 2px;
 }
 
 .button {

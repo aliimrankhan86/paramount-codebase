@@ -9,6 +9,23 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-07 — Contact form layout, and the director line removed
+
+- Validation messages were unstyled-height: `FieldError` reserved nothing
+  (`min-height: 0`), so the first error pushed every field below it down **20.2px**
+  mid-typing, and in the two-column name row only one cell grew, so the two boxes
+  stopped being a pair. The error slot now always reserves one line
+  (`min-height: 1.4em`). Measured shift after the change: **0.0px** at 1284 and 390.
+- The form panel is a white card on the cream field but had **zero horizontal
+  padding**, so every label and every input border sat exactly on the panel's edge —
+  the card read as a misaligned white band. Now inset `clamp(20px, 3vw, 36px)` with
+  bottom padding so the closing hint is not flush with the edge.
+- Row rhythm rebalanced to absorb the reserved line: `.formRow` gap 7→6px, margin
+  12→4px. Field-to-field spacing is unchanged at ~112px on desktop.
+- Footer copyright line reads `Paramount Consultants Limited` alone; the
+  `Director: Ali Imran Khan` clause is gone. The name stays in the `Organization`
+  JSON-LD in `app/layout.js`, which is structured data, not visible copy.
+
 ## 2026-11-07 — Practice 02 reflowed to two columns
 
 - Four columns on `/services` were too narrow for these titles: at ~290px

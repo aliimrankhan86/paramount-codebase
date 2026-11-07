@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
 
         <p className={styles.company}>
-          {site.legalName} &middot; Director: {site.director}
+          {site.legalName}
         </p>
       </div>
 

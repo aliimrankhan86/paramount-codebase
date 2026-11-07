@@ -75,10 +75,16 @@
   margin: 0;
 }
 
+/*
+  The panel is a white card on the cream field, so it needs an inset: with no
+  horizontal padding every label and every input border sat exactly on the
+  panel's edge, and the card read as a misaligned white band rather than a
+  surface. The inset also keeps the closing hint off the bottom edge.
+*/
 .formWrap {
   background: var(--paper);
   border-top: 2px solid var(--ink-950);
-  padding: clamp(24px, 3.5vw, 44px) 0 0;
+  padding: clamp(24px, 3.5vw, 44px) clamp(20px, 3vw, 36px) clamp(24px, 3.2vw, 40px);
 }
 
 .formHead {
