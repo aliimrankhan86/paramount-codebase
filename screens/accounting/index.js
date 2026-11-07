@@ -36,10 +36,10 @@ export default function AccountingPage() {
 
       <section className="section">
         <div className={cn("container", styles.ledeGrid)}>
-          <Reveal>
+          <Reveal priority>
             <p className="eyebrow">Where we start</p>
           </Reveal>
-          <Reveal delay={0.06}>
+          <Reveal priority>
             <p className={cn("heading-3", styles.lede)}>
               The problem is rarely the tax return. It is that the numbers arrive too late to
               change what you <em>do next.</em>

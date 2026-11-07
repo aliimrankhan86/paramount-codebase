@@ -9,6 +9,29 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-07 — Performance: paint heroes immediately, defer the heavy widgets
+
+- **Root cause of the poor Lighthouse score.** `Reveal` and `MaskedLines` start their
+  content at `opacity: 0` / inside a clipped mask until React hydrates, so page heroes
+  painted nothing until the bundle had downloaded and run. LCP is measured on painted
+  pixels, so every page hero was paying seconds. Added a `priority` prop to both
+  components (renders the final state from server HTML, no motion) and applied it to
+  every page hero and the first section beneath it.
+  Mobile Lighthouse (production build): `/products` 81 → 96, LCP 5.2s → 2.7s;
+  `/` 57 → 91; `/accounting` 84 → 94; `/services/[slug]` → 95.
+- **Spline scene deferred.** `lazy()` alone still mounts on hydration, so the runtime
+  downloaded and evaluated immediately — 1.2s of Total Blocking Time for a panel below
+  the fold. `SplineScene` now mounts only when it nears the viewport: home page TBT
+  1220ms → 10ms.
+- **Phone picker deferred.** `react-international-phone` (252 KB) was in the contact
+  page's initial bundle (290ms TBT). It is now loaded on focus, behind a visually
+  identical plain `tel` input, with focus and caret restored after the swap —
+  `/contact` 87 → 97, TBT 10ms.
+- Added a modern `browserslist` so the legacy polyfill chunk is not shipped to
+  browsers that do not need it.
+- Tried and removed `experimental.optimizeCss` (critters): it inlined nothing on the
+  App Router and moved no metric, so the dependency and config were dropped.
+
 ## 2026-11-07 — White product marks on the cream products index
 
 - Voicecake and MetaMind AI rendered as white marks on a now-cream field and were

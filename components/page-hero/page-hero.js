@@ -9,14 +9,21 @@ export default function PageHero({ eyebrow, title, titleLines, subtitle, meta, c
   return (
     <section className={cn("section", styles.section)}>
       <div className={cn("container")}>
-        <Reveal className={styles.inner}>
+        {/* priority: the hero is the LCP element, so it must paint from the
+            server-rendered HTML rather than wait for hydration. */}
+        <Reveal className={styles.inner} priority>
           <div className={styles.topRow}>
             <Breadcrumb trail={[{ label: "Home", href: "/" }, { label: eyebrow }]} />
             {meta && <span className={styles.meta}>{meta}</span>}
           </div>
 
           {titleLines ? (
-            <MaskedLines as="h1" className={cn("heading-1", styles.title)} lines={titleLines} />
+            <MaskedLines
+              as="h1"
+              className={cn("heading-1", styles.title)}
+              lines={titleLines}
+              priority
+            />
           ) : (
             <h1 className={cn("heading-1", styles.title)}>{title}</h1>
           )}

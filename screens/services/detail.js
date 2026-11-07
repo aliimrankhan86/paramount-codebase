@@ -21,7 +21,7 @@ export default function ServiceDetailPage({ service }) {
     <Layout>
       <section className={cn("section", styles.hero)}>
         <div className={cn("container")}>
-          <Reveal className={styles.heroInner}>
+          <Reveal className={styles.heroInner} priority>
             <Breadcrumb
               trail={[
                 { label: "Home", href: "/" },

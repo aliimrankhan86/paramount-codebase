@@ -36,7 +36,7 @@ export default function ContactPage() {
 
       <section className={cn("section", "section-tight", "section-paper-light")}>
         <div className={cn("container", styles.layout)}>
-          <Reveal className={styles.aside} variant="left">
+          <Reveal className={styles.aside} variant="left" priority>
             <div className="eyebrow">What happens next</div>
 
             <ol className={styles.steps}>
@@ -87,7 +87,7 @@ export default function ContactPage() {
             />
           </Reveal>
 
-          <Reveal className={styles.formWrap} delay={0.08}>
+          <Reveal className={styles.formWrap} priority>
             <div className={styles.formHead}>
               <h2 className={cn("heading-3", styles.formTitle)}>Send us a message</h2>
               <p className={cn("paragraph-small", styles.formSub)}>

@@ -28,12 +28,30 @@ export default function MaskedLines({
   delay = 0,
   stagger = 0.09,
   once = true,
+  priority = false,
   ...rest
 }) {
   const ref = React.useRef(null);
   const reduceMotion = useReducedMotion();
   const inView = useInView(ref, { once, amount: "some", margin: "0px 0px -10% 0px" });
   const show = reduceMotion || inView;
+
+  // Above the fold: render the finished lines immediately. The mask clips the
+  // line until the observer fires, so an animated hero heading is invisible
+  // until hydration and pushes Largest Contentful Paint out by seconds.
+  if (priority) {
+    return (
+      <Tag ref={ref} className={cn(styles.heading, className)} {...rest}>
+        {lines.map((line, index) => (
+          <span className={styles.mask} key={index}>
+            <span data-mask-line className={styles.line}>
+              {line}
+            </span>
+          </span>
+        ))}
+      </Tag>
+    );
+  }
 
   return (
     <Tag ref={ref} className={cn(styles.heading, className)} {...rest}>

@@ -54,7 +54,7 @@ export default function ClientsPage() {
 
       <section className={cn("section", "section-tight")}>
         <div className={cn("container")}>
-          <Reveal>
+          <Reveal priority>
             <ClientGrid />
           </Reveal>
         </div>

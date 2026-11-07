@@ -1,11 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
+import dynamic from "next/dynamic";
 import styles from "./support.module.css";
-import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import site from "@/constants/site";
+
+/*
+  The country picker is 252 KB of JavaScript and it is not needed to paint the
+  form. Load it only when the visitor actually reaches the field, so it never
+  lands in the first load or on the main thread's busy window.
+*/
+const PhoneInput = dynamic(
+  () => import("react-international-phone").then((mod) => mod.PhoneInput),
+  { ssr: false },
+);
 
 const businessOptions = [
   { value: "consulting", label: "Consulting" },
@@ -57,7 +67,35 @@ export default function ContactUs() {
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [phoneReady, setPhoneReady] = useState(false);
+  const focusedPhone = useRef(false);
   const errors = getErrors(form);
+
+  /*
+    Switching from the plain input to the picker must not drop the caret. The
+    picker is a lazily-loaded chunk, so it mounts some time after this effect
+    runs — retry until the input exists rather than focusing a missing node.
+  */
+  useEffect(() => {
+    if (!phoneReady || !focusedPhone.current) return;
+    let cancelled = false;
+    let attempts = 0;
+    const focusWhenReady = () => {
+      if (cancelled) return;
+      const el = document.getElementById("phone");
+      if (el) {
+        el.focus();
+        const end = el.value.length;
+        el.setSelectionRange?.(end, end);
+        return;
+      }
+      if (attempts++ < 60) setTimeout(focusWhenReady, 50);
+    };
+    focusWhenReady();
+    return () => {
+      cancelled = true;
+    };
+  }, [phoneReady]);
   const isValid = Object.values(errors).every((error) => !error);
 
   const handleChange = (event) => {
@@ -196,19 +234,42 @@ export default function ContactUs() {
             [styles.phoneWrapError]: touched.phone && errors.phone,
           })}
         >
-          <PhoneInput
-            defaultCountry="gb"
-            value={form.phone}
-            onChange={handlePhoneChange}
-            onBlur={() => setTouched((prev) => ({ ...prev, phone: true }))}
-            inputProps={{
-              id: "phone",
-              name: "phone",
-              required: true,
-              "aria-invalid": Boolean(touched.phone && errors.phone),
-              "aria-describedby": touched.phone && errors.phone ? "phone-error" : undefined,
-            }}
-          />
+          {phoneReady ? (
+            <PhoneInput
+              defaultCountry="gb"
+              value={form.phone}
+              onChange={handlePhoneChange}
+              onBlur={() => setTouched((prev) => ({ ...prev, phone: true }))}
+              inputProps={{
+                id: "phone",
+                name: "phone",
+                required: true,
+                "aria-invalid": Boolean(touched.phone && errors.phone),
+                "aria-describedby": touched.phone && errors.phone ? "phone-error" : undefined,
+              }}
+            />
+          ) : (
+            /* Plain input until the visitor reaches the field; it looks and
+               validates identically and swaps in the picker on focus. */
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              inputMode="tel"
+              placeholder="+44 7700 900000"
+              value={form.phone}
+              onChange={(event) => handlePhoneChange(event.target.value)}
+              onFocus={() => {
+                focusedPhone.current = true;
+                setPhoneReady(true);
+              }}
+              onBlur={() => setTouched((prev) => ({ ...prev, phone: true }))}
+              required
+              aria-invalid={Boolean(touched.phone && errors.phone)}
+              aria-describedby={touched.phone && errors.phone ? "phone-error" : undefined}
+            />
+          )}
         </div>
         <FieldError id="phone-error" show={touched.phone && errors.phone}>
           {errors.phone}

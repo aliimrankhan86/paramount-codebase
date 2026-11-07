@@ -69,7 +69,7 @@ export default function ProductDetailPage({ product }) {
         </div>
 
         <div className={cn("container", "container-narrow")}>
-          <Reveal className={styles.heroInner}>
+          <Reveal className={styles.heroInner} priority>
             {product.logo ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img

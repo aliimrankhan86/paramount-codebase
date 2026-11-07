@@ -26,6 +26,7 @@ export default function Hero() {
             </>,
           ]}
           stagger={0.1}
+          priority
         />
 
         <div className={styles.bottom}>
