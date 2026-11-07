@@ -9,6 +9,18 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-07 — Practice 02 reflowed to two columns
+
+- Four columns on `/services` were too narrow for these titles: at ~290px
+  "Compliance & company admin" wrapped to two lines and pushed its list ~29px below
+  the other three. Every previous attempt patched that inside a four-column grid,
+  which always traded misalignment for dead space.
+- The group is now a 2×2 grid. At that width all four titles are a single line (26px
+  each), so the lists line up naturally with no forced row heights. Measured at
+  1920–768: two columns, two rows, identical title-to-list gap on all four cells
+  (24px desktop, 16px narrow). One column below 600px.
+- Item gap raised to 14px and cell padding to `clamp(28px, 2.8vw, 36px)` for more air.
+
 ## 2026-11-07 — Practice 02 spacing, and dev/prod build separation
 
 - The accounting group on `/services` now flows per column: title, a fixed 23px gap,
