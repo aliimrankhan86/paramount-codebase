@@ -9,6 +9,19 @@ Running changelog for paramountconsultants.online. Updated on every push.
   launch. This is a legal/regulatory gate, not a build task. Do not remove or reword the
   current accounting disclaimer until that advice is settled.
 
+## 2026-11-07 — Practice 02 spacing, and dev/prod build separation
+
+- The accounting group on `/services` now flows per column: title, a fixed 23px gap,
+  then its list. The previous grid-row approach forced all four lists to start at the
+  same y, which meant sizing the row by the two-line "Compliance & company admin" and
+  leaving ~106px of dead space under every one-line title. Measured: every column now
+  has the same 23px title-to-list gap and a 12px item gap.
+- Dev and production were sharing `.next`, so opening the dev server on one port
+  corrupted the running `next start` build — every CSS file 500'd and pages rendered
+  unstyled. `distDir` is now `.next-dev` under development (gitignored), so the two
+  can run side by side and a Lighthouse score can be taken against a real build
+  without stopping work.
+
 ## 2026-11-07 — Image weight and cache lifetimes
 
 - Product marks converted to WebP: point-poker 48 KB → 9.2 KB, pilgrimcompare

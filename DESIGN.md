@@ -281,10 +281,11 @@ process, optional image, optional relatedProduct). Routes generate from
 
 ## 7. Operational gotchas
 
-- **Two Next servers on one `.next` will corrupt the build.** `next dev` and
-  `next start` share the directory. Symptom: random 500s, missing routes, a CSS 404,
-  fake horizontal overflow. Check `lsof -ti tcp:3000 tcp:3001 tcp:3100` and
-  `ps aux | grep next-server` before anything else. Always exactly one.
+- **Dev and production no longer share a build directory.** `next.config.mjs` sets
+  `distDir` to `.next-dev` under `NODE_ENV=development`, so `next dev` on one port and
+  `next start` on another can run at once. Before this, running both corrupted the
+  production build: every CSS file returned 500 and the page rendered unstyled. If a
+  page ever looks unstyled, check `lsof -ti tcp:3000 tcp:3001` first.
 - **Partial builds.** `next build` can report success while `.next/server/pages/_error.js`
   is missing, and every route then 500s. Rerun `npm run build`. Never `rm -rf .next`.
 - **Screenshotting the site.** Scroll-reveal content sits at `opacity: 0` until the

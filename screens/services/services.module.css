@@ -74,37 +74,28 @@
 .areas {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  /* Two real rows: every title shares row 1, every list shares row 2. */
-  grid-template-rows: auto auto;
-  /* Stretch, not start: it makes every title cell the height of the tallest, so
-     the rule under the title row lands on one line across all four columns. */
-  align-items: stretch;
   border-top: 2px solid var(--ink-950);
   border-bottom: 1px solid var(--line);
 }
 
 /*
-  display: contents promotes each title and list to its own grid item, so the
-  four lists start at the same y whether the title runs one line or three. The
-  previous min-height hack reserved two title lines in every column, which left
-  a 100px dead gap under one-line titles like "Tax".
+  Each column flows on its own: title, a fixed gap, then its list. Forcing the
+  four lists onto a shared row so their tops lined up meant sizing the row by
+  the two-line "Compliance & company admin", which left ~106px of dead space
+  under every one-line title. A consistent gap per column reads as deliberate;
+  the leftover space now sits at the bottom of the column, where it is invisible.
 */
 .area {
-  display: contents;
+  padding: clamp(26px, 2.6vw, 34px) clamp(24px, 2.4vw, 32px)
+    clamp(26px, 2.6vw, 34px) 0;
+  border-right: 1px solid var(--line);
 }
 
 .areaHead {
-  grid-row: 1;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  /* The rule under the title closes the title zone, so the space left by a
-     one-line title reads as deliberate rather than as a gap. */
-  padding: clamp(24px, 2.4vw, 32px) clamp(24px, 2.4vw, 32px)
-    clamp(18px, 1.8vw, 24px) 0;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .areaTitle {
@@ -134,18 +125,15 @@
 }
 
 .areaList {
-  grid-row: 2;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: clamp(16px, 1.6vw, 20px) clamp(24px, 2.4vw, 32px)
-    clamp(24px, 2.4vw, 32px) 0;
+  gap: 12px;
+  margin-top: clamp(18px, 1.8vw, 24px);
+  padding: 0;
   list-style: none;
-  border-right: 1px solid var(--line);
 }
 
-.area:last-child .areaHead,
-.area:last-child .areaList {
+.area:last-child {
   border-right: 0;
   padding-right: 0;
 }
@@ -245,16 +233,12 @@
     justify-self: start;
   }
 
-  /* Below four columns the shared-row trick stops making sense: each area
-     becomes one block again so the title and its list travel together. */
   .areas {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
     border-bottom: 0;
   }
 
   .area {
-    display: block;
     padding: 20px 20px 20px 0;
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
@@ -266,17 +250,9 @@
     padding-left: 20px;
   }
 
-  .areaHead {
-    grid-row: auto;
-    padding: 0;
-    border-right: 0;
-    border-bottom: 0;
-  }
-
   .areaList {
-    grid-row: auto;
-    padding: 16px 0 0;
-    border-right: 0;
+    margin-top: 14px;
+    gap: 10px;
   }
 
   .processGrid {
